@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/../../spec_helper'
 require_relative '../../../src/util/scrape_util'
 
 # loading capybara to load pages to test the utils functions.

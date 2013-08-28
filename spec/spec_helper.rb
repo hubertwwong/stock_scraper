@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 #require 'ruby-debug'
 require 'rspec'
-require 'capybara/rspec'
+#require 'capybara/rspec'
 #require 'capybara-webkit'
 
 # Capybara configuration
