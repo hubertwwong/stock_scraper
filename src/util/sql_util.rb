@@ -71,12 +71,15 @@ class SqlUtil
     result = []
     begin
       con = Mysql.new(@url, @user, @password, @db_name)
+      
       rs = con.query("SELECT * FROM " + table_name + 
                       " WHERE " + col_name + "='" + col_val + "'" +
                       " ORDER BY " + order_name)
       n_rows = rs.num_rows
       n_rows.times do
         cur_row = rs.fetch_row
+        #puts 'cur_rows'
+        #puts cur_row.inspect
         result.push(self.hash_arrays(self.read_col_names(table_name), cur_row))
       end
         
@@ -97,7 +100,6 @@ class SqlUtil
       con = Mysql.new(@url, @user, @password, @db_name)
       rs = con.query("SELECT * FROM " + table_name + " ORDER BY " + col_name + " DESC")
       result = rs.fetch_row
-      #puts result.inspect
       self.hash_arrays(self.read_col_names(table_name), result)
     rescue Mysql::Error => e
       self.print_error e
@@ -111,12 +113,24 @@ class SqlUtil
   # probably can add a hash later
   def read_with_one_param(table_name, col_name, col_val)
     begin
+      #puts 'db'
+      #puts table_name
+      #puts col_name
+      #puts col_val
+      
       con = Mysql.new(@url, @user, @password, @db_name)
       rs = con.query("SELECT * FROM " + table_name + " WHERE " + col_name + "='" + col_val + "'")
+      
       result = rs.fetch_row
-      #puts result.inspect
-      self.hash_arrays(self.read_col_names(table_name), result)
+      
+      # added a nil check. that wasn't there before and would die.
+      if result != nil
+        return self.hash_arrays(self.read_col_names(table_name), result)
+      else
+        return nil
+      end
     rescue Mysql::Error => e
+      puts 'sql error'
       self.print_error e
     ensure
       con.close if con
@@ -144,6 +158,16 @@ class SqlUtil
     ensure
       con.close if con
     end
+  end
+
+  # STRING METHODS
+  ############################################################################
+  
+  # probably fix this later but I want expand it so it figures out all
+  # escape character and use this for that.
+  # for now it does quotes only
+  def self.escape_str(possibe_str)
+    pop = possibe_str.gsub('\'', '\'\'')
   end
 
   # HELPER METHODS
