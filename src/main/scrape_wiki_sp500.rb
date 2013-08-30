@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'mechanize'
 
-#require_relative '../util/sql_util'
 require_relative '../util/yaml_util'
 require_relative '../util/sequel_helper'
 
@@ -116,45 +115,6 @@ class ScrapeWikiSP500
       return true
     end
   end
-  
-  # calls a save to db a ton of times.
-  # assumes an array. and assumes the hash contains
-  # the column rows => column values
-  #def save_array_to_db(array_of_hashes)
-  #  if array_of_hashes == nil
-  #    return nil
-  #  else
-  #    array_of_hashes.each do |row|
-  #      # if things are not nil.
-  #      if row != nil && row['symbol'] != nil
-  #        # check if symbol is stored in db..
-  #        # if it is, you probably don't want to update it.
-  #        row_from_db = @db.read_with_one_param(@db_table_name, 'symbol', row['symbol'])
-  #        
-  #        # if you don't find a row, you don't have the symbol in the db.
-  #        # store it.
-  #        if row_from_db == nil
-  #          #puts '> writing [' + row['symbol'] + '][' + SqlUtil.escape_str(row['company_name']) + ']'
-  #          db_row = row
-  #          db_row['company_name'] = SqlUtil.escape_str(db_row['company_name'])
-  #          self.save_to_db(db_row)
-  #        end
-  #      end
-  #    end
-      
-      # probably did some writing. return true
-  #    return true
-  #  end
-  #end
-  
-  # saves a valid result to db.
-  # assumes you used the hashing method in the funciton.
-  #def save_to_db(result_hash)
-  #  puts "saving..."
-  #  puts result_hash.inspect
-  #  
-  #  @db.replace_one(@db_table_name, result_hash)
-  #end
   
   def save_to_db(array_of_hashes)
     puts '>>> saving'

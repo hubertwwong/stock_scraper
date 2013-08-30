@@ -2,8 +2,9 @@ require 'rubygems'
 require 'mechanize'
 require 'csv'
 
-require_relative '../util/sql_util'
+#require_relative '../util/sql_util'
 require_relative '../util/yaml_util'
+require_relative '../util/sequel_helper'
 
 class ScrapeYahooPrices
   
@@ -44,9 +45,10 @@ class ScrapeYahooPrices
     @db_url = @db_prefs['db_url']
     @db_name = @db_prefs['db_name']
     @db_table_name = @db_prefs['db_table_name_stock_quotes']
+    @db_table_name_stock_symbols = @db_prefs['db_table_name_stock_symbols']
     
     # init db helper
-    @db = SqlUtil.new(:url => @db_url, 
+    @db = SequelHelper.new(:url => @db_url, 
                       :user=> @db_user, 
                       :password => @db_password, 
                       :db_name => @db_name)
@@ -59,81 +61,71 @@ class ScrapeYahooPrices
     
   end
 
+  def run_sp500
+    symbol_list = @db.read_all(@db_table_name_stock_symbols)
+    symbol_list.each do |cur_sym|
+      puts cur_sym[:symbol]
+    end
+  end
+
+  # vist_and_get_csv
+  #
+  # column order.
+  # Date, Open, High, Low, Close, Volume, Adj Close
+  #
+  # simple method that fetches csv files and coverts results into a array_of_hashes
+  # can push that to sequel to save.
   def visit_and_get_csv(symbol)
     puts 'visit_and_get_csv'
     final_url = self.create_url(symbol)
     result_csv = ""
+    first_row = true
+    array_of_hashes = Array.new
     
+    # grabs csv
     @agent.get(final_url) do |page|
       result_csv = page.body
     end
     
-    return result_csv
-  end
-
-  # seems like the string row is really an item
-  #
-  # column order.
-  # Date, Open, High, Low, Close, Volume, Adj Close
-  # 
-  def save_csv_to_db(csv_string, symbol)
-    puts 'save_csv_to_db'
-    puts csv_string.length.to_s
-    first_row = true
-    
-    # note that row is an array.
-    CSV.parse(csv_string) do |row|
+    # convert csv results to array of hashes.
+    # basically adding symbols to the col values.
+    CSV.parse(result_csv) do |row|
       # puts 'zzz'
       cur_quote = Hash.new
       
       # skip first row which contains the label.
       if first_row == false
-        # check if the item is in the db.
-        col_names = ['price_date', 'symbol']
-        col_values = [row[0], symbol]
-        db_rows = @db.read_where(@db_table_name, col_names, col_values)
-        puts "> " + db_rows.length.to_s
-        
-        # puts row
         # load hash object to save.
-        cur_quote['price_date'] = row[0]
-        cur_quote['open'] = row[1]
-        cur_quote['high'] = row[2]
-        cur_quote['low'] = row[3]
-        cur_quote['close'] = row[4]
-        cur_quote['adj_close'] = row[6]
-        cur_quote['volume'] = row[5]
-        cur_quote['symbol'] = symbol
-        #puts row[0].to_s
-        #puts row[1].to_s
-        #puts row[2].to_s
-        #puts row[3].to_s
-        #puts row[4].to_s
-        #puts row[5].to_s
-        #puts row[6].to_s
+        cur_quote[:price_date] = row[0]
+        cur_quote[:open] = row[1]
+        cur_quote[:high] = row[2]
+        cur_quote[:low] = row[3]
+        cur_quote[:close] = row[4]
+        cur_quote[:adj_close] = row[6]
+        cur_quote[:volume] = row[5]
+        cur_quote[:symbol] = symbol
         
-        # save to db.
-        #self.save_to_db(cur_quote)
+        # push result to result hash
+        array_of_hashes.push(cur_quote)
       else
-        puts row
+        #puts row
         first_row = false
       end
     end
     
-    return true
+    # return array of hashes.
+    return array_of_hashes
   end
+
+  # helper methods
+  ############################################################################
 
   # saves a valid result to db.
   # assumes you used the hashing method in the funciton.
-  def save_to_db(result_hash)
+  def save_to_db(array_result_hash)
     puts "saving..."
-    puts result_hash.inspect
-    
-    @db.replace_one(@db_table_name, result_hash)
+    @db.multiple_unique(@db_table_name, array_result_hash)
   end
-
-  # helper
-  ############################################################################
 
   # dumb method... just replace the ZZZZ with the symbol
   # might want to change it so it does something else.
@@ -141,7 +133,7 @@ class ScrapeYahooPrices
   def create_url(symbol)
     @web_url.gsub('ZZZZ', symbol)
   end
-  
+
   # test
   ############################################################################
   def hello

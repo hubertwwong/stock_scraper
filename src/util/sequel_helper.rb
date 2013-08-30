@@ -34,8 +34,8 @@ class SequelHelper
   # insert only if the where condition fails.
   # used if you want insert unique data.
   def insert_unique(table_name, insert_param)
-    puts table_name
-    puts insert_param.inspect
+    #puts table_name
+    #puts insert_param.inspect
     if !self.row_exist?(table_name, insert_param)
       tab = @db.from(table_name).insert(insert_param)
       return true
@@ -47,6 +47,7 @@ class SequelHelper
   # insert a lot of stuff
   # take an array of hashes.
   def multiple(table_name, array_of_hashes)
+    puts array_of_hashes.length.to_s + " items to save on table " + table_name
     array_of_hashes.each do |item|
       self.insert(table_name, array_of_hashes)
     end
