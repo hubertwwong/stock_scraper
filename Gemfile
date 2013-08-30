@@ -11,3 +11,4 @@ gem 'launchy'
 gem 'debugger'
 
 gem 'mysql'
+gem 'sequel'

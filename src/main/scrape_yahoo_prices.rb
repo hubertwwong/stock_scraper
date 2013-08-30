@@ -88,7 +88,13 @@ class ScrapeYahooPrices
       
       # skip first row which contains the label.
       if first_row == false
-        puts row
+        # check if the item is in the db.
+        col_names = ['price_date', 'symbol']
+        col_values = [row[0], symbol]
+        db_rows = @db.read_where(@db_table_name, col_names, col_values)
+        puts "> " + db_rows.length.to_s
+        
+        # puts row
         # load hash object to save.
         cur_quote['price_date'] = row[0]
         cur_quote['open'] = row[1]
@@ -107,8 +113,7 @@ class ScrapeYahooPrices
         #puts row[6].to_s
         
         # save to db.
-        puts 'saving.'
-        self.save_to_db(cur_quote)
+        #self.save_to_db(cur_quote)
       else
         puts row
         first_row = false
