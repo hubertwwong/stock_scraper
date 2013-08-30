@@ -34,12 +34,35 @@ class SequelHelper
   # insert only if the where condition fails.
   # used if you want insert unique data.
   def insert_unique(table_name, insert_param)
+    puts table_name
+    puts insert_param.inspect
     if !self.row_exist?(table_name, insert_param)
       tab = @db.from(table_name).insert(insert_param)
       return true
     else
       return false
     end
+  end
+  
+  # insert a lot of stuff
+  # take an array of hashes.
+  def multiple(table_name, array_of_hashes)
+    array_of_hashes.each do |item|
+      self.insert(table_name, array_of_hashes)
+    end
+    return true
+  end
+  
+  # insert a lot of items.
+  # returns false if an insert was not done.
+  def multiple_unique(table_name, array_of_hashes)
+    puts array_of_hashes.length.to_s + " items to save on table " + table_name 
+    all_inserted = true
+    array_of_hashes.each do |item|
+      cur_row_inserted = self.insert_unique(table_name, item)
+      all_inserted = cur_row_inserted && all_inserted 
+    end
+    return all_inserted
   end
   
   # READ METHODS
@@ -65,9 +88,16 @@ class SequelHelper
   # returns true if it does, else returns false
   def row_exist?(table_name, where_param)
     result = self.read_where(table_name, where_param)
+    #puts "row_exists?"
+    #puts table_name
+    #puts where_param.inspect
+    #puts result.inspect
+    #puts result.to_s
     if result == nil || result.length == 0
+      #puts 'row does not exist'
       return false
     else
+      #puts 'row exist'
       return true
     end
   end

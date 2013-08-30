@@ -99,4 +99,28 @@ describe SequelHelper do
     end
   end
   
+  describe "query_methods : stock_symbols" do
+    before(:each) do
+      @user = 'root'
+      @password = 'password'
+      @url = 'localhost'
+      @db_name = 'stock4_development'
+      
+      # load account details.
+      @db = SequelHelper.new(:url => @url, 
+                        :user=> @user, 
+                        :password => @password, 
+                        :db_name => @db_name)
+    end
+    
+    describe "row_exist?" do
+      it "should return true" do
+        table_name = 'stock_symbols'
+        params = {:symbol =>"MMM", :company_name=>"3M Co."}
+        result = @db.row_exist?(table_name, params)
+        result.should == true
+      end
+    end
+  end
+  
 end
