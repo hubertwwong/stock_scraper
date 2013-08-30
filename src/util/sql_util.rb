@@ -137,6 +137,38 @@ class SqlUtil
     end
   end
   
+  # read a table with a set of where conditions.
+  # assumes col names and col val are arrays.
+  # probably can use this to replace the one param...
+  def read_where(table_name, col_names, col_vals)
+    begin
+      #puts 'db'
+      #puts table_name
+      #puts col_name
+      #puts col_val
+      
+      con = Mysql.new(@url, @user, @password, @db_name)
+      where_stmt = SqlUtil.and_helper(col_names, col_vals)
+      #puts where_stmt
+      rs = con.query("SELECT * FROM " + table_name + " WHERE " + where_stmt)
+      
+      result = rs.fetch_row
+      
+      # added a nil check. that wasn't there before and would die.
+      if result != nil
+        return self.hash_arrays(self.read_col_names(table_name), result)
+      else
+        return nil
+      end
+    rescue Mysql::Error => e
+      puts 'sql error'
+      self.print_error e
+    ensure
+      con.close if con
+    end
+  end
+  
+  
   # a simple helper to read column names.
   # used later to tag array results with column names.
   # so the results will be easier to work with.
@@ -169,8 +201,43 @@ class SqlUtil
   def self.escape_str(possibe_str)
     pop = possibe_str.gsub('\'', '\'\'')
   end
+  
+  # a simple and helper.
+  # can is to geenerate and statements.
+  # for int values.
+  def self.and_helper(col_names, col_values)
+    if col_names == nil || col_values == nil
+      nil
+    else
+      final_str = ""
+      
+      # first condition.
+      final_str = col_names[0] + " = " + self.quote_on_string(col_values[0]).to_s
+      
+      # all other conditions.
+      i = 1
+      while i<col_names.length
+        final_str = final_str + " AND " + col_names[i] + " = " + self.quote_on_string(col_values[i]).to_s
+        i += 1
+      end
+      
+      return final_str
+    end
+  end
 
-  # HELPER METHODS
+  # adds single quotes on a string
+  # otherwise, returns the value.
+  def self.quote_on_string(some_var)
+    if some_var == nil
+      return nil
+    elsif some_var.is_a? String
+      return "\'" + some_var + "\'"
+    else
+      return some_var
+    end
+  end
+
+  # MISC METHODS
   ############################################################################
   
   # debug method.

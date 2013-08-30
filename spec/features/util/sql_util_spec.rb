@@ -28,6 +28,29 @@ describe SqlUtil do
       end
     end
     
+    describe "string methods" do
+      describe "and_helper" do
+        it "handles 2 items" do
+          col_names = ['val', 'another_val']
+          col_values = [2, 3]
+          result = SqlUtil.and_helper(col_names, col_values)
+          result.should == 'val = 2 AND another_val = 3'
+        end
+      end
+      
+      describe "quote_on_string" do
+        it "does nothing for numbers" do
+          result = SqlUtil.quote_on_string(4)
+          result.should == 4
+        end
+        
+        it "adds quotes to strings" do
+          result = SqlUtil.quote_on_string('4')
+          result.should == "\'4\'"
+        end
+      end
+    end
+    
     describe "util methods" do
       describe "num_rows" do
         it "car db returns 3" do
@@ -73,6 +96,15 @@ describe SqlUtil do
       describe "read_one_param" do
         it "car db order by make will return toyota" do
           result = @db.read_with_one_param('car', 'make', 'foo')
+          result['model'].should == 'bar'
+        end
+      end
+      
+      describe "read_where" do
+        it "car db order by make will return toyota" do
+          col_names = ['make']
+          col_vals = ['foo']
+          result = @db.read_where('car', col_names, col_vals)
           result['model'].should == 'bar'
         end
       end

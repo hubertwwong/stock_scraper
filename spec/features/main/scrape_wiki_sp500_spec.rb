@@ -23,7 +23,7 @@ describe ScrapeWikiSP500 do
       
       it 'should be true' do
         result = @s.visit_and_parse
-        result.should >= 10
+        result.length.should >= 10
       end
     end
   end

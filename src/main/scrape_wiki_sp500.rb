@@ -42,7 +42,7 @@ class ScrapeWikiSP500
     @db_password = @db_prefs['db_password']
     @db_url = @db_prefs['db_url']
     @db_name = @db_prefs['db_name']
-    @db_table_name = @db_prefs['db_table_name']
+    @db_table_name = @db_prefs['db_table_name_stock_symbols']
     
     # init db helper
     @db = SqlUtil.new(:url => @db_url, 
