@@ -1,7 +1,7 @@
+require 'rubygems'
+
 require File.dirname(__FILE__) + '/../../spec_helper'
 require_relative '../../../src/util/sequel_helper'
-
-require 'rubygems'
 
 describe SequelHelper do
   

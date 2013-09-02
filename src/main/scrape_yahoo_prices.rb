@@ -8,7 +8,7 @@ require_relative '../util/sequel_helper'
 
 class ScrapeYahooPrices
   
-  attr_accessor :web_url, :db_user, :db_password, :db_name, :db_table_name, :web_url, :user_agent, :agent
+  attr_accessor :web_url, :db_user, :db_password, :db_name, :db_table_name, :user_agent, :agent
   
   def initialize(params = {})
     self.init_yaml
@@ -61,10 +61,28 @@ class ScrapeYahooPrices
     
   end
 
+  # pulls down stock from the quotes.
+  # only have s&p 500 for now..
+  # and gets the symbols. goes to yahoo and fetches the csv.
+  # puts that into the db.
   def run_sp500
     symbol_list = @db.read_all(@db_table_name_stock_symbols)
+    cur_sym_count = 0
+    sleep_timeout = 10
+    num_symbols = symbol_list.length
+    
     symbol_list.each do |cur_sym|
-      puts cur_sym[:symbol]
+      puts cur_sym[:symbol] + " [" + cur_sym_count.to_s + " / " + num_symbols.to_s + "]"
+      
+      # grabs daily historial quotes and save it to db.
+      result = self.visit_and_get_csv(cur_sym[:symbol])
+      self.save_to_db(result)
+      
+      # sleep so you don't spam site.
+      sleep sleep_timeout
+      
+      # increment. 
+      cur_sym_count = cur_sym_count + 1 
     end
   end
 
