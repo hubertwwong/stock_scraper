@@ -17,7 +17,18 @@ describe CsvUtil do
                 "aaa,bbb,ccc\n" +
                 "ddd,eee,fff"
       params = {:a_a => 0, :b_a => 1, :c_a => 2}
-      result = CsvUtil.to_array_of_hashes(csv_str, params, true)
+      result = CsvUtil.to_array_of_hashes(csv_str, params, true, nil)
+      result.length.should > 1
+    end
+    
+    it 'basic with optional hash' do
+      csv_str = "foo,bar,baz\n" +
+                "aaa,bbb,ccc\n" +
+                "ddd,eee,fff"
+      opt_param = {:foo => true}
+      params = {:a_a => 0, :b_a => 1, :c_a => 2}
+      result = CsvUtil.to_array_of_hashes(csv_str, params, true, opt_param)
+      puts result
       result.length.should > 1
     end
   end

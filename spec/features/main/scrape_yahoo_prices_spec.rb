@@ -34,6 +34,7 @@ describe ScrapeYahooPrices do
       
       it 'should contain GS' do
         result_csv = @s.visit_and_get_csv('GS')
+        #puts result_csv
         result = @s.save_csv_to_db(result_csv, 'GS')
         result.should == true
       end

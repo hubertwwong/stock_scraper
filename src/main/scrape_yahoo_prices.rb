@@ -4,6 +4,7 @@ require 'csv'
 
 #require_relative '../util/sql_util'
 require_relative '../util/yaml_util'
+require_relative '../util/csv_util'
 require_relative '../util/sequel_helper'
 
 class ScrapeYahooPrices
@@ -86,6 +87,36 @@ class ScrapeYahooPrices
     end
   end
 
+  # an updated version...
+  def visit_and_get_csv(symbol)
+    final_url = self.create_url(symbol)
+    result_csv = ""
+    first_row = true
+    
+    # row hash. basically what each csv column name is and what col it is in.
+    col_def = {
+      :price_date => 0,
+      :open => 1,
+      :high => 2,
+      :low => 3,
+      :close => 4,
+      :adj_close => 6,
+      :volume => 5
+    }
+    
+    opt_hash = {
+      :symbol => symbol
+    }
+    
+    # fetch csv.
+    result_csv = CsvUtil.fetch_csv_from_url(final_url, @user_agent)
+    
+    # load hash object to save.
+    array_of_hashes = CsvUtil.to_array_of_hashes(result_csv, col_def, true, opt_hash)
+  
+    return array_of_hashes  
+  end
+
   # vist_and_get_csv
   #
   # column order.
@@ -93,47 +124,47 @@ class ScrapeYahooPrices
   #
   # simple method that fetches csv files and coverts results into a array_of_hashes
   # can push that to sequel to save.
-  def visit_and_get_csv(symbol)
-    puts 'visit_and_get_csv'
-    final_url = self.create_url(symbol)
-    result_csv = ""
-    first_row = true
-    array_of_hashes = Array.new
+  #def visit_and_get_csv(symbol)
+  #  puts 'visit_and_get_csv'
+  #  final_url = self.create_url(symbol)
+  #  result_csv = ""
+  #  first_row = true
+  #  array_of_hashes = Array.new
     
     # grabs csv
-    @agent.get(final_url) do |page|
-      result_csv = page.body
-    end
+  #  @agent.get(final_url) do |page|
+  #    result_csv = page.body
+  #  end
     
     # convert csv results to array of hashes.
     # basically adding symbols to the col values.
-    CSV.parse(result_csv) do |row|
+  #  CSV.parse(result_csv) do |row|
       # puts 'zzz'
-      cur_quote = Hash.new
+  #    cur_quote = Hash.new
       
       # skip first row which contains the label.
-      if first_row == false
+  #    if first_row == false
         # load hash object to save.
-        cur_quote[:price_date] = row[0]
-        cur_quote[:open] = row[1]
-        cur_quote[:high] = row[2]
-        cur_quote[:low] = row[3]
-        cur_quote[:close] = row[4]
-        cur_quote[:adj_close] = row[6]
-        cur_quote[:volume] = row[5]
-        cur_quote[:symbol] = symbol
+  #      cur_quote[:price_date] = row[0]
+  #      cur_quote[:open] = row[1]
+  #      cur_quote[:high] = row[2]
+  #      cur_quote[:low] = row[3]
+  #      cur_quote[:close] = row[4]
+  #      cur_quote[:adj_close] = row[6]
+  #      cur_quote[:volume] = row[5]
+  #      cur_quote[:symbol] = symbol
         
         # push result to result hash
-        array_of_hashes.push(cur_quote)
-      else
+  #      array_of_hashes.push(cur_quote)
+  #    else
         #puts row
-        first_row = false
-      end
-    end
+  #      first_row = false
+  #    end
+  #  end
     
     # return array of hashes.
-    return array_of_hashes
-  end
+  #  return array_of_hashes
+  #end
 
   # helper methods
   ############################################################################

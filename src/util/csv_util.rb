@@ -37,7 +37,9 @@ class CsvUtil
   # csv string - the thing you wanna parse
   # param_hash - basically telling you how to parse things.
   # header_row - a true false result to tell the parser to skip the first row.
-  def self.to_array_of_hashes(csv_str, param_hash, header_row)
+  # opt_hash - allows you to add another set of hashes every row.
+  #          - probably useful if you need to add primary keys.
+  def self.to_array_of_hashes(csv_str, param_hash, header_row, opt_hash)
     # bound checking.
     if csv_str == nil || param_hash == nil
       return nil
@@ -53,6 +55,13 @@ class CsvUtil
       # iterate thru row.
       param_hash.each do |key, value|
         cur_hash[key.to_sym] = row[value]
+      end
+      
+      # optional hash
+      if opt_hash != nil && opt_hash.is_a?(Hash)
+        opt_hash.each do |key, value|
+          cur_hash[key.to_sym] = value
+        end
       end
       
       # store result
