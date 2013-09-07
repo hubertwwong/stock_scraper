@@ -72,6 +72,7 @@ class ScrapeYahooPrices
     sleep_timeout = 10
     num_symbols = symbol_list.length
     
+    # cycle thru each symbol.
     symbol_list.each do |cur_sym|
       puts cur_sym[:symbol] + " [" + cur_sym_count.to_s + " / " + num_symbols.to_s + "]"
       
@@ -88,6 +89,12 @@ class ScrapeYahooPrices
   end
 
   # an updated version...
+  #
+  # vist_and_get_csv
+  #
+  # column order.
+  # Date, Open, High, Low, Close, Volume, Adj Close
+  #
   def visit_and_get_csv(symbol)
     final_url = self.create_url(symbol)
     result_csv = ""
@@ -116,55 +123,6 @@ class ScrapeYahooPrices
   
     return array_of_hashes  
   end
-
-  # vist_and_get_csv
-  #
-  # column order.
-  # Date, Open, High, Low, Close, Volume, Adj Close
-  #
-  # simple method that fetches csv files and coverts results into a array_of_hashes
-  # can push that to sequel to save.
-  #def visit_and_get_csv(symbol)
-  #  puts 'visit_and_get_csv'
-  #  final_url = self.create_url(symbol)
-  #  result_csv = ""
-  #  first_row = true
-  #  array_of_hashes = Array.new
-    
-    # grabs csv
-  #  @agent.get(final_url) do |page|
-  #    result_csv = page.body
-  #  end
-    
-    # convert csv results to array of hashes.
-    # basically adding symbols to the col values.
-  #  CSV.parse(result_csv) do |row|
-      # puts 'zzz'
-  #    cur_quote = Hash.new
-      
-      # skip first row which contains the label.
-  #    if first_row == false
-        # load hash object to save.
-  #      cur_quote[:price_date] = row[0]
-  #      cur_quote[:open] = row[1]
-  #      cur_quote[:high] = row[2]
-  #      cur_quote[:low] = row[3]
-  #      cur_quote[:close] = row[4]
-  #      cur_quote[:adj_close] = row[6]
-  #      cur_quote[:volume] = row[5]
-  #      cur_quote[:symbol] = symbol
-        
-        # push result to result hash
-  #      array_of_hashes.push(cur_quote)
-  #    else
-        #puts row
-  #      first_row = false
-  #    end
-  #  end
-    
-    # return array of hashes.
-  #  return array_of_hashes
-  #end
 
   # helper methods
   ############################################################################
