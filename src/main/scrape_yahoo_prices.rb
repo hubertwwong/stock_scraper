@@ -9,21 +9,27 @@ require_relative '../util/sequel_helper'
 
 class ScrapeYahooPrices
   
-  attr_accessor :web_url, :db_user, :db_password, :db_name, :db_table_name, :user_agent, :agent
+  attr_accessor :web_url, :db_user, :db_password, :db_name, :db_table_name, :user_agent, :agent, :dir_name, :scraper_timeout
   
   def initialize(params = {})
     self.init_yaml
     self.init_browser
     self.init_db
+    self.init_dir
+    self.init_scraper
   end
   
   def init_yaml
     @browser_filename = 'config/browser.yml'
     @db_filename = 'config/database.yml'
+    @dir_filename = 'config/dir_names.yml'
+    @scraper_filename = 'config/yahoo_progress.yml'
     
     # load the yaml file.
     @browser_prefs = YamlUtil.read(@browser_filename)
     @db_prefs = YamlUtil.read(@db_filename)
+    @dir_prefs = YamlUtil.read(@dir_filename)
+    @scraper_prefs = 'config/yahoo_progress.yml'
   end
 
   def init_browser
@@ -55,6 +61,14 @@ class ScrapeYahooPrices
                       :db_name => @db_name)
   end
 
+  def init_dir
+    @dir_name = @dir_prefs['stock_quotes']
+  end
+
+  def init_scraper
+    @scraper_timeout = @scraper_prefs['timeout']
+  end
+
   # main
   ############################################################################
 
@@ -65,10 +79,9 @@ class ScrapeYahooPrices
   # just saves things into the csv....
   # seems to be a bit faster.
   # 
-  def run_sp500_to_csv
+  def scrape_to_csv
     symbol_list = @db.read_all(@db_table_name_stock_symbols)
     cur_sym_count = 0
-    sleep_timeout = 10
     num_symbols = symbol_list.length
     
     # cycle thru each symbol.
@@ -76,10 +89,10 @@ class ScrapeYahooPrices
       puts cur_sym[:symbol] + " [" + cur_sym_count.to_s + " / " + num_symbols.to_s + "]"
       
       # grabs daily historial quotes and save it to db.
-      result = self.visit_and_get_csv(cur_sym[:symbol])
+      result = CsvUtil.fetch_and_save(self.create_url(cur_sym[:symbol]), @user_agent, @dir_name, cur_sym[:symbol])
       
       # sleep so you don't spam site.
-      sleep sleep_timeout
+      sleep @scraper_timeout
       
       # increment. 
       cur_sym_count = cur_sym_count + 1 
