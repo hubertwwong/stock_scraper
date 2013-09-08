@@ -1,9 +1,36 @@
 require 'rubygems'
 require 'mechanize'
 require 'csv'
+require 'pathname'
 
 # a few simple helper utils that does some common csv things.
 class CsvUtil
+
+  # fetch and saves url to a directory
+  # file name adds the csv.... so you don't have to...
+  def self.fetch_and_save(csv_url, user_agent, dir_name, file_name)
+    result_csv = nil
+    agent = nil
+    
+    # load a UA. might not need this.
+    if user_agent == nil
+      agent = Mechanize.new do |a|
+        a.user_agent = user_agent
+      end
+    else
+      agent = Mechanize.new
+    end
+    
+    # paths. using clean path to sanitize input.
+    pn = Pathname.new(dir_name)
+    cleaned_path = pn.join(file_name + '.csv').to_s
+    puts cleaned_path
+    
+    agent.pluggable_parser.default = Mechanize::Download
+    agent.get(csv_url).save(cleaned_path)
+    
+    return true
+  end
   
   # tries to return a string csv.
   # takes an optional user agent.

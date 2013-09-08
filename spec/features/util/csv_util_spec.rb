@@ -43,4 +43,16 @@ describe CsvUtil do
     end
   end
 
+  describe "fetch_and_save" do
+    it 'basic' do
+      user_agent = nil
+      web_url = 'http://ichart.finance.yahoo.com/table.csv?s=GS&d=7&e=27&f=2015&g=d&a=3&b=12&c=1900&ignore=.csv'
+      dir_name = 'csv/stock_quotes/'
+      file_name = 'GS'
+      result = CsvUtil.fetch_and_save(web_url, user_agent, dir_name, file_name)
+      puts result
+      result.length.should > 1000
+    end
+  end
+
 end

@@ -70,7 +70,31 @@ describe SequelHelper do
         table_name = 'car'
         params = {:make => 'toyota'}
         result = @db.read_where(table_name, params)
-        result.length.should == 1
+        result.length.should > 0
+      end
+    end
+    
+    describe "read_where_order" do
+      it "regular order" do
+        table_name = 'car'
+        params = {:make => 'toyota'}
+        order_param = :model
+        reverse_flag = false
+        result = @db.read_where_order(table_name, params, order_param, reverse_flag)
+        
+        first_result = result.first
+        first_result[:model].should == "camery"
+      end
+      
+      it "reverse order" do
+        table_name = 'car'
+        params = {:make => 'toyota'}
+        order_param = :model
+        reverse_flag = true
+        result = @db.read_where_order(table_name, params, order_param, reverse_flag)
+        
+        first_result = result.first
+        first_result[:model].should == "prius"
       end
     end
   end

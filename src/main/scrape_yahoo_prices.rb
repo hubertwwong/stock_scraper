@@ -62,6 +62,30 @@ class ScrapeYahooPrices
     
   end
 
+  # just saves things into the csv....
+  # seems to be a bit faster.
+  # 
+  def run_sp500_to_csv
+    symbol_list = @db.read_all(@db_table_name_stock_symbols)
+    cur_sym_count = 0
+    sleep_timeout = 10
+    num_symbols = symbol_list.length
+    
+    # cycle thru each symbol.
+    symbol_list.each do |cur_sym|
+      puts cur_sym[:symbol] + " [" + cur_sym_count.to_s + " / " + num_symbols.to_s + "]"
+      
+      # grabs daily historial quotes and save it to db.
+      result = self.visit_and_get_csv(cur_sym[:symbol])
+      
+      # sleep so you don't spam site.
+      sleep sleep_timeout
+      
+      # increment. 
+      cur_sym_count = cur_sym_count + 1 
+    end
+  end
+
   # pulls down stock from the quotes.
   # only have s&p 500 for now..
   # and gets the symbols. goes to yahoo and fetches the csv.

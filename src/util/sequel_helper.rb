@@ -76,8 +76,26 @@ class SequelHelper
     return tab
   end
   
+  # takes 2 arguments. one is a table name and the other
+  # is a param hash. sequel is smart enough to figure it out for you.
   def read_where(table_name, params)
     tab = @db.from(table_name).where(params)
+    tab_as_hash = self.to_array_of_hashes(tab)
+    return tab_as_hash
+  end
+  
+  # takes 4 arguments. one is a table name and the other
+  # is a param hash. sequel is smart enough to figure it out for you.
+  # 
+  # for the reverse flag, remember that default is ascending.
+  # if you set the flag, it changes it to descending.
+  # ascending. smallest to largest.
+  def read_where_order(table_name, params, order_param, reverse_flag)
+    if reverse_flag == false
+      tab = @db.from(table_name).where(params).order(order_param)
+    else
+      tab = @db.from(table_name).where(params).order(order_param).reverse
+    end
     tab_as_hash = self.to_array_of_hashes(tab)
     return tab_as_hash
   end
