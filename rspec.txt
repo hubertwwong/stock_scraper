@@ -1,91 +1,9 @@
-> loading > config/browser.yml
-> loading > config/database.yml
-> loading > config/dir_names.yml
-> loading > config/yahoo_progress.yml
-.**> loading > config/browser.yml
-> loading > config/database.yml
-> loading > config/dir_names.yml
-> loading > config/yahoo_progress.yml
-.
-no size
-
-no size
-K
-no size
-PKI
-no size
-TXN
-no size
-LRCX
-no size
-RHI
-no size
-SLB
-no size
-FDX
-no size
-FRX
-no size
-CF
-no size
-MNST
-no size
-VAR
-no size
-MWV
-no size
-COF
-no size
-PRGO
-no size
-JOY
-no size
-FLR
-no size
-AMP
-F> loading > config/browser.yml
-> loading > config/database.yml
-> loading > config/dir_names.yml
-> loading > config/yahoo_progress.yml
-http://ichart.finance.yahoo.com/table.csv?s=GS&d=7&e=27&f=2015&g=d&a=3&b=12&c=1900&ignore=.csv
-F
+.....................*
 
 Pending:
-  ScrapeYahooPrices main visit_and_get_csv should contain GS
+  ValidUtil valid_date invalid 20130101111
     # Temporarily disabled with xit
-    # ./spec/features/main/scrape_yahoo_prices_spec.rb:24
-  ScrapeYahooPrices main save_to_db should contain GS
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_yahoo_prices_spec.rb:35
+    # ./spec/features/util/valid_util_spec.rb:130
 
-Failures:
-
-  1) ScrapeYahooPrices main csv_to_db should contain GS
-     Failure/Error: result_csv = @s.csv_to_db
-     Sequel::InvalidValue:
-       ArgumentError: invalid date
-     # ./src/util/sequel_helper.rb:140:in `to_array_of_hashes'
-     # ./src/util/sequel_helper.rb:102:in `read_where_order'
-     # ./src/main/scrape_yahoo_prices.rb:119:in `block in csv_to_db'
-     # ./src/main/scrape_yahoo_prices.rb:109:in `foreach'
-     # ./src/main/scrape_yahoo_prices.rb:109:in `each_entry'
-     # ./src/main/scrape_yahoo_prices.rb:109:in `csv_to_db'
-     # ./spec/features/main/scrape_yahoo_prices_spec.rb:49:in `block (4 levels) in <top (required)>'
-
-  2) ScrapeYahooPrices util create_url should contain GS
-     Failure/Error: result.should == true
-       expected: true
-            got: #<MatchData "GS"> (using ==)
-       Diff:
-       @@ -1,2 +1,2 @@
-       -true
-       +#<MatchData "GS">
-     # ./spec/features/main/scrape_yahoo_prices_spec.rb:65:in `block (4 levels) in <top (required)>'
-
-Finished in 27.98 seconds
-5 examples, 2 failures, 2 pending
-
-Failed examples:
-
-rspec ./spec/features/main/scrape_yahoo_prices_spec.rb:48 # ScrapeYahooPrices main csv_to_db should contain GS
-rspec ./spec/features/main/scrape_yahoo_prices_spec.rb:61 # ScrapeYahooPrices util create_url should contain GS
+Finished in 0.0759 seconds
+22 examples, 0 failures, 1 pending
