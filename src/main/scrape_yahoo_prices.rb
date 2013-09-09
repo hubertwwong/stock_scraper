@@ -9,7 +9,7 @@ require_relative '../util/valid_util'
 
 class ScrapeYahooPrices
   
-  attr_accessor :web_url, :db_user, :db_password, :db_name, :db_table_name, :user_agent, :agent, :dir_name, :scraper_timeout
+  attr_accessor :web_url, :db_user, :db_password, :db_name, :db_table_name, :user_agent, :agent, :dir_name, :scraper_timeout, :csv_col_def
   
   def initialize(params = {})
     self.init_yaml
@@ -17,6 +17,7 @@ class ScrapeYahooPrices
     self.init_db
     self.init_dir
     self.init_scraper
+    self.init_csv
   end
   
   def init_yaml
@@ -69,6 +70,18 @@ class ScrapeYahooPrices
     @scraper_timeout = @scraper_prefs['timeout']
   end
 
+  def init_csv
+    @csv_col_def = {
+      :price_date => 0,
+      :open => 1,
+      :high => 2,
+      :low => 3,
+      :close => 4,
+      :adj_close => 6,
+      :volume => 5
+    } 
+  end
+
   # main
   ############################################################################
 
@@ -106,30 +119,28 @@ class ScrapeYahooPrices
   # write.
   def csv_to_db
     # row hash. basically what each csv column name is and what col it is in.
-    col_def = {
-      :price_date => 0,
-      :open => 1,
-      :high => 2,
-      :low => 3,
-      :close => 4,
-      :adj_close => 6,
-      :volume => 5
-    }
-    
     pn = Pathname.new(@dir_name)
     pn.each_entry do |file|
-      # fetch symbol.
+      # intial variables.
+      cur_date = "1970-01-01" # default date is oldest value possible.
+      
+      # fetch symbol from filename.
       # using gsub to clean up the .1 and .2 files names.
       cur_sym = file.basename.to_s.gsub(/[.].+$/,"") 
-      puts cur_sym
+      puts "On " + cur_sym
       
-      # use that fetch db method.....
+      # need to skip on 2 things. . and ..
+      # only continue on symbols.
+      unless /[\w]+/.match(cur_sym)
+        next
+      end
+      
+      # fetches quotes from the db.
+      # basically looking for the most recent quote to figure out what to write.
       params = {:symbol => cur_sym}
       order_param = :price_date
-      reverse_flag = true
-      result_hash = @db.read_where_order(@db_table_name, params, order_param, reverse_flag)
-      cur_date = "1970-01-01"
-      # default date is oldest value possible.
+      descending_flag = true
+      result_hash = @db.read_where_order(@db_table_name, params, order_param, descending_flag)
       
       # check to see if you enter stuff into the db.
       # returns the most current date.
@@ -140,32 +151,21 @@ class ScrapeYahooPrices
         cur_date = first_row[:price_date]
         puts cur_date
       end
-    end
-  end
-
-  # pulls down stock from the quotes.
-  # only have s&p 500 for now..
-  # and gets the symbols. goes to yahoo and fetches the csv.
-  # puts that into the db.
-  def run_sp500
-    symbol_list = @db.read_all(@db_table_name_stock_symbols)
-    cur_sym_count = 0
-    sleep_timeout = 10
-    num_symbols = symbol_list.length
-    
-    # cycle thru each symbol.
-    symbol_list.each do |cur_sym|
-      puts cur_sym[:symbol] + " [" + cur_sym_count.to_s + " / " + num_symbols.to_s + "]"
       
-      # grabs daily historial quotes and save it to db.
-      result = self.visit_and_get_csv(cur_sym[:symbol])
+      # fetch stuff from CSV.
+      # limit the fetching by date.
+      opt_hash = {
+        :col => :price_date,
+        :value => cur_date,
+        :op => ">"
+      }
+      has_header = true
+      #puts ">>>>> " + cur_sym
+      #puts ">>>>" + pn.to_s
+      result = CsvUtil.read_csv_as_hash(pn.to_s, cur_sym, csv_col_def, opt_hash, has_header)
+      
+      # saves result to db...
       self.save_to_db(result)
-      
-      # sleep so you don't spam site.
-      sleep sleep_timeout
-      
-      # increment. 
-      cur_sym_count = cur_sym_count + 1 
     end
   end
 
@@ -181,17 +181,6 @@ class ScrapeYahooPrices
     result_csv = ""
     first_row = true
     
-    # row hash. basically what each csv column name is and what col it is in.
-    col_def = {
-      :price_date => 0,
-      :open => 1,
-      :high => 2,
-      :low => 3,
-      :close => 4,
-      :adj_close => 6,
-      :volume => 5
-    }
-    
     opt_hash = {
       :symbol => symbol
     }
@@ -200,7 +189,7 @@ class ScrapeYahooPrices
     result_csv = CsvUtil.fetch_csv_from_url(final_url, @user_agent)
     
     # load hash object to save.
-    array_of_hashes = CsvUtil.to_array_of_hashes(result_csv, col_def, true, opt_hash)
+    array_of_hashes = CsvUtil.to_array_of_hashes(result_csv, @csv_col_def, true, opt_hash)
   
     return array_of_hashes  
   end
@@ -226,6 +215,32 @@ class ScrapeYahooPrices
   ############################################################################
   def hello
     true
+  end
+  
+  # pulls down stock from the quotes.
+  # only have s&p 500 for now..
+  # and gets the symbols. goes to yahoo and fetches the csv.
+  # puts that into the db.
+  def run_sp500
+    symbol_list = @db.read_all(@db_table_name_stock_symbols)
+    cur_sym_count = 0
+    sleep_timeout = 10
+    num_symbols = symbol_list.length
+    
+    # cycle thru each symbol.
+    symbol_list.each do |cur_sym|
+      puts cur_sym[:symbol] + " [" + cur_sym_count.to_s + " / " + num_symbols.to_s + "]"
+      
+      # grabs daily historial quotes and save it to db.
+      result = self.visit_and_get_csv(cur_sym[:symbol])
+      self.save_to_db(result)
+      
+      # sleep so you don't spam site.
+      sleep sleep_timeout
+      
+      # increment. 
+      cur_sym_count = cur_sym_count + 1 
+    end
   end
   
 end

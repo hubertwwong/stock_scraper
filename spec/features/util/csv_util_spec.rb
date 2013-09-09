@@ -68,10 +68,35 @@ describe CsvUtil do
         :adj_close => 6,
         :volume => 5
       }
-      result = CsvUtil.read_csv_as_hash(dir_name, file_name, col_def, true)
+      result = CsvUtil.read_csv_as_hash(dir_name, file_name, col_def, nil, true)
       #puts result
       #result.length.should == 1
       result.length.should > 1
+    end
+    
+    it 'option hash. limit number of stuff to input.' do
+      dir_name = 'csv/stock_quotes/'
+      file_name = 'GS'
+      col_def = {
+        :price_date => 0,
+        :open => 1,
+        :high => 2,
+        :low => 3,
+        :close => 4,
+        :adj_close => 6,
+        :volume => 5
+      }
+      opt_hash = {
+        :col => :price_date,
+        :value => "2013-01-01",
+        :op => ">"
+      }
+      has_header = true
+      result = CsvUtil.read_csv_as_hash(dir_name, file_name, col_def, opt_hash, has_header)
+      #puts result
+      #result.length.should == 1
+      result.length.should > 1
+      result.length.should < 1000
     end
   end
 

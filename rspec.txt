@@ -1,10 +1,10 @@
 ...*csv/stock_quotes/GS.csv
-..
+...
 
 Pending:
   CsvUtil fetch_csv_from_url basic
     # Temporarily disabled with xit
     # ./spec/features/util/csv_util_spec.rb:37
 
-Finished in 1.11 seconds
-6 examples, 0 failures, 1 pending
+Finished in 2.73 seconds
+7 examples, 0 failures, 1 pending

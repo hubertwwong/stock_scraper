@@ -7,7 +7,27 @@ require 'pathname'
 class CsvUtil
 
   # reads a file name and returns a string or nil...
-  def self.read_csv_as_hash(dir_name, file_name, param_hash, remove_header)
+  #
+  # also takea an option hash so you can limit the amout of stuff you import.
+  # assumes that the data is sorted in either ascending or descending order.
+  # a or d for the option.
+  # see below for an example.
+  #
+  # opt_hash = {
+  #   :col => :price_date,
+  #   :value => "2013-01-01"
+  #   :op => ">"
+  # }
+  #
+  # opt hash provides a positive filter. anything that passes the filters
+  # is saved to the list.
+  #
+  # keep it simple....
+  # basically opt has is just going to set a cut off point base off a value
+  # not going to do any re ordering for now...
+  # also keep in mind that the checker is dumb...
+  #
+  def self.read_csv_as_hash(dir_name, file_name, param_hash, opt_hash, remove_header)
     result_csv = Array.new
     first_row_flag = remove_header
     
@@ -20,11 +40,39 @@ class CsvUtil
         first_row_flag = false
       else
         cur_hash = Hash.new
+        
+        # load hash....
         param_hash.each do |key, value|
           cur_hash[key] = row[value]
         end
-        #puts result_csv
-        result_csv << cur_hash 
+        
+        # check if we need to push into the list.
+        # need to figure out the order first.
+        if opt_hash != nil
+          cur_val = cur_hash[opt_hash[:col]]
+          checked_val = opt_hash[:value]
+          cur_op = opt_hash[:op]
+          #puts opt_hash
+          #puts ">>>" + opt_hash[:col].to_s
+          #puts ">>" + cur_hash[opt_hash[:col]]
+          #puts ">" + opt_hash[:value]
+          
+          if cur_op== ">" && (cur_val > checked_val)
+            result_csv << cur_hash
+          elsif cur_op == ">=" && (cur_val >= checked_val)
+            result_csv << cur_hash
+          elsif cur_op == "<" && (cur_val < checked_val)
+            result_csv << cur_hash
+          elsif cur_op == "<=" && (cur_val <= checked_val)
+            result_csv << cur_hash
+          elsif cur_op == "==" && (cur_val == checked_val)
+            result_csv << cur_hash
+          else
+            #puts "skip " + cur_val.to_s 
+          end 
+        else
+          result_csv << cur_hash
+        end
       end
     end
     
