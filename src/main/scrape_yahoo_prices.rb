@@ -6,6 +6,7 @@ require_relative '../util/yaml_util'
 require_relative '../util/csv_util'
 require_relative '../util/sequel_helper'
 require_relative '../util/valid_util'
+require_relative '../util/hash_util'
 
 class ScrapeYahooPrices
   
@@ -164,8 +165,15 @@ class ScrapeYahooPrices
       #puts ">>>>" + pn.to_s
       result = CsvUtil.read_csv_as_hash(pn.to_s, cur_sym, csv_col_def, opt_hash, has_header)
       
+      # inject the current symbol into the results.
+      # so the db rows are complete so you can write the results to it.
+      const_hash = {
+        :symbol => cur_sym
+      }
+      injected_results = HashUtil.add_constant_to_array_hash(result, const_hash)
+      
       # saves result to db...
-      self.save_to_db(result)
+      self.save_to_db(injected_results)
     end
   end
 
