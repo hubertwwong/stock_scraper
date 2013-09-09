@@ -90,6 +90,9 @@ class SequelHelper
   # for the reverse flag, remember that default is ascending.
   # if you set the flag, it changes it to descending.
   # ascending. smallest to largest.
+  #
+  # order param takes a symbol....
+  # params takes a hash. {:foo => "value", :bar => 1}
   def read_where_order(table_name, params, order_param, reverse_flag)
     if reverse_flag == false
       tab = @db.from(table_name).where(params).order(order_param)

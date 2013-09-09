@@ -29,7 +29,7 @@ class ScrapeYahooPrices
     @browser_prefs = YamlUtil.read(@browser_filename)
     @db_prefs = YamlUtil.read(@db_filename)
     @dir_prefs = YamlUtil.read(@dir_filename)
-    @scraper_prefs = 'config/yahoo_progress.yml'
+    @scraper_prefs = YamlUtil.read(@scraper_filename)
   end
 
   def init_browser
@@ -96,6 +96,36 @@ class ScrapeYahooPrices
       
       # increment. 
       cur_sym_count = cur_sym_count + 1 
+    end
+  end
+
+  # steps... loop through files....
+  # figure out what the symbol is...
+  # figure out what you need to write.
+  # trim down csv...
+  # write.
+  def csv_to_db
+    pn = Pathname.new(@dir_name)
+    pn.each_entry do |file|
+      # fetch symbol.
+      # using gsub to clean up the .1 and .2 files names.
+      cur_sym = file.basename.to_s.gsub(/[.].+$/,"") 
+      puts cur_sym
+      
+      # use that fetch db method.....
+      params = {:symbol => cur_sym}
+      order_param = :price_date
+      reverse_flag = true
+      result_hash = @db.read_where_order(@db_table_name, params, order_param, reverse_flag)
+      
+      # check size...
+      if result_hash.size == 0
+        puts "no size"
+      else
+        first_row = result_hash
+        puts first_row 
+      end
+      
     end
   end
 

@@ -32,11 +32,22 @@ describe ScrapeYahooPrices do
         @s = ScrapeYahooPrices.new
       end
       
-      it 'should contain GS' do
+      xit 'should contain GS' do
         result_csv = @s.visit_and_get_csv('GS')
         #puts result_csv
         result = @s.save_csv_to_db(result_csv, 'GS')
         result.should == true
+      end
+    end
+    
+    describe 'csv_to_db' do
+      before(:each) do
+        @s = ScrapeYahooPrices.new
+      end
+      
+      it 'should contain GS' do
+        result_csv = @s.csv_to_db
+        result_csv.should == true
       end
     end
   end
