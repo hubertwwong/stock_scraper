@@ -1,9 +1,9 @@
-.....................*
+.....................*......
 
 Pending:
   ValidUtil valid_date invalid 20130101111
     # Temporarily disabled with xit
     # ./spec/features/util/valid_util_spec.rb:130
 
-Finished in 0.0759 seconds
-22 examples, 0 failures, 1 pending
+Finished in 0.17961 seconds
+28 examples, 0 failures, 1 pending

@@ -134,4 +134,46 @@ describe ValidUtil do
     end
   end
   
+  describe 'valid_hash_type' do
+    context 'valid' do
+      it 'foo bar' do
+        cur_hash = {:foo => 123, :bar => "zzz"}
+        param_hash = {:foo => "i", :bar => "s"}
+        ValidUtil.valid_hash_type?(cur_hash, param_hash).should == true
+      end
+      
+      it 'dates' do
+        cur_hash = {:foo => "2013-08-01", :bar => "zzz"}
+        param_hash = {:foo => "d", :bar => "s"}
+        ValidUtil.valid_hash_type?(cur_hash, param_hash).should == true
+      end
+      
+      it 'money' do
+        cur_hash = {:foo => "yyy", :bar => 12.34}
+        param_hash = {:foo => "s", :bar => "m"}
+        ValidUtil.valid_hash_type?(cur_hash, param_hash).should == true
+      end
+    end
+    
+    context 'invalid' do
+      it 'nil' do
+        cur_hash = nil
+        param_hash = nil
+        ValidUtil.valid_hash_type?(cur_hash, param_hash).should == false
+      end
+      
+      it 'missing type' do
+        cur_hash = {:foo => 123}
+        param_hash = {:foo => "i", :bar => "s"}
+        ValidUtil.valid_hash_type?(cur_hash, param_hash).should == false
+      end
+      
+      it 'wrong type' do
+        cur_hash = {:foo => 123, :bar => "zzz"}
+        param_hash = {:foo => "s", :bar => "i"}
+        ValidUtil.valid_hash_type?(cur_hash, param_hash).should == false
+      end
+    end
+  end
+  
 end

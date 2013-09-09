@@ -53,6 +53,69 @@ class ValidUtil
     end
   end
   
+  # not tested...
+  def self.valid_string?(some_str)
+    if some_str == nil
+      return false
+    else
+      return some_str.is_a?(String)
+    end
+  end
+  
+  # a conveinence method that checks if the values have the correct types.
+  # 
+  # so lets say you have a hash.
+  # {:foo => 1, :bar => "potato"}
+  # you can set the param_hash to check for types.
+  # {:foo => "i", :bar => "s"}
+  # will return true.
+  def self.valid_hash_type?(some_hash, param_hash)
+    if some_hash == nil || param_hash == nil
+      return false
+    end
+    
+    param_hash.keys.each do |k|
+      cur_val = some_hash[k]
+      cur_type = param_hash[k]
+      
+      # if either value is null return false.
+      # short circut.
+      if cur_val == nil || cur_type == nil
+        return false
+      else
+        if cur_type == "i"
+          if ValidUtil.valid_int? cur_val
+            true
+          else
+            return false
+          end    
+        elsif cur_type == "m"
+          if ValidUtil.valid_money? cur_val
+            true
+          else
+            return false
+          end
+        elsif cur_type == "s"
+          if ValidUtil.valid_string? cur_val
+            true
+          else
+            return false
+          end
+        elsif cur_type == "d"
+          if ValidUtil.valid_date? cur_val
+            true
+          else
+            return false
+          end
+        else
+          return false
+        end
+      end
+    end
+    
+    return true
+  end
+  
   # checking if this works.
   def self.hello
     true
