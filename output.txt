@@ -1,38 +1,132 @@
-.key foo
-value 0
-key bar
-value 1
-key baz
-value 3
-key foo
-value 0
-key bar
-value 1
-key baz
-value 3
-key foo
-value 0
-key bar
-value 1
-key baz
-value 3
-F
-
-Failures:
-
-  1) CsvUtil to_array_of_hashes hello return true
-     Failure/Error: result.should == true
-       expected: true
-            got: [] (using ==)
-       Diff:
-       @@ -1,2 +1,2 @@
-       -true
-       +[]
-     # ./spec/features/util/csv_util_spec.rb:21:in `block (3 levels) in <top (required)>'
-
-Finished in 0.00311 seconds
-2 examples, 1 failure
-
-Failed examples:
-
-rspec ./spec/features/util/csv_util_spec.rb:15 # CsvUtil to_array_of_hashes hello return true
+> loading > config/browser.yml
+> loading > config/database.yml
+> loading > config/dir_names.yml
+> loading > config/yahoo_progress.yml
+MMM [0 / 502]
+csv/stock_quotes/MMM.csv
+ABT [1 / 502]
+csv/stock_quotes/ABT.csv
+ABBV [2 / 502]
+csv/stock_quotes/ABBV.csv
+ANF [3 / 502]
+csv/stock_quotes/ANF.csv
+ACE [4 / 502]
+csv/stock_quotes/ACE.csv
+ACN [5 / 502]
+csv/stock_quotes/ACN.csv
+ACT [6 / 502]
+csv/stock_quotes/ACT.csv
+ADBE [7 / 502]
+csv/stock_quotes/ADBE.csv
+ADT [8 / 502]
+csv/stock_quotes/ADT.csv
+AMD [9 / 502]
+csv/stock_quotes/AMD.csv
+AES [10 / 502]
+csv/stock_quotes/AES.csv
+AET [11 / 502]
+csv/stock_quotes/AET.csv
+AFL [12 / 502]
+csv/stock_quotes/AFL.csv
+A [13 / 502]
+csv/stock_quotes/A.csv
+GAS [14 / 502]
+csv/stock_quotes/GAS.csv
+APD [15 / 502]
+csv/stock_quotes/APD.csv
+ARG [16 / 502]
+csv/stock_quotes/ARG.csv
+AKAM [17 / 502]
+csv/stock_quotes/AKAM.csv
+AA [18 / 502]
+csv/stock_quotes/AA.csv
+ALXN [19 / 502]
+csv/stock_quotes/ALXN.csv
+ATI [20 / 502]
+csv/stock_quotes/ATI.csv
+AGN [21 / 502]
+csv/stock_quotes/AGN.csv
+ALL [22 / 502]
+csv/stock_quotes/ALL.csv
+ALTR [23 / 502]
+csv/stock_quotes/ALTR.csv
+MO [24 / 502]
+csv/stock_quotes/MO.csv
+AMZN [25 / 502]
+csv/stock_quotes/AMZN.csv
+AEE [26 / 502]
+csv/stock_quotes/AEE.csv
+AEP [27 / 502]
+csv/stock_quotes/AEP.csv
+AXP [28 / 502]
+csv/stock_quotes/AXP.csv
+AIG [29 / 502]
+csv/stock_quotes/AIG.csv
+AMT [30 / 502]
+csv/stock_quotes/AMT.csv
+AMP [31 / 502]
+csv/stock_quotes/AMP.csv
+ABC [32 / 502]
+csv/stock_quotes/ABC.csv
+AMGN [33 / 502]
+csv/stock_quotes/AMGN.csv
+APH [34 / 502]
+csv/stock_quotes/APH.csv
+APC [35 / 502]
+csv/stock_quotes/APC.csv
+ADI [36 / 502]
+csv/stock_quotes/ADI.csv
+AON [37 / 502]
+csv/stock_quotes/AON.csv
+APA [38 / 502]
+csv/stock_quotes/APA.csv
+AIV [39 / 502]
+csv/stock_quotes/AIV.csv
+AAPL [40 / 502]
+csv/stock_quotes/AAPL.csv
+AMAT [41 / 502]
+csv/stock_quotes/AMAT.csv
+ADM [42 / 502]
+csv/stock_quotes/ADM.csv
+AIZ [43 / 502]
+csv/stock_quotes/AIZ.csv
+T [44 / 502]
+csv/stock_quotes/T.csv
+ADSK [45 / 502]
+csv/stock_quotes/ADSK.csv
+ADP [46 / 502]
+csv/stock_quotes/ADP.csv
+AN [47 / 502]
+csv/stock_quotes/AN.csv
+AZO [48 / 502]
+csv/stock_quotes/AZO.csv
+AVB [49 / 502]
+csv/stock_quotes/AVB.csv
+AVY [50 / 502]
+csv/stock_quotes/AVY.csv
+AVP [51 / 502]
+csv/stock_quotes/AVP.csv
+BHI [52 / 502]
+csv/stock_quotes/BHI.csv
+BLL [53 / 502]
+csv/stock_quotes/BLL.csv
+BAC [54 / 502]
+csv/stock_quotes/BAC.csv
+BK [55 / 502]
+csv/stock_quotes/BK.csv
+BCR [56 / 502]
+csv/stock_quotes/BCR.csv
+BAX [57 / 502]
+csv/stock_quotes/BAX.csv
+BBT [58 / 502]
+csv/stock_quotes/BBT.csv
+BEAM [59 / 502]
+csv/stock_quotes/BEAM.csv
+BDX [60 / 502]
+csv/stock_quotes/BDX.csv
+BBBY [61 / 502]
+csv/stock_quotes/BBBY.csv
+BMS [62 / 502]
+csv/stock_quotes/BMS.csv
+BBY [63 / 502]
+csv/stock_quotes/BBY.csv

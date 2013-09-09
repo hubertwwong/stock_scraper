@@ -6,10 +6,34 @@ require 'pathname'
 # a few simple helper utils that does some common csv things.
 class CsvUtil
 
+  # reads a file name and returns a string or nil...
+  def self.read_csv_as_hash(dir_name, file_name, param_hash, remove_header)
+    result_csv = Array.new
+    first_row_flag = remove_header
+    
+    # paths. using clean path to sanitize input.
+    pn = Pathname.new(dir_name)
+    cleaned_path = pn.join(file_name + '.csv').to_s
+    
+    CSV.foreach(cleaned_path) do |row|
+      if first_row_flag
+        first_row_flag = false
+      else
+        cur_hash = Hash.new
+        param_hash.each do |key, value|
+          cur_hash[key] = row[value]
+        end
+        #puts result_csv
+        result_csv << cur_hash 
+      end
+    end
+    
+    return result_csv
+  end
+
   # fetch and saves url to a directory
   # file name adds the csv.... so you don't have to...
   def self.fetch_and_save(csv_url, user_agent, dir_name, file_name)
-    result_csv = nil
     agent = nil
     
     # load a UA. might not need this.
@@ -29,7 +53,7 @@ class CsvUtil
     agent.pluggable_parser.default = Mechanize::Download
     agent.get(csv_url).save(cleaned_path)
     
-    return true
+    return true 
   end
   
   # tries to return a string csv.

@@ -1,9 +1,10 @@
-.....................*......
+...*csv/stock_quotes/GS.csv
+..
 
 Pending:
-  ValidUtil valid_date invalid 20130101111
+  CsvUtil fetch_csv_from_url basic
     # Temporarily disabled with xit
-    # ./spec/features/util/valid_util_spec.rb:130
+    # ./spec/features/util/csv_util_spec.rb:37
 
-Finished in 0.17961 seconds
-28 examples, 0 failures, 1 pending
+Finished in 1.11 seconds
+6 examples, 0 failures, 1 pending

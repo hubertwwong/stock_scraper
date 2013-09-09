@@ -2,10 +2,10 @@ require 'rubygems'
 require 'mechanize'
 require 'csv'
 
-#require_relative '../util/sql_util'
 require_relative '../util/yaml_util'
 require_relative '../util/csv_util'
 require_relative '../util/sequel_helper'
+require_relative '../util/valid_util'
 
 class ScrapeYahooPrices
   
@@ -105,6 +105,17 @@ class ScrapeYahooPrices
   # trim down csv...
   # write.
   def csv_to_db
+    # row hash. basically what each csv column name is and what col it is in.
+    col_def = {
+      :price_date => 0,
+      :open => 1,
+      :high => 2,
+      :low => 3,
+      :close => 4,
+      :adj_close => 6,
+      :volume => 5
+    }
+    
     pn = Pathname.new(@dir_name)
     pn.each_entry do |file|
       # fetch symbol.
@@ -117,15 +128,18 @@ class ScrapeYahooPrices
       order_param = :price_date
       reverse_flag = true
       result_hash = @db.read_where_order(@db_table_name, params, order_param, reverse_flag)
+      cur_date = "1970-01-01"
+      # default date is oldest value possible.
       
-      # check size...
+      # check to see if you enter stuff into the db.
+      # returns the most current date.
       if result_hash.size == 0
         puts "no size"
       else
-        first_row = result_hash
-        puts first_row 
+        first_row = result_hash.first
+        cur_date = first_row[:price_date]
+        puts cur_date
       end
-      
     end
   end
 
