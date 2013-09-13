@@ -96,12 +96,17 @@ class CsvUtil
     # paths. using clean path to sanitize input.
     pn = Pathname.new(dir_name)
     cleaned_path = pn.join(file_name + '.csv').to_s
-    puts cleaned_path
+    #puts cleaned_path
     
-    agent.pluggable_parser.default = Mechanize::Download
-    agent.get(csv_url).save(cleaned_path)
-    
-    return true 
+    begin
+      agent.pluggable_parser.default = Mechanize::Download
+      agent.get(csv_url).save!(cleaned_path)
+      puts "saved... " + cleaned_path
+      return true
+    rescue
+      puts "error..."
+      return false
+    end
   end
   
   # tries to return a string csv.
