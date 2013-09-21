@@ -7,8 +7,8 @@ gem 'capybara', :git => 'https://github.com/jnicklas/capybara.git'
 #gem 'headless'
 gem 'mechanize'
 
-gem 'launchy'
-gem 'debugger'
+#gem 'launchy'
+#gem 'debugger'
 
 gem 'mysql'
 gem 'sequel'

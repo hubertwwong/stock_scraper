@@ -57,7 +57,12 @@ class CsvUtil
           #puts ">>" + cur_hash[opt_hash[:col]]
           #puts ">" + opt_hash[:value]
           
-          if cur_op== ">" && (cur_val > checked_val)
+          # adding a check for date. need to convert it to ints.
+          if cur_op.is_a? (Date)
+            puts "true"
+          end
+          
+          if cur_op == ">" && (cur_val > checked_val)
             result_csv << cur_hash
           elsif cur_op == ">=" && (cur_val >= checked_val)
             result_csv << cur_hash
