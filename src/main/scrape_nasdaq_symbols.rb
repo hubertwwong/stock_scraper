@@ -81,13 +81,10 @@ class ScrapeNasdaqSymbols
   # need to fix this.
   def init_csv
     @csv_col_def = {
-      :price_date => 0,
-      :open => 1,
-      :high => 2,
-      :low => 3,
-      :close => 4,
-      :adj_close => 6,
-      :volume => 5
+      :symbol => 1,
+      :company_name => 2,
+      :sector => 5,
+      :industry => 6
     } 
   end
 
@@ -123,18 +120,18 @@ class ScrapeNasdaqSymbols
     pn = Pathname.new(@dir_name)
     pn.each_entry do |file|
       # intial variables.
-      cur_date = "1970-01-01" # default date is oldest value possible.
+      #cur_date = "1970-01-01" # default date is oldest value possible.
       
       # fetch symbol from filename.
       # using gsub to clean up the .1 and .2 files names.
-      cur_sym = file.basename.to_s.gsub(/[.].+$/,"") 
-      puts "On " + cur_sym
+      #cur_sym = file.basename.to_s.gsub(/[.].+$/,"") 
+      #puts "On " + cur_sym
       
       # need to skip on 2 things. . and ..
       # only continue on symbols.
-      unless /[\w]+/.match(cur_sym)
-        next
-      end
+      #unless /[\w]+/.match(cur_sym)
+      #  next
+      #end
       
       # fetches quotes from the db.
       # basically looking for the most recent quote to figure out what to write.
