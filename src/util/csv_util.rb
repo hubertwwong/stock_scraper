@@ -58,8 +58,12 @@ class CsvUtil
           #puts ">" + opt_hash[:value]
           
           # adding a check for date. need to convert it to ints.
-          if cur_op.is_a? (Date)
-            puts "true"
+          if checked_val.is_a? (Date)
+            checked_val = checked_val.to_time.to_i
+            
+            #puts ">>" + cur_val.to_s
+            cur_val = Date.parse(cur_val).to_time.to_i
+            #puts cur_val.to_s + "<<"
           end
           
           if cur_op == ">" && (cur_val > checked_val)
