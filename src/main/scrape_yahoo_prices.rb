@@ -119,6 +119,8 @@ class ScrapeYahooPrices
   # trim down csv...
   # write.
   def csv_to_db
+    cur_sym_count = 0
+    
     # row hash. basically what each csv column name is and what col it is in.
     pn = Pathname.new(@dir_name)
     pn.each_entry do |file|
@@ -171,6 +173,9 @@ class ScrapeYahooPrices
         :symbol => cur_sym
       }
       injected_results = HashUtil.add_constant_to_array_hash(result, const_hash)
+      
+      puts ">>> on sym " + cur_sym_count
+      cur_sym_count = cur_sym_count + 1
       
       # saves result to db...
       self.save_to_db(injected_results)
