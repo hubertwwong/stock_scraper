@@ -174,7 +174,7 @@ class ScrapeYahooPrices
       }
       injected_results = HashUtil.add_constant_to_array_hash(result, const_hash)
       
-      puts ">>> on sym " + cur_sym_count
+      puts ">>> on sym " + cur_sym_count.to_s
       cur_sym_count = cur_sym_count + 1
       
       # saves result to db...
