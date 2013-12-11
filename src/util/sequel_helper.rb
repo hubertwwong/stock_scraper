@@ -14,7 +14,7 @@ class SequelHelper
     @db_name= params.fetch(:db_name)
     
     # connect to db.
-    @db = Sequel.connect(:adapter => 'mysql', 
+    @db = Sequel.connect(:adapter => 'mysql2', 
           :user => @user,
           :password=> @password, 
           :host => @url, 
