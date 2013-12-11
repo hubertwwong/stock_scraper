@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
-require_relative '../../../src/main/fetch_yahoo_prices'
+require_relative '../../../src/main/fetch_yahoo_quotes'
 
 # loading capybara to load pages to test the utils functions.
 require 'rubygems'
