@@ -45,7 +45,7 @@ describe ScrapeYahooPrices do
         @s = ScrapeYahooPrices.new
       end
       
-      it 'should contain GS' do
+      xit 'should contain GS' do
         result_csv = @s.csv_to_db
         result_csv.should == true
       end
@@ -58,7 +58,7 @@ describe ScrapeYahooPrices do
         @s = ScrapeYahooPrices.new
       end
       
-      it 'should contain GS' do
+      xit 'should contain GS' do
         url = @s.create_url('GS')
         result = /GS/.match(url)
         puts url

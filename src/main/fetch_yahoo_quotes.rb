@@ -20,7 +20,6 @@ class FetchYahooQuotes
     self.init_db
     self.init_dir
     self.init_scraper
-    self.init_csv
   end
   
   def init_yaml
@@ -72,35 +71,53 @@ class FetchYahooQuotes
   def init_scraper
     @scraper_timeout = @scraper_prefs['timeout']
   end
-
-  def init_csv
-    @csv_col_def = {
-      :price_date => 0,
-      :open => 1,
-      :high => 2,
-      :low => 3,
-      :close => 4,
-      :adj_close => 6,
-      :volume => 5
-    } 
-  end
   
   
   
   # main
   ############################################################################
 
-
-
+  # fetch csvs from yahoo site and saves to the disk.
+  #
+  def fetch_csvs_to_file
+    symbol_list = @db.read_all(@db_table_name_stock_symbols)
+    cur_sym_count = 0
+    num_symbols = symbol_list.length
+    
+    # cycle thru each symbol.
+    symbol_list.each do |cur_sym|
+      puts cur_sym[:symbol] + " [" + cur_sym_count.to_s + 
+                              " / " + num_symbols.to_s + "]"
+      
+      # grabs daily historial quotes and save it to db.
+      result = CsvUtil.fetch_and_save(self.create_url(cur_sym[:symbol]), 
+                              @user_agent, @dir_name, cur_sym[:symbol])
+      
+      # error happened...
+      if result == false
+        return false
+      end
+      
+      # sleep so you don't spam site.
+      sleep @scraper_timeout
+      
+      # increment.
+      cur_sym_count = cur_sym_count + 1 
+    end
+    
+    return true
+  end
 
 
 
   # helper methods
   ############################################################################
   
-  # dumb method... just replace the ZZZZ with the symbol
-  # might want to change it so it does something else.
-  # or to redo the dates.
+  # create_url
+  # 
+  # generates a url given a symbol.
+  # basically replaces ZZZZ with its actual symbol.
+  # todo: add a data param.
   def create_url(symbol)
     @web_url.gsub('ZZZZ', symbol)
   end  
