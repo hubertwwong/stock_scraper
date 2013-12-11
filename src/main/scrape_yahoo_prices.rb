@@ -205,7 +205,7 @@ class ScrapeYahooPrices
     true
   end
 
-    # an updated version...
+  # an updated version...
   #
   # vist_and_get_csv
   #

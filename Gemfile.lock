@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/hubertwwong/mysql2_helper.git
+  revision: e735e6fbfa5ff73012419d77e4c1f3736c6db1d5
+  specs:
+    mysql2_helper (0.0.1)
+
+GIT
   remote: https://github.com/jnicklas/capybara.git
   revision: 5e1d159adffb3f9623f7c234fe174364fc862088
   specs:
@@ -28,7 +34,7 @@ GEM
       webrobots (>= 0.0.9, < 0.2)
     mime-types (1.24)
     mini_portile (0.5.1)
-    mysql (2.9.1)
+    mysql2 (0.3.14)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9)
     nokogiri (1.6.0)
@@ -59,6 +65,7 @@ PLATFORMS
 DEPENDENCIES
   capybara!
   mechanize
-  mysql
+  mysql2
+  mysql2_helper!
   rspec
   sequel
