@@ -2,6 +2,7 @@ require 'rubygems'
 require 'mechanize'
 require 'csv'
 require 'pathname'
+require 'fileutils'
 
 # a few simple helper utils that does some common csv things.
 class CsvUtil
@@ -104,6 +105,15 @@ class CsvUtil
     
     # paths. using clean path to sanitize input.
     pn = Pathname.new(dir_name)
+    
+    # create dir if it doesn't exist.
+    if pn.directory? == false
+      puts "dir does not exist. creating " + pn.dirname.to_s
+      FileUtils.mkdir_p pn.dirname.to_s
+      # pn.mkdir
+    end
+    
+    # load file name.
     cleaned_path = pn.join(file_name + '.csv').to_s
     #puts cleaned_path
     
@@ -113,7 +123,7 @@ class CsvUtil
       puts "saved... " + cleaned_path
       return true
     rescue
-      puts "error..."
+      puts "error..."  + cleaned_path
       return false
     end
   end

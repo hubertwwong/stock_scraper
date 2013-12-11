@@ -10,7 +10,7 @@ describe FetchYahooQuotes do
   
   describe 'main' do
     describe "fetch_csvs_to_file" do
-      xit "should return true" do
+      it "should return true" do
         f = FetchYahooQuotes.new
         
         expect(f.fetch_csvs_to_file).to eq(expected_url)
