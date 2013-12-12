@@ -1,10 +1,97 @@
-> loading > config/browser.yml
+> loading > config/database.yml
+db name >>>> space_ship
+saving to db fleet fleet.csv
+> db query to write
+LOAD DATA CONCURRENT INFILE '/home/user/fleet.csv' REPLACE INTO TABLE fleet FIELDS TERMINATED BY '	' LINES TERMINATED BY '
+' IGNORE 1 LINES (@dummy, name, description) SET name='zzzz';
+
+F> loading > config/database.yml
+.*> loading > config/browser.yml
 > loading > config/database.yml
 > loading > config/dir_names.yml
 > loading > config/yahoo_progress.yml
-MMM [0 / 502]
-saved... csv/stock_quotes/MMM.csv
-ABT [1 / 502]
-saved... csv/stock_quotes/ABT.csv
-ABBV [2 / 502]
-saved... csv/stock_quotes/ABBV.csv
+.> loading > config/browser.yml
+> loading > config/database.yml
+> loading > config/dir_names.yml
+> loading > config/yahoo_progress.yml
+.> loading > config/browser.yml
+> loading > config/database.yml
+> loading > config/dir_names.yml
+nyse
+saved... /home/user/.stock_scraper/csv/stock_symbols/nyse.csv
+nasdaq
+saved... /home/user/.stock_scraper/csv/stock_symbols/nasdaq.csv
+amex
+saved... /home/user/.stock_scraper/csv/stock_symbols/amex.csv
+..> loading > config/browser.yml
+> loading > config/database.yml
+.> loading > config/browser.yml
+> loading > config/database.yml
+>>> end
+.> loading > config/browser.yml
+> loading > config/database.yml
+> loading > config/dir_names.yml
+> loading > config/yahoo_progress.yml
+.****...*saved... csv/stock_quotes/GS.csv
+......****..............................*......**> loading > config/foo.yml
+{"foo"=>123, "bar"=>345, "cur_pos"=>123}
+.
+
+Pending:
+  FetchYahooQuotes main fetch_csvs_to_file should return true
+    # Temporarily disabled with xit
+    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:8
+  ScrapeYahooPrices main visit_and_get_csv should contain GS
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:24
+  ScrapeYahooPrices main save_to_db should contain GS
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:35
+  ScrapeYahooPrices main csv_to_db should contain GS
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:48
+  ScrapeYahooPrices util create_url should contain GS
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:61
+  CsvUtil fetch_csv_from_url basic
+    # Temporarily disabled with xit
+    # ./spec/features/util/csv_util_spec.rb:37
+  ScrapeUtil has_content_and? links on the bottom of page should return true
+    # Temporarily disabled with xit
+    # ./spec/features/util/scrape_util_spec.rb:15
+  ScrapeUtil has_content_and? gibberish should return false
+    # Temporarily disabled with xit
+    # ./spec/features/util/scrape_util_spec.rb:24
+  ScrapeUtil has_content_or? link on the bottom should be true
+    # Temporarily disabled with xit
+    # ./spec/features/util/scrape_util_spec.rb:35
+  ScrapeUtil has_content_or? gibberish should be false
+    # Temporarily disabled with xit
+    # ./spec/features/util/scrape_util_spec.rb:45
+  ValidUtil valid_date invalid 20130101111
+    # Temporarily disabled with xit
+    # ./spec/features/util/valid_util_spec.rb:130
+  YamlUtil read cur_pos exist
+    # Temporarily disabled with xit
+    # ./spec/features/util/yaml_util_spec.rb:11
+  YamlUtil write cur_pos updates
+    # Temporarily disabled with xit
+    # ./spec/features/util/yaml_util_spec.rb:18
+
+Failures:
+
+  1) BaseCsvToDb main save to db base
+     Failure/Error: expect(f.save_to_db(save_params)).to eq(true)
+       
+       expected: true
+            got: nil
+       
+       (compared using ==)
+     # ./spec/features/main/base_csv_to_db_spec.rb:32:in `block (4 levels) in <top (required)>'
+
+Finished in 20.8 seconds
+68 examples, 1 failure, 13 pending
+
+Failed examples:
+
+rspec ./spec/features/main/base_csv_to_db_spec.rb:12 # BaseCsvToDb main save to db base
