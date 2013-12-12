@@ -2,7 +2,7 @@
 db name >>>> space_ship
 saving to db fleet fleet.csv
 > db query to write
-LOAD DATA CONCURRENT INFILE '/home/user/fleet.csv' REPLACE INTO TABLE fleet FIELDS TERMINATED BY '	' LINES TERMINATED BY '
+LOAD DATA INFILE '/home/user/fleet.csv' INTO TABLE fleet FIELDS TERMINATED BY '	' LINES TERMINATED BY '
 ' IGNORE 1 LINES (@dummy, name, description) SET name='zzzz';
 
 F> loading > config/database.yml
@@ -89,7 +89,7 @@ Failures:
        (compared using ==)
      # ./spec/features/main/base_csv_to_db_spec.rb:32:in `block (4 levels) in <top (required)>'
 
-Finished in 20.8 seconds
+Finished in 25.73 seconds
 68 examples, 1 failure, 13 pending
 
 Failed examples:

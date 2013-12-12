@@ -69,7 +69,9 @@ class BaseCsvToDb
       
     @db.table_name = table_name
     puts "saving to db " + table_name + " " + filename
-    @db.load_data(sql_params)
+    result = @db.load_data(sql_params)
+    
+    return result
   end  
   
   
