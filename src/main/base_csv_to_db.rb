@@ -70,6 +70,7 @@ class BaseCsvToDb
     @db.table_name = table_name
     puts "saving to db " + table_name + " " + filename
     result = @db.load_data(sql_params)
+    #puts result.to_s + "<<<<<<<<<<<<"
     
     return result
   end  
