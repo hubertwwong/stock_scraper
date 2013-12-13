@@ -9,7 +9,7 @@ require 'capybara/dsl'
 describe ScrapeNasdaqSymbols do
   
   describe 'scrape_to_csv' do
-    it 'returns true' do
+    xit 'returns true' do
       sns = ScrapeNasdaqSymbols.new
       result = sns.scrape_to_csv
       result.should == true
@@ -17,7 +17,7 @@ describe ScrapeNasdaqSymbols do
   end
   
   describe 'test' do
-    it 'hello returns true' do
+    xit 'hello returns true' do
       ScrapeNasdaqSymbols.hello.should == true
     end  
   end

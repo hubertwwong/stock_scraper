@@ -22,3 +22,5 @@ query successful
 > loading > config/database.yml
 > loading > config/dir_names.yml
 nyse
+saved... /home/user/.stock_scraper/csv/stock_symbols/nyse.csv
+nasdaq
