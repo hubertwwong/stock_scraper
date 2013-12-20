@@ -4,7 +4,7 @@ require_relative '../util/yaml_util'
 # class pulls 
 class BaseCsvToDb
   
-  attr_accessor :base_dir, :db, :db_user, :db_password, :db_host. :db_adapter
+  attr_accessor :base_dir, :db, :db_user, :db_password, :db_host, :db_adapter
   
   # init the class.
   # can take two params in addition to the yaml files.
@@ -85,7 +85,8 @@ class BaseCsvToDb
     params = {host: nil,
               user: nil,
               password: nil,
-              database: nil
+              database: nil,
+              adapter: nil
              }.merge(params)
     
     # if params are specified, override the instance variables.
