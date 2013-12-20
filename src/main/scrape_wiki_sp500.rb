@@ -1,8 +1,4 @@
-require 'rubygems'
-require 'mechanize'
-
 require_relative '../util/yaml_util'
-require_relative '../util/sequel_helper'
 
 class ScrapeWikiSP500
   

@@ -1,8 +1,3 @@
-require 'rubygems'
-
-#require 'mysql2_helper'
-require 'sequel_helper'
-
 require_relative '../util/yaml_util'
 
 # a base class to save csv's to the db.
@@ -39,15 +34,13 @@ class BaseCsvToDb
     # load db params from yaml file.
     @db_user = @db_prefs['db_user']
     @db_password = @db_prefs['db_password']
-    @db_url = @db_prefs['db_url']
-    @db_name = @db_prefs['db_name']
+    @db_host = @db_prefs['db_url']
+    @database = @db_prefs['db_name']
     
     # connect to the db.
     self.connect
   end
 
-
-  
 
 
   # main
@@ -55,33 +48,20 @@ class BaseCsvToDb
   
   # saves to the db.
   def save_to_db(params = {})
-    # add the base dir if its not nil.
-    if @base_dir != nil
-      params[:csv_params][:filename] = @base_dir + filename
-      
-    else
-      @db.filename = filename
-    end
-    
-    puts "db name >>>> " + @db.db_name
-      
-    #@db.table_name = table_name
-    #puts "saving to db " + table_name + " " + filename
-    
-    #result = @db.load_data(sql_params)
-    #puts result.to_s + "<<<<<<<<<<<<"
-    
-    #csv_params = {:filename => "/home/user/fleet.csv",
-    #              :line_term_by => "\r\n",
-    #              :col_names => ["@dummy", "name", "description"]}
-                         
-    #params = {:csv_params => csv_params,
-    #          :table_name => "fleet",
-    #          :table_cols => ["name", "description"],
-    #          :key_cols => ["name"]}
-
     # import csv.
-    #result = ms.import_csv params
+    puts "==========="
+    puts params.to_s
+    
+    csv_params = {:filename => "/home/user/fleet.csv",
+              :line_term_by => "\r\n",
+              :col_names => ["@dummy", "name", "description"]}
+                         
+    fparams = {:csv_params => csv_params,
+              :table_name => "fleet",
+              :table_cols => ["name", "description"],
+              :key_cols => ["name"]}
+    
+    result = @db.import_csv fparams
     
     return result
   end  
@@ -92,56 +72,40 @@ class BaseCsvToDb
   ############################################################################
   
   # keep in mind that the you need to fill in db name and file name.
+  # will try to take the params if possible. if not, take the instance params.
   def connect(params = {})
-    params = {
-              url: nil,
+    params = {host: nil,
               user: nil,
               password: nil,
-              db_name: nil
+              database: nil
              }.merge(params)
     
     # if params are specified, override the instance variables.
-    @db_url = params.fetch(:url) || @db_url
+    @db_host = params.fetch(:host) || @db_host
+    @database = params.fetch(:database) || @database
     @db_user = params.fetch(:user)  || @db_user
     @db_password = params.fetch(:password) || @db_password
-    @db_name = params.fetch(:db_name) || @db_name
     
-    # load params in the hash.
-    #final_params = {:url => @db_url, :user => @db_user, 
-    #              :password => @db_password, :db_name => @db_name}
+    # load results of the || operation into the param hash.
+    final_params = {host: @db_host,
+                    user: @db_user,
+                    password: @db_password,
+                    database: @database}
     
-    db_cred = {:adapter => "mysql2",
-               :host => @db_url,
-               :database => @db_name,
-               :user => @db_user,
-               :password => @db_password}
-
+    puts "AAAAA"
+    puts final_params
     
-    @db = SequelHelper.new db_cred
+    @db = SequelHelper.new final_params
+    puts "CCCCCC"
   end
   
-  # testing out to see if the gem was built correctly.
-  #db_cred = {:adapter => "mysql2",
-  #          :host => "localhost",
-  #          :database => "space_ship",
-  #          :user => "root",
-  #          :password => "password"}
 
-  
+
   # test
   ############################################################################
   
   def hello
     return "hello"
   end
-  
-  #@db_params = {:concurrent_flag => true,
-  #            :replace_flag => true,
-  #            :fields_term_by => "\t",
-  #            :line_term_by => "\r\n",
-  #            :skip_num_lines => 1,
-  #            :col_names => ["@dummy", "name", "description"],
-  #            :set_col_names => ["name='zzzz'"]}
-  #result = @db.load_data(@db_params)
-  
+    
 end

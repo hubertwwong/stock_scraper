@@ -15,5 +15,5 @@ gem 'mysql2'
 gem 'sequel'
 
 # my gems.. mostly helper functions
-gem 'mysql2_helper', :git => "git://github.com/hubertwwong/mysql2_helper.git"
+#gem 'mysql2_helper', :git => "git://github.com/hubertwwong/mysql2_helper.git"
 gem 'sequel_helper', :git => "git://github.com/hubertwwong/sequel_helper.git"

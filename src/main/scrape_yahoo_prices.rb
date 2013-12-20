@@ -1,10 +1,5 @@
-require 'rubygems'
-require 'mechanize'
-require 'csv'
-
 require_relative '../util/yaml_util'
 require_relative '../util/csv_util'
-require_relative '../util/sequel_helper'
 require_relative '../util/valid_util'
 require_relative '../util/hash_util'
 

@@ -1,18 +1,12 @@
 GIT
-  remote: git://github.com/hubertwwong/mysql2_helper.git
-  revision: 83a445b46bf60733448f868d3180f9273132bf53
-  specs:
-    mysql2_helper (0.0.1)
-
-GIT
   remote: git://github.com/hubertwwong/sequel_helper.git
-  revision: e28dd2a07ad8508de85a26fcbe6dc7126a502bc7
+  revision: 3cb74c6d03f129b3256abf08cd4386867a41ec5c
   specs:
     sequel_helper (0.0.1)
 
 GIT
   remote: https://github.com/jnicklas/capybara.git
-  revision: a4399a57f755bbf5634e4e49319cc52b818c1215
+  revision: 60683d9054b4f4024c57591a122cebfe11dfdcc3
   specs:
     capybara (2.2.0)
       mime-types (>= 1.16)
@@ -43,7 +37,7 @@ GEM
     mysql2 (0.3.14)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9)
-    nokogiri (1.6.0)
+    nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     ntlm-http (0.1.1)
     rack (1.5.2)
@@ -72,7 +66,6 @@ DEPENDENCIES
   capybara!
   mechanize
   mysql2
-  mysql2_helper!
   rspec
   sequel
   sequel_helper!
