@@ -1,5 +1,6 @@
-*> loading > config/database.yml
-.*> loading > config/browser.yml
+> loading > config/database.yml
+F> loading > config/database.yml
+F*> loading > config/browser.yml
 > loading > config/database.yml
 > loading > config/dir_names.yml
 > loading > config/yahoo_progress.yml
@@ -11,14 +12,116 @@
 > loading > config/dir_names.yml
 /home/user/.stock_scraper/csv/stock_quotes/<<<<<
 > loading > config/database.yml
-db name >>>> stock4_development
-saving to db stock_quotes AAPL.csv
-> db query to write
-LOAD DATA INFILE '/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv' INTO TABLE stock_quotes FIELDS TERMINATED BY ',' LINES TERMINATED BY '
-' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET symbol='AAPL';
-
-query successful
+F**> loading > config/browser.yml
+> loading > config/database.yml
+.> loading > config/browser.yml
+> loading > config/database.yml
+>>> end
 .> loading > config/browser.yml
 > loading > config/database.yml
 > loading > config/dir_names.yml
-nyse
+> loading > config/yahoo_progress.yml
+.****...*saved... csv/stock_quotes/GS.csv
+......****..............................*......**> loading > config/foo.yml
+{"foo"=>123, "bar"=>345, "cur_pos"=>123}
+.
+
+Pending:
+  FetchYahooQuotes main fetch_csvs_to_file should return true
+    # Temporarily disabled with xit
+    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:8
+  ScrapeNasdaqSymbols scrape_to_csv returns true
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:12
+  ScrapeNasdaqSymbols test hello returns true
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:20
+  ScrapeYahooPrices main visit_and_get_csv should contain GS
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:24
+  ScrapeYahooPrices main save_to_db should contain GS
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:35
+  ScrapeYahooPrices main csv_to_db should contain GS
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:48
+  ScrapeYahooPrices util create_url should contain GS
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:61
+  CsvUtil fetch_csv_from_url basic
+    # Temporarily disabled with xit
+    # ./spec/features/util/csv_util_spec.rb:37
+  ScrapeUtil has_content_and? links on the bottom of page should return true
+    # Temporarily disabled with xit
+    # ./spec/features/util/scrape_util_spec.rb:15
+  ScrapeUtil has_content_and? gibberish should return false
+    # Temporarily disabled with xit
+    # ./spec/features/util/scrape_util_spec.rb:24
+  ScrapeUtil has_content_or? link on the bottom should be true
+    # Temporarily disabled with xit
+    # ./spec/features/util/scrape_util_spec.rb:35
+  ScrapeUtil has_content_or? gibberish should be false
+    # Temporarily disabled with xit
+    # ./spec/features/util/scrape_util_spec.rb:45
+  ValidUtil valid_date invalid 20130101111
+    # Temporarily disabled with xit
+    # ./spec/features/util/valid_util_spec.rb:130
+  YamlUtil read cur_pos exist
+    # Temporarily disabled with xit
+    # ./spec/features/util/yaml_util_spec.rb:11
+  YamlUtil write cur_pos updates
+    # Temporarily disabled with xit
+    # ./spec/features/util/yaml_util_spec.rb:18
+
+Failures:
+
+  1) BaseCsvToDb main save to db base
+     Failure/Error: f = BaseCsvToDb.new(@params)
+     KeyError:
+       key not found: :url
+     # ./src/util/sequel_helper.rb:11:in `fetch'
+     # ./src/util/sequel_helper.rb:11:in `initialize'
+     # ./src/main/base_csv_to_db.rb:120:in `new'
+     # ./src/main/base_csv_to_db.rb:120:in `connect'
+     # ./src/main/base_csv_to_db.rb:46:in `init_db'
+     # ./src/main/base_csv_to_db.rb:28:in `initialize'
+     # ./spec/features/main/base_csv_to_db_spec.rb:26:in `new'
+     # ./spec/features/main/base_csv_to_db_spec.rb:26:in `block (4 levels) in <top (required)>'
+
+  2) BaseCsvToDb test hello returns true
+     Failure/Error: f = BaseCsvToDb.new
+     KeyError:
+       key not found: :url
+     # ./src/util/sequel_helper.rb:11:in `fetch'
+     # ./src/util/sequel_helper.rb:11:in `initialize'
+     # ./src/main/base_csv_to_db.rb:120:in `new'
+     # ./src/main/base_csv_to_db.rb:120:in `connect'
+     # ./src/main/base_csv_to_db.rb:46:in `init_db'
+     # ./src/main/base_csv_to_db.rb:28:in `initialize'
+     # ./spec/features/main/base_csv_to_db_spec.rb:39:in `new'
+     # ./spec/features/main/base_csv_to_db_spec.rb:39:in `block (3 levels) in <top (required)>'
+
+  3) SaveYahooQuotes main save_to_db AAPL
+     Failure/Error: s = SaveYahooQuotes.new()
+     KeyError:
+       key not found: :url
+     # ./src/util/sequel_helper.rb:11:in `fetch'
+     # ./src/util/sequel_helper.rb:11:in `initialize'
+     # ./src/main/base_csv_to_db.rb:120:in `new'
+     # ./src/main/base_csv_to_db.rb:120:in `connect'
+     # ./src/main/base_csv_to_db.rb:46:in `init_db'
+     # ./src/main/base_csv_to_db.rb:28:in `initialize'
+     # ./src/main/save_yahoo_quotes.rb:45:in `new'
+     # ./src/main/save_yahoo_quotes.rb:45:in `init_csv'
+     # ./src/main/save_yahoo_quotes.rb:17:in `initialize'
+     # ./spec/features/main/save_yahoo_quotes_spec.rb:9:in `new'
+     # ./spec/features/main/save_yahoo_quotes_spec.rb:9:in `block (4 levels) in <top (required)>'
+
+Finished in 11.52 seconds
+69 examples, 3 failures, 15 pending
+
+Failed examples:
+
+rspec ./spec/features/main/base_csv_to_db_spec.rb:12 # BaseCsvToDb main save to db base
+rspec ./spec/features/main/base_csv_to_db_spec.rb:38 # BaseCsvToDb test hello returns true
+rspec ./spec/features/main/save_yahoo_quotes_spec.rb:8 # SaveYahooQuotes main save_to_db AAPL

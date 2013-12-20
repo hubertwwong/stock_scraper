@@ -5,6 +5,12 @@ GIT
     mysql2_helper (0.0.1)
 
 GIT
+  remote: git://github.com/hubertwwong/sequel_helper.git
+  revision: e28dd2a07ad8508de85a26fcbe6dc7126a502bc7
+  specs:
+    sequel_helper (0.0.1)
+
+GIT
   remote: https://github.com/jnicklas/capybara.git
   revision: a4399a57f755bbf5634e4e49319cc52b818c1215
   specs:
@@ -69,3 +75,4 @@ DEPENDENCIES
   mysql2_helper!
   rspec
   sequel
+  sequel_helper!

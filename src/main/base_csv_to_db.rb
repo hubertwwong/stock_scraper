@@ -1,6 +1,7 @@
 require 'rubygems'
 
-require 'mysql2_helper'
+#require 'mysql2_helper'
+require 'sequel_helper'
 
 require_relative '../util/yaml_util'
 
@@ -54,23 +55,33 @@ class BaseCsvToDb
   
   # saves to the db.
   def save_to_db(params = {})
-    table_name = params.fetch(:table_name)
-    filename = params.fetch(:filename)
-    sql_params = params.fetch(:sql_params)
-    
     # add the base dir if its not nil.
     if @base_dir != nil
-      @db.filename = @base_dir + filename
+      params[:csv_params][:filename] = @base_dir + filename
+      
     else
       @db.filename = filename
     end
     
     puts "db name >>>> " + @db.db_name
       
-    @db.table_name = table_name
-    puts "saving to db " + table_name + " " + filename
-    result = @db.load_data(sql_params)
+    #@db.table_name = table_name
+    #puts "saving to db " + table_name + " " + filename
+    
+    #result = @db.load_data(sql_params)
     #puts result.to_s + "<<<<<<<<<<<<"
+    
+    #csv_params = {:filename => "/home/user/fleet.csv",
+    #              :line_term_by => "\r\n",
+    #              :col_names => ["@dummy", "name", "description"]}
+                         
+    #params = {:csv_params => csv_params,
+    #          :table_name => "fleet",
+    #          :table_cols => ["name", "description"],
+    #          :key_cols => ["name"]}
+
+    # import csv.
+    #result = ms.import_csv params
     
     return result
   end  
@@ -96,13 +107,26 @@ class BaseCsvToDb
     @db_name = params.fetch(:db_name) || @db_name
     
     # load params in the hash.
-    final_params = {:url => @db_url, :user => @db_user, 
-                  :password => @db_password, :db_name => @db_name}
+    #final_params = {:url => @db_url, :user => @db_user, 
+    #              :password => @db_password, :db_name => @db_name}
     
-    @db = Mysql2Helper.new(final_params)
+    db_cred = {:adapter => "mysql2",
+               :host => @db_url,
+               :database => @db_name,
+               :user => @db_user,
+               :password => @db_password}
+
+    
+    @db = SequelHelper.new db_cred
   end
   
-  
+  # testing out to see if the gem was built correctly.
+  #db_cred = {:adapter => "mysql2",
+  #          :host => "localhost",
+  #          :database => "space_ship",
+  #          :user => "root",
+  #          :password => "password"}
+
   
   # test
   ############################################################################
