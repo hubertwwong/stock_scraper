@@ -4,7 +4,7 @@ require_relative '../util/yaml_util'
 # class pulls 
 class BaseCsvToDb
   
-  attr_accessor :base_dir, :db
+  attr_accessor :base_dir, :db, :db_user, :db_password, :db_host. :db_adapter
   
   # init the class.
   # can take two params in addition to the yaml files.
@@ -36,6 +36,7 @@ class BaseCsvToDb
     @db_password = @db_prefs['db_password']
     @db_host = @db_prefs['db_url']
     @database = @db_prefs['db_name']
+    @db_adapter = @db_prefs['db_adapter']
     
     # connect to the db.
     self.connect
@@ -73,6 +74,13 @@ class BaseCsvToDb
   
   # keep in mind that the you need to fill in db name and file name.
   # will try to take the params if possible. if not, take the instance params.
+  #
+  # takes these args.
+  # - host        - url of the db.
+  # - database    - database name
+  # - user        - db user name
+  # - password    - db password
+  # - adapter     - sequel adapter name. it currently uses mysql2 as default.
   def connect(params = {})
     params = {host: nil,
               user: nil,
@@ -85,18 +93,18 @@ class BaseCsvToDb
     @database = params.fetch(:database) || @database
     @db_user = params.fetch(:user)  || @db_user
     @db_password = params.fetch(:password) || @db_password
+    @db_adapter = params.fetch(:adapter) || @db_adapter
     
     # load results of the || operation into the param hash.
-    final_params = {host: @db_host,
+    final_params = {adapter: @db_adapter,
+                    host: @db_host,
                     user: @db_user,
                     password: @db_password,
                     database: @database}
     
-    puts "AAAAA"
     puts final_params
     
     @db = SequelHelper.new final_params
-    puts "CCCCCC"
   end
   
 

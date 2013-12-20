@@ -22,7 +22,7 @@ describe BaseCsvToDb do
         
         # need to change the db...
         # the class defaults for the to stock4.deveopment.
-        f.connect({:db_name => "space_ship"})
+        f.connect({:database=> "space_ship"})
         
         #expect(f.save_to_db(save_params)).to eq(true)
         puts ">>>> saving"

@@ -3,6 +3,7 @@ db_user: root
 db_password: password
 db_url: localhost
 db_name: stock4_development
+db_adapter: mysql2
 db_table_name_stock_symbols: stock_symbols
 db_table_name_stock_quotes: stock_quotes
 user_agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us) AppleWebKit/533.17.8
