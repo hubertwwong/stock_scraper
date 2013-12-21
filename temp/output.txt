@@ -11,43 +11,32 @@ sequel_helper init params
 >> gen_str [LOAD DATA INFILE '/home/user/fleet.csv' INTO TABLE fleettemp LINES TERMINATED BY '
 ' (@dummy, name, description);]
 >> gen_str [INSERT INTO fleet (name, description) SELECT t.name, t.description FROM fleettemp t LEFT JOIN fleet o ON o.name=t.name WHERE o.name IS NULL;]
-.**> loading > config/browser.yml
+.*> loading > config/browser.yml
 > loading > config/database.yml
 > loading > config/dir_names.yml
 > loading > config/yahoo_progress.yml
-sequel_helper init params
-{:adapter=>nil, :host=>nil, :client=>nil, :user=>"root", :password=>"password", :database=>nil, :url=>"localhost", :db_name=>"stock4_development"}
-F> loading > config/browser.yml
 > loading > config/database.yml
-> loading > config/dir_names.yml
-> loading > config/yahoo_progress.yml
-sequel_helper init params
-{:adapter=>nil, :host=>nil, :client=>nil, :user=>"root", :password=>"password", :database=>nil, :url=>"localhost", :db_name=>"stock4_development"}
-F> loading > config/database.yml
-> loading > config/dir_names.yml
-/home/user/.stock_scraper/csv/stock_quotes/<<<<<
-> loading > config/database.yml
-{:adapter=>"mysql2", :host=>"localhost", :user=>"root", :password=>"password", :database=>"stock4_development"}
 sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
-===========
-{:table_name=>"stock_quotes", :filename=>"AAPL.csv", :sql_params=>{:ignore_flag=>true, :fields_term_by=>",", :line_term_by=>"\n", :skip_num_lines=>1, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["symbol='AAPL'"]}}
-F**> loading > config/browser.yml
-> loading > config/database.yml
-sequel_helper init params
-{:adapter=>nil, :host=>nil, :client=>nil, :user=>"root", :password=>"password", :database=>nil, :url=>"localhost", :db_name=>"stock4_development"}
-F> loading > config/browser.yml
-> loading > config/database.yml
-sequel_helper init params
-{:adapter=>nil, :host=>nil, :client=>nil, :user=>"root", :password=>"password", :database=>nil, :url=>"localhost", :db_name=>"stock4_development"}
 F> loading > config/browser.yml
 > loading > config/database.yml
 > loading > config/dir_names.yml
 > loading > config/yahoo_progress.yml
+> loading > config/database.yml
 sequel_helper init params
-{:adapter=>nil, :host=>nil, :client=>nil, :user=>"root", :password=>"password", :database=>nil, :url=>"localhost", :db_name=>"stock4_development"}
-F****...*saved... csv/stock_quotes/GS.csv
-......****.....................*......**> loading > config/foo.yml
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
+.> loading > config/browser.yml
+> loading > config/database.yml
+> loading > config/dir_names.yml
+> loading > config/yahoo_progress.yml
+> loading > config/database.yml
+sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
+.**********...*saved... csv/stock_quotes/GS.csv
+......****> loading > config/database.yml
+sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
+......................*......**> loading > config/foo.yml
 {"foo"=>123, "bar"=>345, "cur_pos"=>123}
 .
 
@@ -55,15 +44,24 @@ Pending:
   BaseCsvToDb test hello returns true
     # Temporarily disabled with xit
     # ./spec/features/main/base_csv_to_db_spec.rb:35
-  FetchYahooQuotes main fetch_csvs_to_file should return true
+  SaveYahooQuotes main save_to_db AAPL
     # Temporarily disabled with xit
-    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:8
+    # ./spec/features/main/save_yahoo_quotes_spec.rb:8
   ScrapeNasdaqSymbols scrape_to_csv returns true
     # Temporarily disabled with xit
     # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:12
   ScrapeNasdaqSymbols test hello returns true
     # Temporarily disabled with xit
     # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:20
+  ScrapeWikiSP500 test hello returns true
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_wiki_sp500_spec.rb:12
+  ScrapeWikiSP500 main visit_and_parse should be true
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_wiki_sp500_spec.rb:24
+  ScrapeYahooPrices test hello returns true
+    # Temporarily disabled with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:12
   ScrapeYahooPrices main visit_and_get_csv should contain GS
     # Temporarily disabled with xit
     # ./spec/features/main/scrape_yahoo_prices_spec.rb:24
@@ -103,72 +101,16 @@ Pending:
 
 Failures:
 
-  1) FetchYahooQuotes misc create_url GS
-     Failure/Error: f = FetchYahooQuotes.new
-     Sequel::AdapterNotFound:
-       LoadError: cannot load such file -- sequel/adapters/
-     # ./src/main/fetch_yahoo_quotes.rb:58:in `new'
-     # ./src/main/fetch_yahoo_quotes.rb:58:in `init_db'
-     # ./src/main/fetch_yahoo_quotes.rb:17:in `initialize'
-     # ./spec/features/main/fetch_yahoo_quotes_spec.rb:19:in `new'
-     # ./spec/features/main/fetch_yahoo_quotes_spec.rb:19:in `block (4 levels) in <top (required)>'
+  1) FetchYahooQuotes main fetch_csvs_to_file should return true
+     Failure/Error: expect(f.fetch_csvs_to_file).to eq(expected_url)
+     NoMethodError:
+       undefined method `client' for #<Sequel::Mysql2::Database:0xadba484>
+     # ./src/main/fetch_yahoo_quotes.rb:72:in `fetch_csvs_to_file'
+     # ./spec/features/main/fetch_yahoo_quotes_spec.rb:11:in `block (4 levels) in <top (required)>'
 
-  2) FetchYahooQuotes test hello returns true
-     Failure/Error: f = FetchYahooQuotes.new
-     Sequel::AdapterNotFound:
-       LoadError: cannot load such file -- sequel/adapters/
-     # ./src/main/fetch_yahoo_quotes.rb:58:in `new'
-     # ./src/main/fetch_yahoo_quotes.rb:58:in `init_db'
-     # ./src/main/fetch_yahoo_quotes.rb:17:in `initialize'
-     # ./spec/features/main/fetch_yahoo_quotes_spec.rb:30:in `new'
-     # ./spec/features/main/fetch_yahoo_quotes_spec.rb:30:in `block (3 levels) in <top (required)>'
-
-  3) SaveYahooQuotes main save_to_db AAPL
-     Failure/Error: result = s.save_to_db("AAPL", "AAPL.csv")
-     Sequel::DatabaseError:
-       Mysql2::Error: Table 'stock4_development.fleet' doesn't exist
-     # ./src/main/base_csv_to_db.rb:65:in `save_to_db'
-     # ./src/main/save_yahoo_quotes.rb:99:in `save_to_db'
-     # ./spec/features/main/save_yahoo_quotes_spec.rb:10:in `block (4 levels) in <top (required)>'
-
-  4) ScrapeWikiSP500 test hello returns true
-     Failure/Error: s = ScrapeWikiSP500.new
-     Sequel::AdapterNotFound:
-       LoadError: cannot load such file -- sequel/adapters/
-     # ./src/main/scrape_wiki_sp500.rb:48:in `new'
-     # ./src/main/scrape_wiki_sp500.rb:48:in `init_db'
-     # ./src/main/scrape_wiki_sp500.rb:10:in `initialize'
-     # ./spec/features/main/scrape_wiki_sp500_spec.rb:13:in `new'
-     # ./spec/features/main/scrape_wiki_sp500_spec.rb:13:in `block (3 levels) in <top (required)>'
-
-  5) ScrapeWikiSP500 main visit_and_parse should be true
-     Failure/Error: @s = ScrapeWikiSP500.new
-     Sequel::AdapterNotFound:
-       LoadError: cannot load such file -- sequel/adapters/
-     # ./src/main/scrape_wiki_sp500.rb:48:in `new'
-     # ./src/main/scrape_wiki_sp500.rb:48:in `init_db'
-     # ./src/main/scrape_wiki_sp500.rb:10:in `initialize'
-     # ./spec/features/main/scrape_wiki_sp500_spec.rb:21:in `new'
-     # ./spec/features/main/scrape_wiki_sp500_spec.rb:21:in `block (4 levels) in <top (required)>'
-
-  6) ScrapeYahooPrices test hello returns true
-     Failure/Error: s = ScrapeYahooPrices.new
-     Sequel::AdapterNotFound:
-       LoadError: cannot load such file -- sequel/adapters/
-     # ./src/main/scrape_yahoo_prices.rb:55:in `new'
-     # ./src/main/scrape_yahoo_prices.rb:55:in `init_db'
-     # ./src/main/scrape_yahoo_prices.rb:13:in `initialize'
-     # ./spec/features/main/scrape_yahoo_prices_spec.rb:13:in `new'
-     # ./spec/features/main/scrape_yahoo_prices_spec.rb:13:in `block (3 levels) in <top (required)>'
-
-Finished in 7.08 seconds
-60 examples, 6 failures, 16 pending
+Finished in 5.45 seconds
+61 examples, 1 failure, 19 pending
 
 Failed examples:
 
-rspec ./spec/features/main/fetch_yahoo_quotes_spec.rb:18 # FetchYahooQuotes misc create_url GS
-rspec ./spec/features/main/fetch_yahoo_quotes_spec.rb:29 # FetchYahooQuotes test hello returns true
-rspec ./spec/features/main/save_yahoo_quotes_spec.rb:8 # SaveYahooQuotes main save_to_db AAPL
-rspec ./spec/features/main/scrape_wiki_sp500_spec.rb:12 # ScrapeWikiSP500 test hello returns true
-rspec ./spec/features/main/scrape_wiki_sp500_spec.rb:24 # ScrapeWikiSP500 main visit_and_parse should be true
-rspec ./spec/features/main/scrape_yahoo_prices_spec.rb:12 # ScrapeYahooPrices test hello returns true
+rspec ./spec/features/main/fetch_yahoo_quotes_spec.rb:8 # FetchYahooQuotes main fetch_csvs_to_file should return true

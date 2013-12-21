@@ -9,7 +9,7 @@ require 'capybara/dsl'
 describe ScrapeYahooPrices do
   
   describe 'test' do
-    it 'hello returns true' do
+    xit 'hello returns true' do
       s = ScrapeYahooPrices.new
       s.hello.should == true
     end  

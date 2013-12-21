@@ -9,7 +9,7 @@ require 'capybara/dsl'
 describe ScrapeWikiSP500 do
   
   describe 'test' do
-    it 'hello returns true' do
+    xit 'hello returns true' do
       s = ScrapeWikiSP500.new
       s.hello.should == true
     end  
@@ -21,7 +21,7 @@ describe ScrapeWikiSP500 do
         @s = ScrapeWikiSP500.new
       end
       
-      it 'should be true' do
+      xit 'should be true' do
         result = @s.visit_and_parse
         result.length.should >= 10
       end

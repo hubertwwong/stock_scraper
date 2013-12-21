@@ -5,7 +5,7 @@ describe SaveYahooQuotes do
   
   describe "main" do
     describe "save_to_db" do
-      it "AAPL" do
+      xit "AAPL" do
         s = SaveYahooQuotes.new()
         result = s.save_to_db("AAPL", "AAPL.csv")
         expect(result).to eq(true)

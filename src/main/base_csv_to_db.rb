@@ -2,6 +2,8 @@ require_relative '../util/yaml_util'
 
 # a base class to save csv's to the db.
 # class pulls 
+# DELETE THIS CLASS... move it as a factory...
+# probably not needed.
 class BaseCsvToDb
   
   attr_accessor :base_dir, :db, :db_user, :db_password, :db_host, :db_adapter

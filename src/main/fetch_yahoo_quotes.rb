@@ -1,5 +1,4 @@
-require 'sequel_helper'
-
+require_relative '../util/sequel_helper_factory'
 require_relative '../util/yaml_util'
 require_relative '../util/csv_util'
 require_relative '../util/valid_util'
@@ -9,7 +8,7 @@ require_relative '../util/hash_util'
 # this class will just be for the fetching.
 class FetchYahooQuotes
   
-  attr_accessor :web_url, :db_user, :db_password, :db_name, :db_table_name, :user_agent, :agent, :dir_name, :scraper_timeout, :csv_col_def
+  attr_accessor :web_url, :user_agent, :agent, :dir_name, :scraper_timeout, :csv_col_def
   
   def initialize(params = {})
     self.init_yaml
@@ -46,19 +45,11 @@ class FetchYahooQuotes
   end
 
   def init_db
-    # yaml read test....
-    @db_user = @db_prefs['db_user']
-    @db_password = @db_prefs['db_password']
-    @db_url = @db_prefs['db_url']
-    @db_name = @db_prefs['db_name']
     @db_table_name = @db_prefs['db_table_name_stock_quotes']
     @db_table_name_stock_symbols = @db_prefs['db_table_name_stock_symbols']
     
     # init db helper
-    @db = SequelHelper.new(:url => @db_url, 
-                      :user=> @db_user, 
-                      :password => @db_password, 
-                      :db_name => @db_name)
+    @db = SequelHelperFactory.create
   end
   
   def init_dir
@@ -77,9 +68,12 @@ class FetchYahooQuotes
   # fetch csvs from yahoo site and saves to the disk.
   #
   def fetch_csvs_to_file
-    symbol_list = @db.read_all(@db_table_name_stock_symbols)
+    #symbol_list = @db.read_all(@db_table_name_stock_symbols)
+    symbol_list = @db.client[@db_table_name_stock_symbols]
+    puts ">>>>>> [" + symbol_list.all.to_s + "]"
     cur_sym_count = 0
     num_symbols = symbol_list.length
+    
     
     # cycle thru each symbol.
     symbol_list.each do |cur_sym|
@@ -101,6 +95,8 @@ class FetchYahooQuotes
       # increment.
       cur_sym_count = cur_sym_count + 1 
     end
+    
+    puts ">>>>>> fetch_csvs_to_file_end"
     
     return true
   end
