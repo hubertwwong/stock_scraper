@@ -25,11 +25,17 @@ class SequelHelperFactory
                     password: db_password,
                     database: database}
     
-    # init.
+    # init and connect to db.
     sh = SequelHelper.new final_params
+    sh.connect
+    
+    # adding some logging to std out.
+    # docs have an error.. its Logger not Loggers
+    sh.client.sql_log_level = :debug
+    sh.client.loggers << Logger.new($stdout)
     
     # connect and return SequelHelper object.
-    return sh.connect
+    return sh
   end
   
 end

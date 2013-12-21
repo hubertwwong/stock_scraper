@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/hubertwwong/sequel_helper.git
-  revision: 3cb74c6d03f129b3256abf08cd4386867a41ec5c
+  revision: 5d0755fe12cbeac09bf1104343187c59b0648e6a
   specs:
     sequel_helper (0.0.1)
 
@@ -23,6 +23,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    logger (1.2.8)
     mechanize (2.7.3)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0)
@@ -64,6 +65,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara!
+  logger
   mechanize
   mysql2
   rspec

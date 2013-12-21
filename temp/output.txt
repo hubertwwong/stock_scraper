@@ -18,99 +18,93 @@ sequel_helper init params
 > loading > config/database.yml
 sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
-F> loading > config/browser.yml
-> loading > config/database.yml
-> loading > config/dir_names.yml
-> loading > config/yahoo_progress.yml
-> loading > config/database.yml
-sequel_helper init params
-{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
-.> loading > config/browser.yml
-> loading > config/database.yml
-> loading > config/dir_names.yml
-> loading > config/yahoo_progress.yml
-> loading > config/database.yml
-sequel_helper init params
-{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
-.**********...*saved... csv/stock_quotes/GS.csv
-......****> loading > config/database.yml
-sequel_helper init params
-{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
-......................*......**> loading > config/foo.yml
-{"foo"=>123, "bar"=>345, "cur_pos"=>123}
-.
-
-Pending:
-  BaseCsvToDb test hello returns true
-    # Temporarily disabled with xit
-    # ./spec/features/main/base_csv_to_db_spec.rb:35
-  SaveYahooQuotes main save_to_db AAPL
-    # Temporarily disabled with xit
-    # ./spec/features/main/save_yahoo_quotes_spec.rb:8
-  ScrapeNasdaqSymbols scrape_to_csv returns true
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:12
-  ScrapeNasdaqSymbols test hello returns true
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:20
-  ScrapeWikiSP500 test hello returns true
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_wiki_sp500_spec.rb:12
-  ScrapeWikiSP500 main visit_and_parse should be true
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_wiki_sp500_spec.rb:24
-  ScrapeYahooPrices test hello returns true
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_yahoo_prices_spec.rb:12
-  ScrapeYahooPrices main visit_and_get_csv should contain GS
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_yahoo_prices_spec.rb:24
-  ScrapeYahooPrices main save_to_db should contain GS
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_yahoo_prices_spec.rb:35
-  ScrapeYahooPrices main csv_to_db should contain GS
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_yahoo_prices_spec.rb:48
-  ScrapeYahooPrices util create_url should contain GS
-    # Temporarily disabled with xit
-    # ./spec/features/main/scrape_yahoo_prices_spec.rb:61
-  CsvUtil fetch_csv_from_url basic
-    # Temporarily disabled with xit
-    # ./spec/features/util/csv_util_spec.rb:37
-  ScrapeUtil has_content_and? links on the bottom of page should return true
-    # Temporarily disabled with xit
-    # ./spec/features/util/scrape_util_spec.rb:15
-  ScrapeUtil has_content_and? gibberish should return false
-    # Temporarily disabled with xit
-    # ./spec/features/util/scrape_util_spec.rb:24
-  ScrapeUtil has_content_or? link on the bottom should be true
-    # Temporarily disabled with xit
-    # ./spec/features/util/scrape_util_spec.rb:35
-  ScrapeUtil has_content_or? gibberish should be false
-    # Temporarily disabled with xit
-    # ./spec/features/util/scrape_util_spec.rb:45
-  ValidUtil valid_date invalid 20130101111
-    # Temporarily disabled with xit
-    # ./spec/features/util/valid_util_spec.rb:130
-  YamlUtil read cur_pos exist
-    # Temporarily disabled with xit
-    # ./spec/features/util/yaml_util_spec.rb:11
-  YamlUtil write cur_pos updates
-    # Temporarily disabled with xit
-    # ./spec/features/util/yaml_util_spec.rb:18
-
-Failures:
-
-  1) FetchYahooQuotes main fetch_csvs_to_file should return true
-     Failure/Error: expect(f.fetch_csvs_to_file).to eq(expected_url)
-     NoMethodError:
-       undefined method `client' for #<Sequel::Mysql2::Database:0xadba484>
-     # ./src/main/fetch_yahoo_quotes.rb:72:in `fetch_csvs_to_file'
-     # ./spec/features/main/fetch_yahoo_quotes_spec.rb:11:in `block (4 levels) in <top (required)>'
-
-Finished in 5.45 seconds
-61 examples, 1 failure, 19 pending
-
-Failed examples:
-
-rspec ./spec/features/main/fetch_yahoo_quotes_spec.rb:8 # FetchYahooQuotes main fetch_csvs_to_file should return true
+D, [2013-12-20T17:59:07.985110 #9975] DEBUG -- : (0.000910s) SET @@wait_timeout = 2147483
+D, [2013-12-20T17:59:07.995861 #9975] DEBUG -- : (0.009793s) SET SQL_AUTO_IS_NULL=0
+D, [2013-12-20T17:59:08.026373 #9975] DEBUG -- : (0.030146s) SELECT * FROM `stock_symbols`
+{:id=>2516, :symbol=>"MMM", :company_name=>"3M Co.", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+MMM [0 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/MMM.csv
+{:id=>2517, :symbol=>"ABT", :company_name=>"Abbott Laboratories", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ABT [1 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ABT.csv
+{:id=>2518, :symbol=>"ABBV", :company_name=>"AbbVie", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ABBV [2 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ABBV.csv
+{:id=>2519, :symbol=>"ANF", :company_name=>"Abercrombie & Fitch Company A", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ANF [3 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ANF.csv
+{:id=>2520, :symbol=>"ACE", :company_name=>"ACE Limited", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ACE [4 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ACE.csv
+{:id=>2521, :symbol=>"ACN", :company_name=>"Accenture plc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ACN [5 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ACN.csv
+{:id=>2522, :symbol=>"ACT", :company_name=>"Actavis Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ACT [6 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ACT.csv
+{:id=>2523, :symbol=>"ADBE", :company_name=>"Adobe Systems Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ADBE [7 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ADBE.csv
+{:id=>2524, :symbol=>"ADT", :company_name=>"ADT Corp", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ADT [8 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ADT.csv
+{:id=>2525, :symbol=>"AMD", :company_name=>"Advanced Micro Devices", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AMD [9 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AMD.csv
+{:id=>2526, :symbol=>"AES", :company_name=>"AES Corp", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AES [10 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AES.csv
+{:id=>2527, :symbol=>"AET", :company_name=>"Aetna Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AET [11 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AET.csv
+{:id=>2528, :symbol=>"AFL", :company_name=>"AFLAC Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AFL [12 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AFL.csv
+{:id=>2529, :symbol=>"A", :company_name=>"Agilent Technologies Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+A [13 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/A.csv
+{:id=>2530, :symbol=>"GAS", :company_name=>"AGL Resources Inc.", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+GAS [14 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/GAS.csv
+{:id=>2531, :symbol=>"APD", :company_name=>"Air Products & Chemicals Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+APD [15 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/APD.csv
+{:id=>2532, :symbol=>"ARG", :company_name=>"Airgas Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ARG [16 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ARG.csv
+{:id=>2533, :symbol=>"AKAM", :company_name=>"Akamai Technologies Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AKAM [17 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AKAM.csv
+{:id=>2534, :symbol=>"AA", :company_name=>"Alcoa Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AA [18 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AA.csv
+{:id=>2535, :symbol=>"ALXN", :company_name=>"Alexion Pharmaceuticals", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ALXN [19 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ALXN.csv
+{:id=>2536, :symbol=>"ATI", :company_name=>"Allegheny Technologies Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ATI [20 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ATI.csv
+{:id=>2537, :symbol=>"AGN", :company_name=>"Allergan Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AGN [21 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AGN.csv
+{:id=>2538, :symbol=>"ALL", :company_name=>"Allstate Corp", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ALL [22 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ALL.csv
+{:id=>2539, :symbol=>"ALTR", :company_name=>"Altera Corp", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+ALTR [23 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/ALTR.csv
+{:id=>2540, :symbol=>"MO", :company_name=>"Altria Group Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+MO [24 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/MO.csv
+{:id=>2541, :symbol=>"AMZN", :company_name=>"Amazon.com Inc", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AMZN [25 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AMZN.csv
+{:id=>2542, :symbol=>"AEE", :company_name=>"Ameren Corp", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AEE [26 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AEE.csv
+{:id=>2543, :symbol=>"AEP", :company_name=>"American Electric Power", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AEP [27 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AEP.csv
+{:id=>2544, :symbol=>"AXP", :company_name=>"American Express Co", :created_at=>nil, :updated_at=>nil, :sector=>"", :industry=>""}
+AXP [28 / 502]
+saved... /home/user/.stock_scraper/csv/stock_quotes/AXP.csv

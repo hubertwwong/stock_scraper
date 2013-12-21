@@ -11,6 +11,7 @@ ms = Mysql2Helper.new
                   :table_name => "fleet", :filename => "/home/user/fleet.csv"}
 @db = Mysql2Helper.new(@params)
 
+# load data test.
 @db_params = {:concurrent_flag => true,
               :replace_flag => true,
               :fields_term_by => "\t",

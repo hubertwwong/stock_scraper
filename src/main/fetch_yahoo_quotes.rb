@@ -69,14 +69,14 @@ class FetchYahooQuotes
   #
   def fetch_csvs_to_file
     #symbol_list = @db.read_all(@db_table_name_stock_symbols)
-    symbol_list = @db.client[@db_table_name_stock_symbols]
-    puts ">>>>>> [" + symbol_list.all.to_s + "]"
+    symbol_list = @db.client[@db_table_name_stock_symbols.to_sym].all
     cur_sym_count = 0
     num_symbols = symbol_list.length
     
     
     # cycle thru each symbol.
     symbol_list.each do |cur_sym|
+      puts cur_sym
       puts cur_sym[:symbol] + " [" + cur_sym_count.to_s + 
                               " / " + num_symbols.to_s + "]"
       
