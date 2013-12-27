@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/hubertwwong/sequel_helper.git
-  revision: 5d0755fe12cbeac09bf1104343187c59b0648e6a
+  revision: b1ec806735c101bd7ba8dc8535899d7645d608d5
   specs:
     sequel_helper (0.0.1)
 

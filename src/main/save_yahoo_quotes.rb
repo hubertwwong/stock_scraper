@@ -1,5 +1,6 @@
 require 'sequel_helper'
 
+require_relative '../util/sequel_helper_factory'
 require_relative '../util/yaml_util'
 require_relative '../util/csv_util'
 #require_relative '../util/sequel_helper'
@@ -10,10 +11,10 @@ class SaveYahooQuotes
 
   attr_accessor :db_user, :db_password, :db_name, :db_table_name, :dir_name
   
-  def initialize(params = {})
+  def initialize
     self.init_yaml
-    self.init_db
     self.init_dir
+    self.init_db
     self.init_csv
   end
   
@@ -27,12 +28,10 @@ class SaveYahooQuotes
   end
 
   def init_db
-    #@db_user = @db_prefs['db_user']
-    #@db_password = @db_prefs['db_password']
-    #@db_url = @db_prefs['db_url']
     @db_name = @db_prefs['db_name']
     @db_table_name_stock_quotes = @db_prefs['db_table_name_stock_quotes']
     @db_table_name_stock_symbols = @db_prefs['db_table_name_stock_symbols']
+    @sequel_helper = SequelHelperFactory.create
   end
 
   def init_dir
@@ -40,17 +39,30 @@ class SaveYahooQuotes
   end
 
   def init_csv
-    # main helper function.
-    puts @dir_name + "<<<<<"
-    @csv_to_db = BaseCsvToDb.new(:base_dir => @dir_name)
+    #@col_names = ["date","open","high","low", "close", "volume", "adj_close"]
+    @col_names = ["price_date", "open", "high", "low", "close", "volume", 
+                  "adj_close"]
     
-    # CSV params needed by the MYSQL load data command
-    @csv_params = {
-              :ignore_flag => true,
-              :fields_term_by => ",",
-              :line_term_by => "\n",
-              :skip_num_lines => 1,
-              :col_names => ["price_date", "open", "high", "low", "close", "volume", "adj_close"]}
+    @table_cols = ["price_date", "open", "high", "low", "close", "volume", 
+                   "adj_close"]
+    
+    @key_cols = ["price_date", "symbol"]
+    
+    # fix skip line numbers.                  
+    @csv_params = {:filename => nil,
+                   :line_term_by => "\n",
+                   :fields_term_by => ",",
+                   :skip_num_lines => 1,
+                   :local_flag => true,
+                   :col_names => @col_names,
+                   :set_col_names => nil}
+                         
+    @import_csv_params = {:csv_params => @csv_params,
+                          :table_name => @db_table_name_stock_quotes,
+                          :table_cols => @table_cols,
+                          :key_cols => @key_cols}
+    
+    #result = @db.import_csv @params
   end
 
 
@@ -60,7 +72,7 @@ class SaveYahooQuotes
 
   # goes to the directory that contains all of the csv files.
   # calls each one and saves to the db.
-  def save_all_csv_to_db
+  def save_all_to_db
     cur_sym_count = 0
     
     # row hash. basically what each csv column name is and what col it is in.
@@ -88,15 +100,21 @@ class SaveYahooQuotes
   # saves the file the db.
   # format should be the same.
   def save_to_db(symbol, filename)
-    # set_col allows you to override the csv import
-    # in this case, we want to write the symbol out in the symbol column.
-    @csv_params[:set_col_names] = ["symbol='"+ symbol + "'"]
+    puts ">> save to db " + symbol.to_s + " " + filename.to_s
     
-    save_params = {:table_name => @db_table_name_stock_quotes,
-              :filename => filename,
-              :sql_params => @csv_params}
-    # saves to the db and returns if it was successful
-    return @csv_to_db.save_to_db(save_params)
+    # adding file name to the params.
+    #@csv_params[:filename] = "@base_dir + filename"
+    @csv_params[:filename] = "/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv"
+    @csv_params[:set_col_names] = ["symbol='AAPL'"]
+    
+    @import_csv_params[:csv_params] = @csv_params
+    
+    puts "DEBUGGING" + @import_csv_params.to_s
+    
+    @sequel_helper.import_csv @import_csv_params
+    
+    return false
+    #return @csv_to_db.save_to_db(save_params)
   end
 
 end

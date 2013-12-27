@@ -1,9 +1,24 @@
 ***sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
-.............save to db
-D, [2013-12-21T02:42:11.020695 #10250] DEBUG -- : (0.007889s) SET @@wait_timeout = 2147483
-D, [2013-12-21T02:42:11.022480 #10250] DEBUG -- : (0.000948s) SET SQL_AUTO_IS_NULL=0
-E, [2013-12-21T02:42:11.030051 #10250] ERROR -- : Mysql2::Error: Table 'stock_quotestemp' already exists: CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> save to db AAPL AAPL.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["symbol='AAPL'"]}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :key_cols=>["price_date", "symbol"]}
+D, [2013-12-26T17:52:38.499058 #6748] DEBUG -- : (0.000828s) SET @@wait_timeout = 2147483
+D, [2013-12-26T17:52:38.502835 #6748] DEBUG -- : (0.000431s) SET SQL_AUTO_IS_NULL=0
+D, [2013-12-26T17:52:38.506432 #6748] DEBUG -- : (0.003438s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2013-12-26T17:52:38.528531 #6748] DEBUG -- : (0.021877s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET symbol='AAPL';]
+D, [2013-12-26T17:52:38.684332 #6748] DEBUG -- : (0.154824s) LOAD DATA INFILE '/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET symbol='AAPL';
+>> LOAD DATA 
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.symbol=t.symbol WHERE o.price_date IS NULL AND o.symbol IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.symbol=t.symbol WHERE o.price_date IS NULL AND o.symbol IS NULL;
+D, [2013-12-26T17:53:33.495948 #6748] DEBUG -- : (54.805494s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.symbol=t.symbol WHERE o.price_date IS NULL AND o.symbol IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.symbol=t.symbol WHERE o.price_date IS NULL AND o.symbol IS NULL"}
+D, [2013-12-26T17:53:33.512715 #6748] DEBUG -- : (0.010606s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE
 F*********...*saved... csv/stock_quotes/GS.csv
 ......****sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
@@ -75,13 +90,15 @@ Pending:
 Failures:
 
   1) SaveYahooQuotes main save_to_db AAPL
-     Failure/Error: result = s.save_to_db("AAPL", "AAPL.csv")
-     Sequel::DatabaseError:
-       Mysql2::Error: Table 'stock_quotestemp' already exists
-     # ./src/main/save_yahoo_quotes.rb:111:in `save_to_db'
-     # ./spec/features/main/save_yahoo_quotes_spec.rb:10:in `block (4 levels) in <top (required)>'
+     Failure/Error: expect(result).to eq(true)
+       
+       expected: true
+            got: false
+       
+       (compared using ==)
+     # ./spec/features/main/save_yahoo_quotes_spec.rb:11:in `block (4 levels) in <top (required)>'
 
-Finished in 2.62 seconds
+Finished in 56.89 seconds
 59 examples, 1 failure, 20 pending
 
 Failed examples:
