@@ -67,7 +67,7 @@ class FetchYahooQuotes
 
   # fetch csvs from yahoo site and saves to the disk.
   #
-  def fetch_csvs_to_file
+  def fetch_all
     #symbol_list = @db.read_all(@db_table_name_stock_symbols)
     symbol_list = @db.client[@db_table_name_stock_symbols.to_sym].all
     cur_sym_count = 0
@@ -96,7 +96,7 @@ class FetchYahooQuotes
       cur_sym_count = cur_sym_count + 1 
     end
     
-    puts ">>>>>> fetch_csvs_to_file_end"
+    puts ">> fetch yahoo quotes complete"
     
     return true
   end

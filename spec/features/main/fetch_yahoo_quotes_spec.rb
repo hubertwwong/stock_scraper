@@ -4,11 +4,11 @@ require_relative '../../../src/main/fetch_yahoo_quotes'
 describe FetchYahooQuotes do
   
   describe 'main' do
-    describe "fetch_csvs_to_file" do
+    describe "fetch_all" do
       xit "should return true" do
         f = FetchYahooQuotes.new
         
-        expect(f.fetch_csvs_to_file).to eq(expected_url)
+        expect(f.fetch_all).to eq(expected_url)
       end
     end
   end
