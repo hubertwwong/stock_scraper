@@ -41,10 +41,10 @@ class SaveYahooQuotes
   def init_csv
     #@col_names = ["date","open","high","low", "close", "volume", "adj_close"]
     @col_names = ["price_date", "open", "high", "low", "close", "volume", 
-                  "adj_close"]
+                  "adj_close", "symbol"]
     
     @table_cols = ["price_date", "open", "high", "low", "close", "volume", 
-                   "adj_close"]
+                   "adj_close", "symbol"]
     
     @key_cols = ["price_date", "symbol"]
     
