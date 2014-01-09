@@ -4,8 +4,17 @@ require_relative '../../../src/main/save_yahoo_quotes'
 describe SaveYahooQuotes do
   
   describe "main" do
+    describe "save_all_to_db" do
+      it "basic" do
+        s = SaveYahooQuotes.new
+        result = s.save_all_to_db
+        
+        expect(result).to eq(true)
+      end
+    end
+    
     describe "save_to_db" do
-      it "AAPL" do
+      xit "AAPL" do
         s = SaveYahooQuotes.new
         result = s.save_to_db("AAPL", "AAPL.csv")
         expect(result).to eq(true)

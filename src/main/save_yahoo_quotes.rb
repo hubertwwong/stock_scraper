@@ -93,7 +93,7 @@ class SaveYahooQuotes
       cur_sym_count = cur_sym_count + 1
       
       # saves result to db...
-      self.save_to_db(cur_sym, file.basename.to_s)
+      self.save_to_db(cur_sym, @dir_name.to_s + file.basename.to_s)
     end
   end
   
@@ -104,8 +104,10 @@ class SaveYahooQuotes
     
     # adding file name to the params.
     #@csv_params[:filename] = "@base_dir + filename"
-    @csv_params[:filename] = "/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv"
-    @csv_params[:set_col_names] = ["symbol='AAPL'"]
+    #@csv_params[:filename] = "/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv"
+    #@csv_params[:set_col_names] = ["symbol='AAPL'"]
+    @csv_params[:filename] = filename
+    @csv_params[:set_col_names] = ["symbol='" + symbol.to_s + "'"]
     
     @import_csv_params[:csv_params] = @csv_params
     

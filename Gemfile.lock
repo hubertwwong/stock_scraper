@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/hubertwwong/sequel_helper.git
-  revision: b1ec806735c101bd7ba8dc8535899d7645d608d5
+  revision: 616e53d031b274664ef66d538f17a12c9fd30938
   specs:
     sequel_helper (0.0.1)
 
 GIT
   remote: https://github.com/jnicklas/capybara.git
-  revision: 60683d9054b4f4024c57591a122cebfe11dfdcc3
+  revision: 743a117241e29958abfa05c5c024cd798d62fdc6
   specs:
     capybara (2.2.0)
       mime-types (>= 1.16)
@@ -52,7 +52,7 @@ GEM
     rspec-expectations (2.14.4)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.4)
-    sequel (4.5.0)
+    sequel (4.6.0)
     unf (0.1.3)
       unf_ext
     unf_ext (0.0.6)
