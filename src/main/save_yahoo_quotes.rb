@@ -39,11 +39,10 @@ class SaveYahooQuotes
   end
 
   def init_csv
-    #@col_names = ["date","open","high","low", "close", "volume", "adj_close"]
-    @col_names = ["price_date", "open", "high", "low", "close", "volume", 
-                  "adj_close", "symbol"]
+    @csv_col_names = ["price_date", "open", "high", "low", "close", "volume", 
+                  "adj_close"]
     
-    @table_cols = ["price_date", "open", "high", "low", "close", "volume", 
+    @db_table_cols = ["price_date", "open", "high", "low", "close", "volume", 
                    "adj_close", "symbol"]
     
     @key_cols = ["price_date", "symbol"]
@@ -54,12 +53,12 @@ class SaveYahooQuotes
                    :fields_term_by => ",",
                    :skip_num_lines => 1,
                    :local_flag => true,
-                   :col_names => @col_names,
+                   :col_names => @csv_col_names,
                    :set_col_names => nil}
                          
     @import_csv_params = {:csv_params => @csv_params,
                           :table_name => @db_table_name_stock_quotes,
-                          :table_cols => @table_cols,
+                          :table_cols => @db_table_cols,
                           :key_cols => @key_cols}
     
     #result = @db.import_csv @params

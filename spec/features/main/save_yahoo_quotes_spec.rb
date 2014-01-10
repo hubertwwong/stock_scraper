@@ -5,7 +5,7 @@ describe SaveYahooQuotes do
   
   describe "main" do
     describe "save_all_to_db" do
-      it "basic" do
+      xit "basic" do
         s = SaveYahooQuotes.new
         result = s.save_all_to_db
         

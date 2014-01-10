@@ -4,28 +4,50 @@ nasdaq
 saved... /home/user/.stock_scraper/csv/stock_symbols/nasdaq.csv
 amex
 saved... /home/user/.stock_scraper/csv/stock_symbols/amex.csv
-.***sequel_helper init params
+.****sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 >> save to db 
-DEBUGGING{:csv_params=>{:filename=>"/home/user/.stock_scraper/csv/stock_symbols/nyse.csv", :line_term_by=>"\n", :fields_term_by=>",", :fields_enclosed_by=>"\"", :skip_num_lines=>1, :local_flag=>true, :col_names=>["symbol", "company_name", "@dummy", "@dummy", "@dummy", "@dummy", "sector", "industry", "@dummy"], :set_col_names=>nil}, :table_name=>"stock_symbols", :table_cols=>["symbol", "company_name", "sector", "industry"], :key_cols=>["symbol"]}
-D, [2013-12-28T01:05:41.571649 #8223] DEBUG -- : (0.004237s) SET @@wait_timeout = 2147483
-D, [2013-12-28T01:05:41.574954 #8223] DEBUG -- : (0.002144s) SET SQL_AUTO_IS_NULL=0
-D, [2013-12-28T01:05:41.586604 #8223] DEBUG -- : (0.011061s) DROP TABLE IF EXISTS `stock_symbolstemp`
-D, [2013-12-28T01:05:41.622870 #8223] DEBUG -- : (0.035341s) CREATE TABLE stock_symbolstemp LIKE stock_symbols;
+DEBUGGING{:csv_params=>{:filename=>"/home/user/.stock_scraper/csv/stock_symbols/nyse.csv", :line_term_by=>"\n", :fields_term_by=>",", :fields_enclosed_by=>"\"", :skip_num_lines=>1, :local_flag=>true, :col_names=>["symbol", "company_name", "@dummy", "@dummy", "@dummy", "@dummy", "sector", "industry", "@dummy"], :set_col_names=>["exchange='NYSE'"]}, :table_name=>"stock_symbols", :table_cols=>["symbol", "company_name", "sector", "industry", "exchange"], :key_cols=>["symbol"]}
+>> IMPORT CSV PARAMS
+csvp {:filename=>"/home/user/.stock_scraper/csv/stock_symbols/nyse.csv", :line_term_by=>"\n", :fields_term_by=>",", :fields_enclosed_by=>"\"", :skip_num_lines=>1, :local_flag=>true, :col_names=>["symbol", "company_name", "@dummy", "@dummy", "@dummy", "@dummy", "sector", "industry", "@dummy"], :set_col_names=>["exchange='NYSE'"]}
+table_cols ["symbol", "company_name", "sector", "industry", "exchange"]
+key_cols ["symbol"]
+D, [2014-01-09T16:02:52.643196 #7264] DEBUG -- : (0.002156s) SET @@wait_timeout = 2147483
+D, [2014-01-09T16:02:52.656636 #7264] DEBUG -- : (0.001770s) SET SQL_AUTO_IS_NULL=0
+D, [2014-01-09T16:02:53.191483 #7264] DEBUG -- : (0.534178s) DROP TABLE IF EXISTS `stock_symbolstemp`
+D, [2014-01-09T16:02:53.552816 #7264] DEBUG -- : (0.350833s) CREATE TABLE stock_symbolstemp LIKE stock_symbols;
 >> CLONING TABLE stock_symbols t stock_symbolstemp
 SKIPLINENUM 1 true
 >> gen_str [LOAD DATA INFILE '/home/user/.stock_scraper/csv/stock_symbols/nyse.csv' INTO TABLE stock_symbolstemp FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '
-' IGNORE 1 LINES (symbol, company_name, @dummy, @dummy, @dummy, @dummy, sector, industry, @dummy);]
-D, [2013-12-28T01:05:41.927882 #8223] DEBUG -- : (0.300174s) LOAD DATA INFILE '/home/user/.stock_scraper/csv/stock_symbols/nyse.csv' INTO TABLE stock_symbolstemp FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '
-' IGNORE 1 LINES (symbol, company_name, @dummy, @dummy, @dummy, @dummy, sector, industry, @dummy);
+' IGNORE 1 LINES (symbol, company_name, @dummy, @dummy, @dummy, @dummy, sector, industry, @dummy) SET exchange='NYSE';]
+D, [2014-01-09T16:02:53.943509 #7264] DEBUG -- : (0.369623s) LOAD DATA INFILE '/home/user/.stock_scraper/csv/stock_symbols/nyse.csv' INTO TABLE stock_symbolstemp FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '
+' IGNORE 1 LINES (symbol, company_name, @dummy, @dummy, @dummy, @dummy, sector, industry, @dummy) SET exchange='NYSE';
 >> LOAD DATA 
->> gen_str [INSERT INTO stock_symbols (symbol, company_name, sector, industry) SELECT t.symbol, t.company_name, t.sector, t.industry FROM stock_symbolstemp t LEFT JOIN stock_symbols o ON o.symbol=t.symbol WHERE o.symbol IS NULL;]
-INSERT INTO stock_symbols (symbol, company_name, sector, industry) SELECT t.symbol, t.company_name, t.sector, t.industry FROM stock_symbolstemp t LEFT JOIN stock_symbols o ON o.symbol=t.symbol WHERE o.symbol IS NULL;
-D, [2013-12-28T01:05:42.499130 #8223] DEBUG -- : (0.562751s) INSERT INTO stock_symbols (symbol, company_name, sector, industry) SELECT t.symbol, t.company_name, t.sector, t.industry FROM stock_symbolstemp t LEFT JOIN stock_symbols o ON o.symbol=t.symbol WHERE o.symbol IS NULL;
->> INSERT SELECT {:table_name=>"stock_symbols", :into_flag=>true, :table_cols=>["symbol", "company_name", "sector", "industry"], :select_stmt=>"t.symbol, t.company_name, t.sector, t.industry FROM stock_symbolstemp t LEFT JOIN stock_symbols o ON o.symbol=t.symbol WHERE o.symbol IS NULL"}
-D, [2013-12-28T01:05:42.532216 #8223] DEBUG -- : (0.023929s) DROP TABLE IF EXISTS `stock_symbolstemp`
->> DROPPING TEMP TABLE
-F**********...*saved... csv/stock_quotes/GS.csv
+array length1
+1st<<<<<<<<<<<<<<<<1
+["symbol"]
+symbol
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["symbol"]
+symbol
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["symbol"]
+
+>>>>>>>>>>>>>>>>
+first
+2+1
+2nd<<<<<<<<<<<<<<<<
+["symbol"]
+
+>>>>>>>>>>>>>>>>
+3+1
+2++2
+>> gen_str [INSERT INTO stock_symbols (symbol, company_name, sector, industry, exchange) SELECT t.symbol, t.company_name, t.sector, t.industry, t.exchange FROM stock_symbolstemp t LEFT JOIN stock_symbols o ON o.symbol=t.symbol AND o.=t. WHERE o.symbol IS NULL;]
+INSERT INTO stock_symbols (symbol, company_name, sector, industry, exchange) SELECT t.symbol, t.company_name, t.sector, t.industry, t.exchange FROM stock_symbolstemp t LEFT JOIN stock_symbols o ON o.symbol=t.symbol AND o.=t. WHERE o.symbol IS NULL;
+E, [2014-01-09T16:02:53.967127 #7264] ERROR -- : Mysql2::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=t. WHERE o.symbol IS NULL' at line 1: INSERT INTO stock_symbols (symbol, company_name, sector, industry, exchange) SELECT t.symbol, t.company_name, t.sector, t.industry, t.exchange FROM stock_symbolstemp t LEFT JOIN stock_symbols o ON o.symbol=t.symbol AND o.=t. WHERE o.symbol IS NULL;
+F***********...*saved... csv/stock_quotes/GS.csv
 ......****sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 ......................*......**{"foo"=>123, "bar"=>345, "cur_pos"=>123}
@@ -41,9 +63,15 @@ Pending:
   FetchYahooQuotes test hello returns true
     # Temporarily disabled with xit
     # ./spec/features/main/fetch_yahoo_quotes_spec.rb:29
-  SaveYahooQuotes main save_to_db AAPL
+  SaveStockSymbols main save_all_to_db basic
+    # Temporarily disabled with xit
+    # ./spec/features/main/save_stock_symbols_spec.rb:8
+  SaveYahooQuotes main save_all_to_db basic
     # Temporarily disabled with xit
     # ./spec/features/main/save_yahoo_quotes_spec.rb:8
+  SaveYahooQuotes main save_to_db AAPL
+    # Temporarily disabled with xit
+    # ./spec/features/main/save_yahoo_quotes_spec.rb:17
   ScrapeNasdaqSymbols scrape_to_csv returns true
     # Temporarily disabled with xit
     # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:12
@@ -99,17 +127,15 @@ Pending:
 Failures:
 
   1) SaveStockSymbols main save_to_db basic
-     Failure/Error: expect(result).to eq(true)
-       
-       expected: true
-            got: false
-       
-       (compared using ==)
-     # ./spec/features/main/save_stock_symbols_spec.rb:12:in `block (4 levels) in <top (required)>'
+     Failure/Error: result = s.save_to_db(exchange, filename)
+     Sequel::DatabaseError:
+       Mysql2::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=t. WHERE o.symbol IS NULL' at line 1
+     # ./src/main/save_stock_symbols.rb:117:in `save_to_db'
+     # ./spec/features/main/save_stock_symbols_spec.rb:21:in `block (4 levels) in <top (required)>'
 
-Finished in 10.31 seconds
-61 examples, 1 failure, 21 pending
+Finished in 14.06 seconds
+63 examples, 1 failure, 23 pending
 
 Failed examples:
 
-rspec ./spec/features/main/save_stock_symbols_spec.rb:8 # SaveStockSymbols main save_to_db basic
+rspec ./spec/features/main/save_stock_symbols_spec.rb:17 # SaveStockSymbols main save_to_db basic
