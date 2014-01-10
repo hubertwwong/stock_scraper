@@ -104,11 +104,9 @@ class SaveStockSymbols
     puts ">> save to db "
     
     # adding file name to the params.
-    #@csv_params[:filename] = "@base_dir + filename"
-    #@csv_params[:filename] = "/home/user/.stock_scraper/csv/stock_symbols/nyse.csv"
     @csv_params[:filename] = filename
-    #@csv_params[:set_col_names] = ["symbol='AAPL'"]
-    @csv_params[:set_col_names] = ["exchange='" + exchange.to_s + "'"]
+    @csv_params[:set_col_names] = ["exchange='" + exchange.to_s.upcase + "'"]
+    # doing the upcase.
     
     @import_csv_params[:csv_params] = @csv_params
     

@@ -5,7 +5,7 @@ describe SaveStockSymbols do
   
   describe "main" do
     describe "save_all_to_db" do
-      xit "basic" do
+      it "basic" do
         s = SaveStockSymbols.new
         result = s.save_all_to_db
         
@@ -14,7 +14,7 @@ describe SaveStockSymbols do
     end
     
     describe "save_to_db" do
-      it "basic" do
+      xit "basic" do
         s = SaveStockSymbols.new
         filename = "/home/user/.stock_scraper/csv/stock_symbols/nyse.csv"
         exchange = "NYSE"
