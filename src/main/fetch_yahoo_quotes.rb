@@ -85,8 +85,17 @@ class FetchYahooQuotes
                               @user_agent, @dir_name, cur_sym[:symbol])
       
       # error happened...
-      if result == false
-        return false
+      # try 2 more times...
+      retry_timeout = 1
+      while result == false && retry_timeout < 3
+        puts "fetch error. retry in " + retry_timeout.to_ss
+        sleep @scraper_timeout * retry_timeout
+        
+        result = CsvUtil.fetch_and_save(self.create_url(cur_sym[:symbol]), 
+                              @user_agent, @dir_name, cur_sym[:symbol])
+        
+        # increase the timeout..         
+        retry_timeout += 1
       end
       
       # sleep so you don't spam site.
