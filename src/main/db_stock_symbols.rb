@@ -4,6 +4,7 @@ require_relative '../util/yaml_util'
 require_relative '../util/csv_util'
 require_relative '../util/valid_util'
 require_relative '../util/hash_util'
+require_relative '../util/str_util'
 require_relative '../util/sequel_helper_factory'
 
 # db operations involving stock symbol table....
@@ -61,7 +62,7 @@ class DBStockSymbols
   def split_symbols
     @sequel_helper.client.fetch("SELECT * FROM " + @db_table_name_stock_symbols) do |row|
       #puts row[:symbol]
-      sym_array = self.symbol_to_array row[:symbol]
+      sym_array = StrUtil.str_to_array row[:symbol]
       puts sym_array
       
       # if the array is nil just move on.
@@ -83,17 +84,6 @@ class DBStockSymbols
     end
     
     return true
-  end
-  
-  # using a regex to split a stock symbol.
-  # based off non alpha numeric.
-  def symbol_to_array(sym_param)
-    if sym_param != nil
-      # split off non word characters
-      return sym_param.split(/\W/)
-    else
-      return nil
-    end  
   end
   
 end

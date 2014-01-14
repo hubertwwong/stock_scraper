@@ -73,7 +73,6 @@ class FetchYahooQuotes
     cur_sym_count = 0
     num_symbols = symbol_list.length
     
-    
     # cycle thru each symbol.
     symbol_list.each do |cur_sym|
       puts cur_sym
@@ -81,8 +80,13 @@ class FetchYahooQuotes
                               " / " + num_symbols.to_s + "]"
       
       # grabs daily historial quotes and save it to db.
-      result = CsvUtil.fetch_and_save(self.create_url(cur_sym[:symbol]), 
-                              @user_agent, @dir_name, cur_sym[:symbol])
+      sym_url = self.create_url(cur_sym[:symbol], 
+                                cur_sym[:sub_symbol_1], 
+                                cur_sym[:sub_symbol_2])
+      result = CsvUtil.fetch_and_save(sym_url,
+                                      @user_agent, 
+                                      @dir_name, 
+                                      cur_sym[:id].to_s)
       
       # error happened...
       # try 2 more times...
@@ -91,9 +95,10 @@ class FetchYahooQuotes
         puts "fetch error. retry in " + retry_timeout.to_s
         sleep @scraper_timeout * retry_timeout
         
-        result = CsvUtil.fetch_and_save(self.create_url(cur_sym[:symbol]), 
-                              @user_agent, @dir_name, cur_sym[:symbol])
-        
+        result = CsvUtil.fetch_and_save(sym_url,
+                                      @user_agent, 
+                                      @dir_name, 
+                                      cur_sym[:id].to_s)
         # increase the timeout..         
         retry_timeout += 1
       end
@@ -120,8 +125,18 @@ class FetchYahooQuotes
   # generates a url given a symbol.
   # basically replaces ZZZZ with its actual symbol.
   # todo: add a data param.
-  def create_url(symbol)
-    @web_url.gsub('ZZZZ', symbol)
+  def create_url(symbol, sub_symbol_1, sub_symbol_2)
+    sym_str = symbol
+    
+    if sub_symbol_2 != nil
+      sym_str = symbol + "-" + sub_symbol_1 + "-" + sub_symbol_2
+    elsif sub_symbol_1 != nil
+      sym_str = symbol + "-" + sub_symbol_1
+    else
+      sym_str = symbol
+    end
+    
+    return @web_url.gsub('ZZZZ', sym_str)
   end  
   
   
