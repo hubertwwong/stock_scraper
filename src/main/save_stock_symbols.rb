@@ -97,7 +97,6 @@ class SaveStockSymbols
     end
   end
   
-  
   # things to fix..
   # need to take files...
   # 

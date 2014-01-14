@@ -88,7 +88,7 @@ class FetchYahooQuotes
       # try 2 more times...
       retry_timeout = 1
       while result == false && retry_timeout < 3
-        puts "fetch error. retry in " + retry_timeout.to_ss
+        puts "fetch error. retry in " + retry_timeout.to_s
         sleep @scraper_timeout * retry_timeout
         
         result = CsvUtil.fetch_and_save(self.create_url(cur_sym[:symbol]), 
