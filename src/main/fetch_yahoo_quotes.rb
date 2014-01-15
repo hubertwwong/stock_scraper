@@ -128,9 +128,9 @@ class FetchYahooQuotes
   def create_url(symbol, sub_symbol_1, sub_symbol_2)
     sym_str = symbol
     
-    if sub_symbol_2 != nil
+    if sub_symbol_2 != nil && sub_symbol_2 != ""
       sym_str = symbol + "-" + sub_symbol_1 + "-" + sub_symbol_2
-    elsif sub_symbol_1 != nil
+    elsif sub_symbol_1 != nil && sub_symbol_1 != ""
       sym_str = symbol + "-" + sub_symbol_1
     else
       sym_str = symbol
