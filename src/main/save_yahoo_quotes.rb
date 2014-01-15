@@ -43,9 +43,9 @@ class SaveYahooQuotes
                   "adj_close"]
     
     @db_table_cols = ["price_date", "open", "high", "low", "close", "volume", 
-                   "adj_close", "symbol"]
+                   "adj_close", "stock_symbol_id"]
     
-    @key_cols = ["price_date", "symbol"]
+    @key_cols = ["price_date", "stock_symbol_id"]
     
     # fix skip line numbers.                  
     @csv_params = {:filename => nil,
@@ -80,7 +80,7 @@ class SaveYahooQuotes
       # fetch symbol from filename.
       # using gsub to clean up the .1 and .2 files names.
       cur_sym = file.basename.to_s.gsub(/[.].+$/,"") 
-      puts "On " + cur_sym
+      puts "On " + cur_sym.to_s
       
       # need to skip on 2 things. . and ..
       # only continue on symbols.
@@ -98,15 +98,15 @@ class SaveYahooQuotes
   
   # saves the file the db.
   # format should be the same.
-  def save_to_db(symbol, filename)
-    puts ">> save to db " + symbol.to_s + " " + filename.to_s
+  def save_to_db(symbol_id, filename)
+    puts ">> save to db " + symbol_id.to_s + " " + filename.to_s
     
     # adding file name to the params.
     #@csv_params[:filename] = "@base_dir + filename"
     #@csv_params[:filename] = "/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv"
     #@csv_params[:set_col_names] = ["symbol='AAPL'"]
     @csv_params[:filename] = filename
-    @csv_params[:set_col_names] = ["symbol='" + symbol.to_s + "'"]
+    @csv_params[:set_col_names] = ["stock_symbol_id='" + symbol_id.to_s + "'"]
     
     @import_csv_params[:csv_params] = @csv_params
     
