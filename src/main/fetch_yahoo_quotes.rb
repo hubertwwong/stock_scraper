@@ -165,7 +165,22 @@ class FetchYahooQuotes
     return final_url
   end  
   
-  
+  # a simple helper that returns the date 1 month ago
+  # in yyyy-mm-dd format. can be used for the start date
+  # varaible in create url.
+  def one_month_ago
+    #puts "aaaaaaaaaaaaaaaa"
+    #puts Time.now.strftime("%Y-%m-%d")
+    #puts "zzzzzzzzzzzzzzzzzzzz"
+    #one_month_ago = Time.now.to_i - 60*60*24*30
+    #puts "time ago to s " + Time.now.to_i.to_s
+    #puts "one month ago " + one_month_ago.to_s
+    #puts Time.at(one_month_ago).strftime("%Y-%m-%d")
+    #puts "bbbbb"
+    
+    one_month_ago = Time.now.to_i - 60*60*24*30
+    return Time.at(one_month_ago).strftime("%Y-%m-%d")
+  end
   
   # test
   ############################################################################
