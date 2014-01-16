@@ -3,6 +3,7 @@ require_relative '../util/yaml_util'
 require_relative '../util/csv_util'
 require_relative '../util/valid_util'
 require_relative '../util/hash_util'
+require_relative '../util/str_util'
 
 # splitting the csv feting from the csv import.
 # this class will just be for the fetching.
@@ -36,7 +37,7 @@ class FetchYahooQuotes
     @user_agent = @browser_prefs['user_agent']
     
     # inital website.
-    @web_url = 'http://ichart.finance.yahoo.com/table.csv?s=ZZZZ&d=7&e=27&f=2015&g=d&a=3&b=12&c=1900&ignore=.csv'
+    @web_url = 'http://ichart.finance.yahoo.com/table.csv?s=ZZZZ&d=ZZDD&e=ZZEE&f=ZZFF&g=d&a=ZZAA&b=ZZBB&c=ZZCC&ignore=.csv'
     
     # load a UA. might not need this.
     @agent = Mechanize.new do |a|
@@ -125,9 +126,15 @@ class FetchYahooQuotes
   # generates a url given a symbol.
   # basically replaces ZZZZ with its actual symbol.
   # todo: add a data param.
-  def create_url(symbol, sub_symbol_1, sub_symbol_2)
+  # start and end date........ YYYY-MM-DD
+  #
+  # url date format... note that a=month b=day c=year. 
+  # and a is 0 based
+  def create_url(symbol, sub_symbol_1, sub_symbol_2, start_date=nil)
     sym_str = symbol
+    final_url = @web_url
     
+    # symbols
     if sub_symbol_2 != nil && sub_symbol_2 != ""
       sym_str = symbol + "-" + sub_symbol_1 + "-" + sub_symbol_2
     elsif sub_symbol_1 != nil && sub_symbol_1 != ""
@@ -135,8 +142,27 @@ class FetchYahooQuotes
     else
       sym_str = symbol
     end
+    final_url = final_url.gsub('ZZZZ', sym_str)
     
-    return @web_url.gsub('ZZZZ', sym_str)
+    # DEFAULT DATES
+    final_url = final_url.gsub('ZZDD', "0")
+    final_url = final_url.gsub('ZZEE', "1")
+    final_url = final_url.gsub('ZZFF', "2020")
+    if (start_date == nil)
+      final_url = final_url.gsub('ZZAA', "0")
+      final_url = final_url.gsub('ZZBB', "1")
+      final_url = final_url.gsub('ZZCC', "1900")
+    else
+      array_date = StrUtil.str_to_array(start_date)
+      
+      # month is zero based in yahoo for some reason.
+      final_url = final_url.gsub('ZZAA', (array_date[1].to_i - 1).to_s)
+      final_url = final_url.gsub('ZZBB', array_date[2])
+      final_url = final_url.gsub('ZZCC', array_date[0])
+    end
+    
+    
+    return final_url
   end  
   
   
