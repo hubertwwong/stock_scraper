@@ -67,8 +67,10 @@ class FetchYahooQuotes
   ############################################################################
 
   # fetch csvs from yahoo site and saves to the disk.
+  # takes an optional param of start date.
+  # so you don't download a gig of data after each update.
   #
-  def fetch_all
+  def fetch_all(start_date = nil)
     #symbol_list = @db.read_all(@db_table_name_stock_symbols)
     symbol_list = @db.client[@db_table_name_stock_symbols.to_sym].all
     cur_sym_count = 0
@@ -83,7 +85,8 @@ class FetchYahooQuotes
       # grabs daily historial quotes and save it to db.
       sym_url = self.create_url(cur_sym[:symbol], 
                                 cur_sym[:sub_symbol_1], 
-                                cur_sym[:sub_symbol_2])
+                                cur_sym[:sub_symbol_2],
+                                start_date)
       result = CsvUtil.fetch_and_save(sym_url,
                                       @user_agent, 
                                       @dir_name, 
@@ -99,7 +102,8 @@ class FetchYahooQuotes
         result = CsvUtil.fetch_and_save(sym_url,
                                       @user_agent, 
                                       @dir_name, 
-                                      cur_sym[:id].to_s)
+                                      cur_sym[:id].to_s,
+                                      start_date)
         # increase the timeout..         
         retry_timeout += 1
       end
@@ -160,7 +164,6 @@ class FetchYahooQuotes
       final_url = final_url.gsub('ZZBB', array_date[2])
       final_url = final_url.gsub('ZZCC', array_date[0])
     end
-    
     
     return final_url
   end  
