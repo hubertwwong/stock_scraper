@@ -1,3 +1,4 @@
 ---
 stock_symbols: /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/
 stock_quotes: /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/
+xbrl_keys: /home/user/zzz/vmsync/data/.stock_scraper/edgar/monthly/

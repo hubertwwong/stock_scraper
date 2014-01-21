@@ -4,21 +4,15 @@ nasdaq
 saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/nasdaq.csv
 amex
 saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/amex.csv
-.*sequel_helper init params
+.fetching xbrl key files
+F*sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 .sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 .sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
-aaaaaaaaaaaaaaaa
-2014-01-16
-zzzzzzzzzzzzzzzzzzzz
-time ago to s 1389911129
-one month ago 1387319129
-2013-12-17
-bbbbb
 .**************...*saved... csv/stock_quotes/GS.csv
-......****sequel_helper init params
+.......****sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 ........................*......**{"foo"=>123, "bar"=>345, "cur_pos"=>123}
 .
@@ -32,7 +26,7 @@ Pending:
     # ./spec/features/main/fetch_yahoo_quotes_spec.rb:8
   FetchYahooQuotes test hello returns true
     # Temporarily disabled with xit
-    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:60
+    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:51
   SaveStockSymbols main save_all_to_db basic
     # Temporarily disabled with xit
     # ./spec/features/main/save_stock_symbols_spec.rb:8
@@ -97,5 +91,18 @@ Pending:
     # Temporarily disabled with xit
     # ./spec/features/util/yaml_util_spec.rb:18
 
-Finished in 7.04 seconds
-68 examples, 0 failures, 24 pending
+Failures:
+
+  1) FetchXBRLKeys main fetch_all should return true
+     Failure/Error: expect(f.fetch_all).to eq("aaaa")
+     Net::FTPConnectionError:
+       not connected
+     # ./src/main/fetch_xbrl_keys.rb:42:in `fetch_all'
+     # ./spec/features/main/fetch_xbrl_keys_spec.rb:11:in `block (4 levels) in <top (required)>'
+
+Finished in 23.99 seconds
+70 examples, 1 failure, 24 pending
+
+Failed examples:
+
+rspec ./spec/features/main/fetch_xbrl_keys_spec.rb:8 # FetchXBRLKeys main fetch_all should return true
