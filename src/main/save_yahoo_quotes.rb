@@ -6,6 +6,7 @@ require_relative '../util/csv_util'
 #require_relative '../util/sequel_helper'
 require_relative '../util/valid_util'
 require_relative '../util/hash_util'
+require_relative '../util/file_wrapper_util'
 
 class SaveYahooQuotes
 
@@ -92,27 +93,33 @@ class SaveYahooQuotes
       cur_sym_count = cur_sym_count + 1
       
       # saves result to db...
-      self.save_to_db(cur_sym, @dir_name.to_s + file.basename.to_s)
+      self.save_to_db(cur_sym, file.basename.to_s, @dir_name.to_s)
     end
   end
   
   # saves the file the db.
   # format should be the same.
-  def save_to_db(symbol_id, filename)
+  def save_to_db(symbol_id, filename, base_dir)
     puts ">> save to db " + symbol_id.to_s + " " + filename.to_s
     
     # adding file name to the params.
     #@csv_params[:filename] = "@base_dir + filename"
     #@csv_params[:filename] = "/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv"
     #@csv_params[:set_col_names] = ["symbol='AAPL'"]
-    @csv_params[:filename] = filename
+    @csv_params[:filename] = base_dir + filename
     @csv_params[:set_col_names] = ["stock_symbol_id='" + symbol_id.to_s + "'"]
     
     @import_csv_params[:csv_params] = @csv_params
     
+    # debugging params.
     puts "DEBUGGING" + @import_csv_params.to_s
     
+    # importing file
     @sequel_helper.import_csv @import_csv_params
+    
+    # cleanup
+    dest_dir = base_dir + "completed/" + filename.to_s
+    FileWrapperUtil.mv(@csv_params[:filename], dest_dir)
     
     return false
     #return @csv_to_db.save_to_db(save_params)

@@ -30,4 +30,8 @@ class FileWrapperUtil
     return true
   end
   
+  def self.mkdir_p(dest)
+    FileUtils.mkdir_p(File.dirname(dest))
+  end
+  
 end

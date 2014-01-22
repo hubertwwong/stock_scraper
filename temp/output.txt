@@ -4,7 +4,10 @@ nasdaq
 saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/nasdaq.csv
 amex
 saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/amex.csv
-.fetching xbrl key files
+./home/user/zzz/vmsync/data/.stock_scraper/edgar/monthly/
+fetching xbrl key files
+/home/user/zzz/vmsync/data/.stock_scraper/edgar/monthly/
+>xbrlrss-2005-04.xml<
 F*sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 .sequel_helper init params
@@ -95,12 +98,14 @@ Failures:
 
   1) FetchXBRLKeys main fetch_all should return true
      Failure/Error: expect(f.fetch_all).to eq("aaaa")
-     Net::FTPConnectionError:
-       not connected
-     # ./src/main/fetch_xbrl_keys.rb:42:in `fetch_all'
+     Errno::ENOENT:
+       No such file or directory @ rb_sysopen - /home/user/zzz/vmsync/data/.stock_scraper/edgar/monthly/xbrlrss-2005-04.xml
+     # ./src/main/fetch_xbrl_keys.rb:65:in `block in fetch_all'
+     # ./src/main/fetch_xbrl_keys.rb:61:in `each'
+     # ./src/main/fetch_xbrl_keys.rb:61:in `fetch_all'
      # ./spec/features/main/fetch_xbrl_keys_spec.rb:11:in `block (4 levels) in <top (required)>'
 
-Finished in 23.99 seconds
+Finished in 59.13 seconds
 70 examples, 1 failure, 24 pending
 
 Failed examples:

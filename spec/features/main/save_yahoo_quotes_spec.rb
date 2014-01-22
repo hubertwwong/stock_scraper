@@ -16,7 +16,11 @@ describe SaveYahooQuotes do
     describe "save_to_db" do
       xit "AAPL" do
         s = SaveYahooQuotes.new
-        result = s.save_to_db("AAPL", "AAPL.csv")
+        base_dir = "/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/"
+        sym = "AAPL"
+        filename = "AAPL.csv"
+        
+        result = s.save_to_db(sym, filename, base_dir)
         expect(result).to eq(true)
       end
     end
