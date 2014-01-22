@@ -61,9 +61,9 @@ class FetchXBRLKeys
     # grab the files...
     ftp.nlst.each do |f|
       puts ">" + f + "<"
-      ftp_file = @sec_xbrl_keys_dir + f
+      ftp_file = "/" + @sec_xbrl_keys_dir + f
       local_file = @dir_name + f
-      ftp.gettextfile(ftp_file, local_file)
+      ftp.gettextfile(f, local_file)
     end
     
     #puts files

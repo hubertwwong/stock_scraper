@@ -18,7 +18,10 @@ class FileWrapperUtil
   # a wrapper to the copy command...
   # creates the necessary directories automatically.
   def self.cp(src, dest)
-    FileUtils.mkdir_p(File.dirname(dest))
+    # my hunch is that you don't need the file.dirname.
+    # unless you are passing something other than a directory.
+    #FileUtils.mkdir_p(File.dirname(dest))
+    FileUtils.mkdir_p(dest)
     FileUtils.cp(src, dest)
     return true
   end
@@ -31,7 +34,9 @@ class FileWrapperUtil
   end
   
   def self.mkdir_p(dest)
-    FileUtils.mkdir_p(File.dirname(dest))
+    #puts "dest" + dest
+    FileUtils.mkdir_p(dest)
+    return true
   end
   
 end

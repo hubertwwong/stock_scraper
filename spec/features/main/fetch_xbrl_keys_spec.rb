@@ -8,7 +8,7 @@ describe FetchXBRLKeys do
       it "should return true" do
         f = FetchXBRLKeys.new
         
-        expect(f.fetch_all).to eq("aaaa")
+        expect(f.fetch_all).to eq(true)
       end
     end
   end
