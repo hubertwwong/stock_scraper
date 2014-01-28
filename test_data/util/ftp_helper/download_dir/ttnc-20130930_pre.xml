@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<!-- Produced by EDGARsuite software, Advanced Computer Innovations, Inc., Copyright (C) 2008-2013 [PPXCRLSC4JD4]. www.edgarsuite.com -->
+<link:linkbase xmlns="http://www.xbrl.org/2003/linkbase"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+		xmlns:fil="http://www.tectoncorp.com/20130930"
+		xmlns:link="http://www.xbrl.org/2003/linkbase"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+		xmlns:xbrli="http://www.xbrl.org/2003/instance">
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DocumentDocumentAndEntityInformation" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DocumentDocumentAndEntityInformation"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DocumentDocumentAndEntityInformation">
+		<link:loc xlink:type='locator' xlink:href='ttnc-20130930.xsd#fil_DocumentAndEntityInformationAbstract' xlink:label='fil_DocumentAndEntityInformationAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_EntityRegistrantName' xlink:label='dei_EntityRegistrantName'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_EntityRegistrantName' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_DocumentType' xlink:label='dei_DocumentType'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_DocumentType' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_DocumentPeriodEndDate' xlink:label='dei_DocumentPeriodEndDate'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_DocumentPeriodEndDate' use='optional' order='3.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_AmendmentFlag' xlink:label='dei_AmendmentFlag'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_AmendmentFlag' use='optional' order='4.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_EntityCentralIndexKey' xlink:label='dei_EntityCentralIndexKey'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_EntityCentralIndexKey' use='optional' order='5.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_CurrentFiscalYearEndDate' xlink:label='dei_CurrentFiscalYearEndDate'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_CurrentFiscalYearEndDate' use='optional' order='6.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_EntityCommonStockSharesOutstanding' xlink:label='dei_EntityCommonStockSharesOutstanding'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_EntityCommonStockSharesOutstanding' use='optional' order='7.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_EntityFilerCategory' xlink:label='dei_EntityFilerCategory'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_EntityFilerCategory' use='optional' order='8.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_EntityCurrentReportingStatus' xlink:label='dei_EntityCurrentReportingStatus'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_EntityCurrentReportingStatus' use='optional' order='9.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_EntityVoluntaryFilers' xlink:label='dei_EntityVoluntaryFilers'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_EntityVoluntaryFilers' use='optional' order='10.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_EntityWellKnownSeasonedIssuer' xlink:label='dei_EntityWellKnownSeasonedIssuer'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_EntityWellKnownSeasonedIssuer' use='optional' order='11.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_DocumentFiscalYearFocus' xlink:label='dei_DocumentFiscalYearFocus'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_DocumentFiscalYearFocus' use='optional' order='12.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd#dei_DocumentFiscalPeriodFocus' xlink:label='dei_DocumentFiscalPeriodFocus'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_DocumentAndEntityInformationAbstract' xlink:to='dei_DocumentFiscalPeriodFocus' use='optional' order='13.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCBalanceSheets" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_ENDURANCEEXPLORATIONGROUPLLCBalanceSheets"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCBalanceSheets">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_StatementOfFinancialPositionAbstract' xlink:label='us-gaap_StatementOfFinancialPositionAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AssetsAbstract' xlink:label='us-gaap_AssetsAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfFinancialPositionAbstract' xlink:to='us-gaap_AssetsAbstract' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AssetsCurrentAbstract' xlink:label='us-gaap_AssetsCurrentAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AssetsAbstract' xlink:to='us-gaap_AssetsCurrentAbstract' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_CashEquivalentsAtCarryingValue' xlink:label='us-gaap_CashEquivalentsAtCarryingValue'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AssetsCurrentAbstract' xlink:to='us-gaap_CashEquivalentsAtCarryingValue' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_LoansReceivableNet' xlink:label='us-gaap_LoansReceivableNet'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AssetsCurrentAbstract' xlink:to='us-gaap_LoansReceivableNet' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AssetsCurrent' xlink:label='us-gaap_AssetsCurrent'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AssetsCurrentAbstract' xlink:to='us-gaap_AssetsCurrent' use='optional' order='3.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PropertyPlantAndEquipmentAbstract' xlink:label='us-gaap_PropertyPlantAndEquipmentAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AssetsAbstract' xlink:to='us-gaap_PropertyPlantAndEquipmentAbstract' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='ttnc-20130930.xsd#fil_ShipAndImprovements' xlink:label='fil_ShipAndImprovements'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PropertyPlantAndEquipmentAbstract' xlink:to='fil_ShipAndImprovements' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_FixturesAndEquipmentGross' xlink:label='us-gaap_FixturesAndEquipmentGross'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PropertyPlantAndEquipmentAbstract' xlink:to='us-gaap_FixturesAndEquipmentGross' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PropertyPlantAndEquipmentGross' xlink:label='us-gaap_PropertyPlantAndEquipmentGross'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PropertyPlantAndEquipmentAbstract' xlink:to='us-gaap_PropertyPlantAndEquipmentGross' use='optional' order='3.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PropertyPlantAndEquipmentNet' xlink:label='us-gaap_PropertyPlantAndEquipmentNet'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PropertyPlantAndEquipmentAbstract' xlink:to='us-gaap_PropertyPlantAndEquipmentNet' use='optional' order='4.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment' xlink:label='us-gaap_AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PropertyPlantAndEquipmentAbstract' xlink:to='us-gaap_AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment' use='optional' order='5.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipmentExcludingCapitalLeasedAssets' xlink:label='us-gaap_AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipmentExcludingCapitalLeasedAssets'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PropertyPlantAndEquipmentAbstract' xlink:to='us-gaap_AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipmentExcludingCapitalLeasedAssets' use='optional' order='6.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_OtherAssets' xlink:label='us-gaap_OtherAssets'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PropertyPlantAndEquipmentAbstract' xlink:to='us-gaap_OtherAssets' use='optional' order='7.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_Assets' xlink:label='us-gaap_Assets'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AssetsAbstract' xlink:to='us-gaap_Assets' use='optional' order='3.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_LiabilitiesAndStockholdersEquityAbstract' xlink:label='us-gaap_LiabilitiesAndStockholdersEquityAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfFinancialPositionAbstract' xlink:to='us-gaap_LiabilitiesAndStockholdersEquityAbstract' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_LiabilitiesCurrentAbstract' xlink:label='us-gaap_LiabilitiesCurrentAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_LiabilitiesAndStockholdersEquityAbstract' xlink:to='us-gaap_LiabilitiesCurrentAbstract' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AccountsPayableAndAccruedLiabilitiesCurrent' xlink:label='us-gaap_AccountsPayableAndAccruedLiabilitiesCurrent'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_LiabilitiesCurrentAbstract' xlink:to='us-gaap_AccountsPayableAndAccruedLiabilitiesCurrent' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_NotesPayableRelatedPartiesCurrentAndNoncurrent' xlink:label='us-gaap_NotesPayableRelatedPartiesCurrentAndNoncurrent'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_LiabilitiesCurrentAbstract' xlink:to='us-gaap_NotesPayableRelatedPartiesCurrentAndNoncurrent' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_LiabilitiesCurrent' xlink:label='us-gaap_LiabilitiesCurrent'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_LiabilitiesCurrentAbstract' xlink:to='us-gaap_LiabilitiesCurrent' use='optional' order='3.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_Liabilities' xlink:label='us-gaap_Liabilities'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_LiabilitiesAndStockholdersEquityAbstract' xlink:to='us-gaap_Liabilities' use='optional' order='2.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_CommitmentsAndContingencies' xlink:label='us-gaap_CommitmentsAndContingencies'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_Liabilities' xlink:to='us-gaap_CommitmentsAndContingencies' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_StockholdersEquityAbstract' xlink:label='us-gaap_StockholdersEquityAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfFinancialPositionAbstract' xlink:to='us-gaap_StockholdersEquityAbstract' use='optional' order='3.0'/>
+		<link:loc xlink:type='locator' xlink:href='ttnc-20130930.xsd#fil_StockholdersDeficit' xlink:label='fil_StockholdersDeficit'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StockholdersEquityAbstract' xlink:to='fil_StockholdersDeficit' use='optional' order='1.0' preferredLabel='http://www.xbrl.org/2003/role/terseLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_DevelopmentStageEnterpriseDeficitAccumulatedDuringDevelopmentStage' xlink:label='us-gaap_DevelopmentStageEnterpriseDeficitAccumulatedDuringDevelopmentStage'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StockholdersEquityAbstract' xlink:to='us-gaap_DevelopmentStageEnterpriseDeficitAccumulatedDuringDevelopmentStage' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_StockholdersEquity' xlink:label='us-gaap_StockholdersEquity'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StockholdersEquityAbstract' xlink:to='us-gaap_StockholdersEquity' use='optional' order='3.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_LiabilitiesAndStockholdersEquity' xlink:label='us-gaap_LiabilitiesAndStockholdersEquity'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfFinancialPositionAbstract' xlink:to='us-gaap_LiabilitiesAndStockholdersEquity' use='optional' order='4.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfOperations" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfOperations"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfOperations">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncomeStatementAbstract' xlink:label='us-gaap_IncomeStatementAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_Revenues' xlink:label='us-gaap_Revenues'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_IncomeStatementAbstract' xlink:to='us-gaap_Revenues' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_OperatingExpensesAbstract' xlink:label='us-gaap_OperatingExpensesAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_IncomeStatementAbstract' xlink:to='us-gaap_OperatingExpensesAbstract' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_ResearchAndDevelopmentExpense' xlink:label='us-gaap_ResearchAndDevelopmentExpense'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_OperatingExpensesAbstract' xlink:to='us-gaap_ResearchAndDevelopmentExpense' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_MarketingExpense' xlink:label='us-gaap_MarketingExpense'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_OperatingExpensesAbstract' xlink:to='us-gaap_MarketingExpense' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_GeneralAndAdministrativeExpense' xlink:label='us-gaap_GeneralAndAdministrativeExpense'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_OperatingExpensesAbstract' xlink:to='us-gaap_GeneralAndAdministrativeExpense' use='optional' order='3.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_Depreciation' xlink:label='us-gaap_Depreciation'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_OperatingExpensesAbstract' xlink:to='us-gaap_Depreciation' use='optional' order='4.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_OperatingExpenses' xlink:label='us-gaap_OperatingExpenses'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_OperatingExpensesAbstract' xlink:to='us-gaap_OperatingExpenses' use='optional' order='5.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncomeLossFromContinuingOperations' xlink:label='us-gaap_IncomeLossFromContinuingOperations'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_IncomeStatementAbstract' xlink:to='us-gaap_IncomeLossFromContinuingOperations' use='optional' order='3.0'/>
+		<link:loc xlink:type='locator' xlink:href='ttnc-20130930.xsd#fil_NonOperatingActivityAbstract' xlink:label='fil_NonOperatingActivityAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_IncomeStatementAbstract' xlink:to='fil_NonOperatingActivityAbstract' use='optional' order='4.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_InterestExpense' xlink:label='us-gaap_InterestExpense'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_NonOperatingActivityAbstract' xlink:to='us-gaap_InterestExpense' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_NetIncomeLoss' xlink:label='us-gaap_NetIncomeLoss'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='fil_NonOperatingActivityAbstract' xlink:to='us-gaap_NetIncomeLoss' use='optional' order='2.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfCashFlows" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfCashFlows"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfCashFlows">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_StatementOfCashFlowsAbstract' xlink:label='us-gaap_StatementOfCashFlowsAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AdditionalCashFlowElementsOperatingActivitiesAbstract' xlink:label='us-gaap_AdditionalCashFlowElementsOperatingActivitiesAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_AdditionalCashFlowElementsOperatingActivitiesAbstract' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_NetIncomeLoss' xlink:label='us-gaap_NetIncomeLoss'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AdditionalCashFlowElementsOperatingActivitiesAbstract' xlink:to='us-gaap_NetIncomeLoss' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivitiesAbstract' xlink:label='us-gaap_AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivitiesAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivitiesAbstract' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_Depreciation' xlink:label='us-gaap_Depreciation'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivitiesAbstract' xlink:to='us-gaap_Depreciation' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncreaseDecreaseInOtherOperatingAssetsAndLiabilitiesNetAbstract' xlink:label='us-gaap_IncreaseDecreaseInOtherOperatingAssetsAndLiabilitiesNetAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_IncreaseDecreaseInOtherOperatingAssetsAndLiabilitiesNetAbstract' use='optional' order='3.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncreaseDecreaseInOtherCurrentAssets' xlink:label='us-gaap_IncreaseDecreaseInOtherCurrentAssets'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_IncreaseDecreaseInOtherOperatingAssetsAndLiabilitiesNetAbstract' xlink:to='us-gaap_IncreaseDecreaseInOtherCurrentAssets' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities' xlink:label='us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_IncreaseDecreaseInOtherOperatingAssetsAndLiabilitiesNetAbstract' xlink:to='us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_NetCashProvidedByUsedInOperatingActivities' xlink:label='us-gaap_NetCashProvidedByUsedInOperatingActivities'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_IncreaseDecreaseInOtherOperatingAssetsAndLiabilitiesNetAbstract' xlink:to='us-gaap_NetCashProvidedByUsedInOperatingActivities' use='optional' order='3.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AdditionalCashFlowElementsInvestingActivitiesAbstract' xlink:label='us-gaap_AdditionalCashFlowElementsInvestingActivitiesAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_AdditionalCashFlowElementsInvestingActivitiesAbstract' use='optional' order='4.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PropertyPlantAndEquipmentGrossPeriodIncreaseDecrease' xlink:label='us-gaap_PropertyPlantAndEquipmentGrossPeriodIncreaseDecrease'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AdditionalCashFlowElementsInvestingActivitiesAbstract' xlink:to='us-gaap_PropertyPlantAndEquipmentGrossPeriodIncreaseDecrease' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_NetCashProvidedByUsedInInvestingActivities' xlink:label='us-gaap_NetCashProvidedByUsedInInvestingActivities'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AdditionalCashFlowElementsInvestingActivitiesAbstract' xlink:to='us-gaap_NetCashProvidedByUsedInInvestingActivities' use='optional' order='2.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AdditionalCashFlowElementsFinancingActivitiesAbstract' xlink:label='us-gaap_AdditionalCashFlowElementsFinancingActivitiesAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_AdditionalCashFlowElementsFinancingActivitiesAbstract' use='optional' order='5.0'/>
+		<link:loc xlink:type='locator' xlink:href='ttnc-20130930.xsd#fil_MembersContributions' xlink:label='fil_MembersContributions'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AdditionalCashFlowElementsFinancingActivitiesAbstract' xlink:to='fil_MembersContributions' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncreaseDecreaseInNotesPayableRelatedParties' xlink:label='us-gaap_IncreaseDecreaseInNotesPayableRelatedParties'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AdditionalCashFlowElementsFinancingActivitiesAbstract' xlink:to='us-gaap_IncreaseDecreaseInNotesPayableRelatedParties' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_NetCashProvidedByUsedInFinancingActivities' xlink:label='us-gaap_NetCashProvidedByUsedInFinancingActivities'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_AdditionalCashFlowElementsFinancingActivitiesAbstract' xlink:to='us-gaap_NetCashProvidedByUsedInFinancingActivities' use='optional' order='3.0' preferredLabel='http://www.xbrl.org/2003/role/totalLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_CashPeriodIncreaseDecrease' xlink:label='us-gaap_CashPeriodIncreaseDecrease'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_CashPeriodIncreaseDecrease' use='optional' order='6.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_CashAndCashEquivalentsAtCarryingValue' xlink:label='us-gaap_CashAndCashEquivalentsAtCarryingValue'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_CashAndCashEquivalentsAtCarryingValue' use='optional' order='7.0' preferredLabel='http://www.xbrl.org/2003/role/periodStartLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_CashAndCashEquivalentsAtCarryingValue' xlink:label='us-gaap_CashAndCashEquivalentsAtCarryingValue_1'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_CashAndCashEquivalentsAtCarryingValue_1' use='optional' order='8.0' preferredLabel='http://www.xbrl.org/2003/role/periodEndLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_SupplementalCashFlowInformationAbstract' xlink:label='us-gaap_SupplementalCashFlowInformationAbstract'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfCashFlowsAbstract' xlink:to='us-gaap_SupplementalCashFlowInformationAbstract' use='optional' order='9.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_InterestPaid' xlink:label='us-gaap_InterestPaid'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_SupplementalCashFlowInformationAbstract' xlink:to='us-gaap_InterestPaid' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncomeTaxesPaid' xlink:label='us-gaap_IncomeTaxesPaid'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_SupplementalCashFlowInformationAbstract' xlink:to='us-gaap_IncomeTaxesPaid' use='optional' order='2.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_ConsolidatedStatementOfMembersCapital" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_ConsolidatedStatementOfMembersCapital"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_ConsolidatedStatementOfMembersCapital">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_StatementOfPartnersCapitalAbstract' xlink:label='us-gaap_StatementOfPartnersCapitalAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PartnersCapital' xlink:label='us-gaap_PartnersCapital'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfPartnersCapitalAbstract' xlink:to='us-gaap_PartnersCapital' use='optional' order='1.0' preferredLabel='http://www.xbrl.org/2003/role/periodStartLabel'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PartnersCapitalAccountContributions' xlink:label='us-gaap_PartnersCapitalAccountContributions'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfPartnersCapitalAbstract' xlink:to='us-gaap_PartnersCapitalAccountContributions' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_ProfitLoss' xlink:label='us-gaap_ProfitLoss'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfPartnersCapitalAbstract' xlink:to='us-gaap_ProfitLoss' use='optional' order='3.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PartnersCapital' xlink:label='us-gaap_PartnersCapital_1'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_StatementOfPartnersCapitalAbstract' xlink:to='us-gaap_PartnersCapital_1' use='optional' order='4.0' preferredLabel='http://www.xbrl.org/2003/role/periodEndLabel'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_DisclosureTextBlockAbstract' xlink:label='us-gaap_DisclosureTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_SignificantAccountingPoliciesTextBlock' xlink:label='us-gaap_SignificantAccountingPoliciesTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_DisclosureTextBlockAbstract' xlink:to='us-gaap_SignificantAccountingPoliciesTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteBGoingConcernMatters" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteBGoingConcernMatters"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteBGoingConcernMatters">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_DisclosureTextBlockAbstract' xlink:label='us-gaap_DisclosureTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_LiquidityDisclosureGoingConcernNote' xlink:label='us-gaap_LiquidityDisclosureGoingConcernNote'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_DisclosureTextBlockAbstract' xlink:to='us-gaap_LiquidityDisclosureGoingConcernNote' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactions" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactions"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactions">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_DisclosureTextBlockAbstract' xlink:label='us-gaap_DisclosureTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_RelatedPartyTransactionsDisclosureTextBlock' xlink:label='us-gaap_RelatedPartyTransactionsDisclosureTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_DisclosureTextBlockAbstract' xlink:to='us-gaap_RelatedPartyTransactionsDisclosureTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteDCommitments" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteDCommitments"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteDCommitments">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_DisclosureTextBlockAbstract' xlink:label='us-gaap_DisclosureTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_CommitmentsDisclosureTextBlock' xlink:label='us-gaap_CommitmentsDisclosureTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_DisclosureTextBlockAbstract' xlink:to='us-gaap_CommitmentsDisclosureTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxes" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteEIncomeTaxes"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxes">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_DisclosureTextBlockAbstract' xlink:label='us-gaap_DisclosureTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncomeTaxDisclosureTextBlock' xlink:label='us-gaap_IncomeTaxDisclosureTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_DisclosureTextBlockAbstract' xlink:to='us-gaap_IncomeTaxDisclosureTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteFSubsequentEvents" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteFSubsequentEvents"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteFSubsequentEvents">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_DisclosureTextBlockAbstract' xlink:label='us-gaap_DisclosureTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_SubsequentEventsTextBlock' xlink:label='us-gaap_SubsequentEventsTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_DisclosureTextBlockAbstract' xlink:to='us-gaap_SubsequentEventsTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesOrganizationPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesOrganizationPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesOrganizationPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsDisclosureTextBlock' xlink:label='us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsDisclosureTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsDisclosureTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesBasisOfPresentationPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesBasisOfPresentationPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesBasisOfPresentationPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_BasisOfAccountingPolicyPolicyTextBlock' xlink:label='us-gaap_BasisOfAccountingPolicyPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_BasisOfAccountingPolicyPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesSummaryOfSignificantAccountingPoliciesPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesSummaryOfSignificantAccountingPoliciesPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesSummaryOfSignificantAccountingPoliciesPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsDisclosureAndSignificantAccountingPoliciesTextBlock' xlink:label='us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsDisclosureAndSignificantAccountingPoliciesTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsDisclosureAndSignificantAccountingPoliciesTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesUseOfEstimatesPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesUseOfEstimatesPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesUseOfEstimatesPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_UseOfEstimates' xlink:label='us-gaap_UseOfEstimates'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_UseOfEstimates' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesRevenueRecognitionPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesRevenueRecognitionPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesRevenueRecognitionPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_RevenueRecognitionPolicyTextBlock' xlink:label='us-gaap_RevenueRecognitionPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_RevenueRecognitionPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesCashAndCashEquivalentsPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesCashAndCashEquivalentsPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesCashAndCashEquivalentsPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_CashAndCashEquivalentsPolicyTextBlock' xlink:label='us-gaap_CashAndCashEquivalentsPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_CashAndCashEquivalentsPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesInventoryPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesInventoryPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesInventoryPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_InventoryPolicyTextBlock' xlink:label='us-gaap_InventoryPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_InventoryPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesLongLivedAssetsPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesLongLivedAssetsPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesLongLivedAssetsPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_ImpairmentOrDisposalOfLongLivedAssetsPolicyTextBlock' xlink:label='us-gaap_ImpairmentOrDisposalOfLongLivedAssetsPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_ImpairmentOrDisposalOfLongLivedAssetsPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesPropertyAndEquipmentAndDepreciationPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesPropertyAndEquipmentAndDepreciationPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesPropertyAndEquipmentAndDepreciationPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PropertyPlantAndEquipmentPolicyTextBlock' xlink:label='us-gaap_PropertyPlantAndEquipmentPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_PropertyPlantAndEquipmentPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AdvertisingCostsPolicyTextBlock' xlink:label='us-gaap_AdvertisingCostsPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_AdvertisingCostsPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesIncomeTaxesPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesIncomeTaxesPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesIncomeTaxesPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncomeTaxPolicyTextBlock' xlink:label='us-gaap_IncomeTaxPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_IncomeTaxPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesFairValueOfFinancialInstrumentsPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesFairValueOfFinancialInstrumentsPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesFairValueOfFinancialInstrumentsPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_FairValueOfFinancialInstrumentsPolicy' xlink:label='us-gaap_FairValueOfFinancialInstrumentsPolicy'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_FairValueOfFinancialInstrumentsPolicy' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesNewAccountingPronouncementsPolicies" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesNewAccountingPronouncementsPolicies"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesNewAccountingPronouncementsPolicies">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_PolicyTextBlockAbstract' xlink:label='us-gaap_PolicyTextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_NewAccountingPronouncementsPolicyPolicyTextBlock' xlink:label='us-gaap_NewAccountingPronouncementsPolicyPolicyTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_PolicyTextBlockAbstract' xlink:to='us-gaap_NewAccountingPronouncementsPolicyPolicyTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitTables" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitTables"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitTables">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_TableTextBlockSupplementAbstract' xlink:label='us-gaap_TableTextBlockSupplementAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_ScheduleOfComponentsOfIncomeTaxExpenseBenefitTableTextBlock' xlink:label='us-gaap_ScheduleOfComponentsOfIncomeTaxExpenseBenefitTableTextBlock'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_TableTextBlockSupplementAbstract' xlink:to='us-gaap_ScheduleOfComponentsOfIncomeTaxExpenseBenefitTableTextBlock' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingDetails" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingDetails"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingDetails">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_TextBlockAbstract' xlink:label='us-gaap_TextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_AdvertisingExpense' xlink:label='us-gaap_AdvertisingExpense'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_TextBlockAbstract' xlink:to='us-gaap_AdvertisingExpense' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactionsDetails" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactionsDetails"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactionsDetails">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_TextBlockAbstract' xlink:label='us-gaap_TextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_DueToRelatedPartiesCurrent' xlink:label='us-gaap_DueToRelatedPartiesCurrent'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_TextBlockAbstract' xlink:to='us-gaap_DueToRelatedPartiesCurrent' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteDCommitmentsDetails" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteDCommitmentsDetails"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteDCommitmentsDetails">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_TextBlockAbstract' xlink:label='us-gaap_TextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_LeaseAndRentalExpense' xlink:label='us-gaap_LeaseAndRentalExpense'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_TextBlockAbstract' xlink:to='us-gaap_LeaseAndRentalExpense' use='optional' order='1.0'/>
+	</link:presentationLink>
+	<link:roleRef roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitDetails" xlink:type="simple" xlink:href="ttnc-20130930.xsd#idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitDetails"/>
+	<link:presentationLink xlink:type="extended" xlink:role="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitDetails">
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_TextBlockAbstract' xlink:label='us-gaap_TextBlockAbstract'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_IncomeTaxReconciliationIncomeTaxExpenseBenefitAtFederalStatutoryIncomeTaxRate' xlink:label='us-gaap_IncomeTaxReconciliationIncomeTaxExpenseBenefitAtFederalStatutoryIncomeTaxRate'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_TextBlockAbstract' xlink:to='us-gaap_IncomeTaxReconciliationIncomeTaxExpenseBenefitAtFederalStatutoryIncomeTaxRate' use='optional' order='1.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_StateAndLocalIncomeTaxExpenseBenefitContinuingOperations' xlink:label='us-gaap_StateAndLocalIncomeTaxExpenseBenefitContinuingOperations'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_TextBlockAbstract' xlink:to='us-gaap_StateAndLocalIncomeTaxExpenseBenefitContinuingOperations' use='optional' order='2.0'/>
+		<link:loc xlink:type='locator' xlink:href='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd#us-gaap_ValuationAllowanceDeferredTaxAssetChangeInAmount' xlink:label='us-gaap_ValuationAllowanceDeferredTaxAssetChangeInAmount'/>
+		<link:presentationArc xlink:type='arc' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='us-gaap_TextBlockAbstract' xlink:to='us-gaap_ValuationAllowanceDeferredTaxAssetChangeInAmount' use='optional' order='3.0'/>
+	</link:presentationLink>
+</link:linkbase>

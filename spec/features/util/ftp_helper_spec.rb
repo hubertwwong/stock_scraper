@@ -15,6 +15,20 @@ describe FTPHelper do
     end
   end
   
+  describe "download_dir" do
+    it "basic" do
+      url = "ftp.sec.gov"
+      source_dir = "/edgar/data/1392902/000151116413000584/"
+      dest_dir = "test_data/util/ftp_helper/download_dir/"
+      
+      f = FTPHelper.new(:url => url)
+      f.connect
+      f.download_dir(source_dir, dest_dir)
+      
+      expect(f.ftp.last_response_code).to eq("226")
+    end
+  end
+  
   describe "download_file" do
     it "basic" do
       url = "ftp.sec.gov"

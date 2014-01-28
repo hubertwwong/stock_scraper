@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FilingSummary xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Version>2.4.0.8</Version>
+  <ProcessingTime />
+  <ReportFormat>Html</ReportFormat>
+  <ContextCount>13</ContextCount>
+  <ElementCount>83</ElementCount>
+  <EntityCount>1</EntityCount>
+  <FootnotesReported>false</FootnotesReported>
+  <SegmentCount>0</SegmentCount>
+  <ScenarioCount>0</ScenarioCount>
+  <TuplesReported>false</TuplesReported>
+  <UnitCount>2</UnitCount>
+  <MyReports>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R1.htm</HtmlFileName>
+      <LongName>000010 - Document - Document and Entity Information</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DocumentDocumentAndEntityInformation</Role>
+      <ShortName>Document and Entity Information</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>true</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R2.htm</HtmlFileName>
+      <LongName>000020 - Statement - ENDURANCE EXPLORATION GROUP LLC- Balance Sheets</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCBalanceSheets</Role>
+      <ShortName>ENDURANCE EXPLORATION GROUP LLC- Balance Sheets</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R3.htm</HtmlFileName>
+      <LongName>000030 - Statement - ENDURANCE EXPLORATION GROUP LLC - Statements of Operations</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfOperations</Role>
+      <ShortName>ENDURANCE EXPLORATION GROUP LLC - Statements of Operations</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R4.htm</HtmlFileName>
+      <LongName>000040 - Statement - ENDURANCE EXPLORATION GROUP LLC - Statements of Cash Flows</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfCashFlows</Role>
+      <ShortName>ENDURANCE EXPLORATION GROUP LLC - Statements of Cash Flows</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R5.htm</HtmlFileName>
+      <LongName>000050 - Statement - Consolidated Statement of Members' Capital</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_ConsolidatedStatementOfMembersCapital</Role>
+      <ShortName>Consolidated Statement of Members' Capital</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R6.htm</HtmlFileName>
+      <LongName>000060 - Disclosure - Note A - Summary of Significant Accounting Policies</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R7.htm</HtmlFileName>
+      <LongName>000070 - Disclosure - Note B - Going Concern Matters</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteBGoingConcernMatters</Role>
+      <ShortName>Note B - Going Concern Matters</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R8.htm</HtmlFileName>
+      <LongName>000080 - Disclosure - Note C - Advances From Related Parties and Related Party Transactions</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactions</Role>
+      <ShortName>Note C - Advances From Related Parties and Related Party Transactions</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R9.htm</HtmlFileName>
+      <LongName>000090 - Disclosure - Note D - Commitments</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteDCommitments</Role>
+      <ShortName>Note D - Commitments</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R10.htm</HtmlFileName>
+      <LongName>000100 - Disclosure - Note E - Income Taxes</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxes</Role>
+      <ShortName>Note E - Income Taxes</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R11.htm</HtmlFileName>
+      <LongName>000110 - Disclosure - Note F - Subsequent Events</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteFSubsequentEvents</Role>
+      <ShortName>Note F - Subsequent Events</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R12.htm</HtmlFileName>
+      <LongName>000120 - Disclosure - Note A - Summary of Significant Accounting Policies: Organization (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesOrganizationPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Organization (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R13.htm</HtmlFileName>
+      <LongName>000130 - Disclosure - Note A - Summary of Significant Accounting Policies: Basis of Presentation (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesBasisOfPresentationPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Basis of Presentation (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R14.htm</HtmlFileName>
+      <LongName>000140 - Disclosure - Note A - Summary of Significant Accounting Policies: Summary of Significant Accounting Policies (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesSummaryOfSignificantAccountingPoliciesPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Summary of Significant Accounting Policies (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R15.htm</HtmlFileName>
+      <LongName>000150 - Disclosure - Note A - Summary of Significant Accounting Policies: Use of Estimates (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesUseOfEstimatesPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Use of Estimates (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R16.htm</HtmlFileName>
+      <LongName>000160 - Disclosure - Note A - Summary of Significant Accounting Policies: Revenue Recognition (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesRevenueRecognitionPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Revenue Recognition (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R17.htm</HtmlFileName>
+      <LongName>000170 - Disclosure - Note A - Summary of Significant Accounting Policies: Cash and Cash Equivalents (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesCashAndCashEquivalentsPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Cash and Cash Equivalents (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R18.htm</HtmlFileName>
+      <LongName>000180 - Disclosure - Note A - Summary of Significant Accounting Policies: Inventory (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesInventoryPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Inventory (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R19.htm</HtmlFileName>
+      <LongName>000190 - Disclosure - Note A - Summary of Significant Accounting Policies: Long-lived Assets (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesLongLivedAssetsPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Long-lived Assets (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R20.htm</HtmlFileName>
+      <LongName>000200 - Disclosure - Note A - Summary of Significant Accounting Policies: Property and Equipment and Depreciation (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesPropertyAndEquipmentAndDepreciationPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Property and Equipment and Depreciation (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R21.htm</HtmlFileName>
+      <LongName>000210 - Disclosure - Note A - Summary of Significant Accounting Policies: Advertising (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Advertising (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R22.htm</HtmlFileName>
+      <LongName>000220 - Disclosure - Note A - Summary of Significant Accounting Policies: Income Taxes (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesIncomeTaxesPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Income Taxes (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R23.htm</HtmlFileName>
+      <LongName>000230 - Disclosure - Note A - Summary of Significant Accounting Policies: Fair Value of Financial Instruments (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesFairValueOfFinancialInstrumentsPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Fair Value of Financial Instruments (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R24.htm</HtmlFileName>
+      <LongName>000240 - Disclosure - Note A - Summary of Significant Accounting Policies: New Accounting Pronouncements (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesNewAccountingPronouncementsPolicies</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: New Accounting Pronouncements (Policies)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R25.htm</HtmlFileName>
+      <LongName>000250 - Disclosure - Note E - Income Taxes: Schedule of Components of Income Tax Expense (Benefit) (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitTables</Role>
+      <ShortName>Note E - Income Taxes: Schedule of Components of Income Tax Expense (Benefit) (Tables)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R26.htm</HtmlFileName>
+      <LongName>000260 - Disclosure - Note A - Summary of Significant Accounting Policies: Advertising (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingDetails</Role>
+      <ShortName>Note A - Summary of Significant Accounting Policies: Advertising (Details)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R27.htm</HtmlFileName>
+      <LongName>000270 - Disclosure - Note C - Advances From Related Parties and Related Party Transactions (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactionsDetails</Role>
+      <ShortName>Note C - Advances From Related Parties and Related Party Transactions (Details)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R28.htm</HtmlFileName>
+      <LongName>000280 - Disclosure - Note D - Commitments (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteDCommitmentsDetails</Role>
+      <ShortName>Note D - Commitments (Details)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R29.htm</HtmlFileName>
+      <LongName>000290 - Disclosure - Note E - Income Taxes: Schedule of Components of Income Tax Expense (Benefit) (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitDetails</Role>
+      <ShortName>Note E - Income Taxes: Schedule of Components of Income Tax Expense (Benefit) (Details)</ShortName>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <LongName>All Reports</LongName>
+      <ReportType>Book</ReportType>
+      <ShortName>All Reports</ShortName>
+    </Report>
+  </MyReports>
+  <Logs>
+    <Log type="Info">Process Flow-Through: 000020 - Statement - ENDURANCE EXPLORATION GROUP LLC- Balance Sheets</Log>
+    <Log type="Info">Process Flow-Through: 000030 - Statement - ENDURANCE EXPLORATION GROUP LLC - Statements of Operations</Log>
+    <Log type="Info">Process Flow-Through: 000040 - Statement - ENDURANCE EXPLORATION GROUP LLC - Statements of Cash Flows</Log>
+    <Log type="Info">Process Flow-Through: 000050 - Statement - Consolidated Statement of Members' Capital</Log>
+  </Logs>
+  <InputFiles>
+    <File>ttnc-20130930.xml</File>
+    <File>ttnc-20130930.xsd</File>
+    <File>ttnc-20130930_cal.xml</File>
+    <File>ttnc-20130930_def.xml</File>
+    <File>ttnc-20130930_lab.xml</File>
+    <File>ttnc-20130930_pre.xml</File>
+  </InputFiles>
+  <SupplementalFiles />
+  <BaseTaxonomies />
+  <HasPresentationLinkbase>true</HasPresentationLinkbase>
+  <HasCalculationLinkbase>true</HasCalculationLinkbase>
+</FilingSummary>

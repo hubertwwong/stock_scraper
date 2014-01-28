@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<!-- Produced by EDGARsuite software, Advanced Computer Innovations, Inc., Copyright (C) 2008-2013 [PPXCRLSC4JD4]. www.edgarsuite.com -->
+<schema xmlns='http://www.w3.org/2001/XMLSchema' xmlns:us-gaap='http://fasb.org/us-gaap/2013-01-31' xmlns:fil='http://www.tectoncorp.com/20130930' xmlns:dei='http://xbrl.sec.gov/dei/2013-01-31' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' targetNamespace='http://www.tectoncorp.com/20130930' xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrli='http://www.xbrl.org/2003/instance' elementFormDefault='qualified' attributeFormDefault='unqualified'>
+	<annotation>
+		<appinfo>
+			<link:linkbaseRef xlink:type="simple" xlink:href="ttnc-20130930_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+			<link:linkbaseRef xlink:type="simple" xlink:href="ttnc-20130930_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+			<link:linkbaseRef xlink:type="simple" xlink:href="ttnc-20130930_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+			<link:linkbaseRef xlink:type="simple" xlink:href="ttnc-20130930_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesIncomeTaxesPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesIncomeTaxesPolicies">
+				<link:definition>000220 - Disclosure - Note A - Summary of Significant Accounting Policies: Income Taxes (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingDetails" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingDetails">
+				<link:definition>000260 - Disclosure - Note A - Summary of Significant Accounting Policies: Advertising (Details)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteFSubsequentEvents" id="idr_DisclosureNoteFSubsequentEvents">
+				<link:definition>000110 - Disclosure - Note F - Subsequent Events</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesUseOfEstimatesPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesUseOfEstimatesPolicies">
+				<link:definition>000150 - Disclosure - Note A - Summary of Significant Accounting Policies: Use of Estimates (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPolicies">
+				<link:definition>000060 - Disclosure - Note A - Summary of Significant Accounting Policies</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesSummaryOfSignificantAccountingPoliciesPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesSummaryOfSignificantAccountingPoliciesPolicies">
+				<link:definition>000140 - Disclosure - Note A - Summary of Significant Accounting Policies: Summary of Significant Accounting Policies (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfCashFlows" id="idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfCashFlows">
+				<link:definition>000040 - Statement - ENDURANCE EXPLORATION GROUP LLC - Statements of Cash Flows</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCBalanceSheets" id="idr_ENDURANCEEXPLORATIONGROUPLLCBalanceSheets">
+				<link:definition>000020 - Statement - ENDURANCE EXPLORATION GROUP LLC- Balance Sheets</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesOrganizationPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesOrganizationPolicies">
+				<link:definition>000120 - Disclosure - Note A - Summary of Significant Accounting Policies: Organization (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactionsDetails" id="idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactionsDetails">
+				<link:definition>000270 - Disclosure - Note C - Advances From Related Parties and Related Party Transactions (Details)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesCashAndCashEquivalentsPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesCashAndCashEquivalentsPolicies">
+				<link:definition>000170 - Disclosure - Note A - Summary of Significant Accounting Policies: Cash and Cash Equivalents (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesNewAccountingPronouncementsPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesNewAccountingPronouncementsPolicies">
+				<link:definition>000240 - Disclosure - Note A - Summary of Significant Accounting Policies: New Accounting Pronouncements (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteDCommitments" id="idr_DisclosureNoteDCommitments">
+				<link:definition>000090 - Disclosure - Note D - Commitments</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfOperations" id="idr_ENDURANCEEXPLORATIONGROUPLLCStatementsOfOperations">
+				<link:definition>000030 - Statement - ENDURANCE EXPLORATION GROUP LLC - Statements of Operations</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesBasisOfPresentationPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesBasisOfPresentationPolicies">
+				<link:definition>000130 - Disclosure - Note A - Summary of Significant Accounting Policies: Basis of Presentation (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesPropertyAndEquipmentAndDepreciationPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesPropertyAndEquipmentAndDepreciationPolicies">
+				<link:definition>000200 - Disclosure - Note A - Summary of Significant Accounting Policies: Property and Equipment and Depreciation (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactions" id="idr_DisclosureNoteCAdvancesFromRelatedPartiesAndRelatedPartyTransactions">
+				<link:definition>000080 - Disclosure - Note C - Advances From Related Parties and Related Party Transactions</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_ConsolidatedStatementOfMembersCapital" id="idr_ConsolidatedStatementOfMembersCapital">
+				<link:definition>000050 - Statement - Consolidated Statement of Members&apos; Capital</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesLongLivedAssetsPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesLongLivedAssetsPolicies">
+				<link:definition>000190 - Disclosure - Note A - Summary of Significant Accounting Policies: Long-lived Assets (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteDCommitmentsDetails" id="idr_DisclosureNoteDCommitmentsDetails">
+				<link:definition>000280 - Disclosure - Note D - Commitments (Details)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesRevenueRecognitionPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesRevenueRecognitionPolicies">
+				<link:definition>000160 - Disclosure - Note A - Summary of Significant Accounting Policies: Revenue Recognition (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DocumentDocumentAndEntityInformation" id="idr_DocumentDocumentAndEntityInformation">
+				<link:definition>000010 - Document - Document and Entity Information</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesFairValueOfFinancialInstrumentsPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesFairValueOfFinancialInstrumentsPolicies">
+				<link:definition>000230 - Disclosure - Note A - Summary of Significant Accounting Policies: Fair Value of Financial Instruments (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxes" id="idr_DisclosureNoteEIncomeTaxes">
+				<link:definition>000100 - Disclosure - Note E - Income Taxes</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitDetails" id="idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitDetails">
+				<link:definition>000290 - Disclosure - Note E - Income Taxes: Schedule of Components of Income Tax Expense (Benefit) (Details)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesAdvertisingPolicies">
+				<link:definition>000210 - Disclosure - Note A - Summary of Significant Accounting Policies: Advertising (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesInventoryPolicies" id="idr_DisclosureNoteASummaryOfSignificantAccountingPoliciesInventoryPolicies">
+				<link:definition>000180 - Disclosure - Note A - Summary of Significant Accounting Policies: Inventory (Policies)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteBGoingConcernMatters" id="idr_DisclosureNoteBGoingConcernMatters">
+				<link:definition>000070 - Disclosure - Note B - Going Concern Matters</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.tectoncorp.com/20130930/role/idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitTables" id="idr_DisclosureNoteEIncomeTaxesScheduleOfComponentsOfIncomeTaxExpenseBenefitTables">
+				<link:definition>000250 - Disclosure - Note E - Income Taxes: Schedule of Components of Income Tax Expense (Benefit) (Tables)</link:definition>
+				<link:usedOn>link:presentationLink</link:usedOn>
+				<link:usedOn>link:definitionLink</link:usedOn>
+				<link:usedOn>link:calculationLink</link:usedOn>
+			</link:roleType>
+		</appinfo>
+	</annotation>
+	<import schemaLocation='http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd' namespace='http://www.xbrl.org/2003/instance'/>
+	<import schemaLocation='http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd' namespace='http://www.xbrl.org/dtr/type/numeric'/>
+	<import schemaLocation='http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd' namespace='http://www.xbrl.org/dtr/type/non-numeric'/>
+	<import schemaLocation='http://www.xbrl.org/2005/xbrldt-2005.xsd' namespace='http://xbrl.org/2005/xbrldt'/>
+	<import namespace='http://fasb.org/us-gaap/2013-01-31' schemaLocation='http://xbrl.fasb.org/us-gaap/2013/elts/us-gaap-2013-01-31.xsd' />
+	<import namespace='http://xbrl.sec.gov/dei/2013-01-31' schemaLocation='http://xbrl.sec.gov/dei/2013/dei-2013-01-31.xsd' />
+	<element nillable='true' type='xbrli:monetaryItemType' substitutionGroup='xbrli:item' xbrli:periodType='instant' xbrli:balance='debit' id='fil_ShipAndImprovements' name='ShipAndImprovements' />
+	<element abstract='true' nillable='true' type='xbrli:stringItemType' substitutionGroup='xbrli:item' xbrli:periodType='duration' id='fil_NonOperatingActivityAbstract' name='NonOperatingActivityAbstract' />
+	<element abstract='true' nillable='true' type='xbrli:stringItemType' substitutionGroup='xbrli:item' xbrli:periodType='duration' id='fil_DocumentAndEntityInformationAbstract' name='DocumentAndEntityInformationAbstract' />
+	<element nillable='true' type='xbrli:monetaryItemType' substitutionGroup='xbrli:item' xbrli:periodType='duration' xbrli:balance='debit' id='fil_MembersContributions' name='MembersContributions' />
+	<element nillable='true' type='xbrli:monetaryItemType' substitutionGroup='xbrli:item' xbrli:periodType='instant' xbrli:balance='credit' id='fil_StockholdersDeficit' name='StockholdersDeficit' />
+</schema>

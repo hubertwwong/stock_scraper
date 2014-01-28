@@ -12,7 +12,119 @@ saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/amex.csv
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 .*/home/user/zzz/vmsync/data/.stock_scraper/edgar/monthly/
 F*************...*saved... csv/stock_quotes/GS.csv
-...F.F...****sequel_helper init params
+...F.>super8ktectondjh2.htm<
+fetching /edgar/data/1392902/000151116413000584/super8ktectondjh2.htm
+>ttnc-20130930_pre.xml<
+fetching /edgar/data/1392902/000151116413000584/ttnc-20130930_pre.xml
+>ttnc-20130930.xml<
+fetching /edgar/data/1392902/000151116413000584/ttnc-20130930.xml
+>ttnc-20130930.xsd<
+fetching /edgar/data/1392902/000151116413000584/ttnc-20130930.xsd
+>ttnc-20130930_cal.xml<
+fetching /edgar/data/1392902/000151116413000584/ttnc-20130930_cal.xml
+>ttnc-20130930_def.xml<
+fetching /edgar/data/1392902/000151116413000584/ttnc-20130930_def.xml
+>ttnc-20130930_lab.xml<
+fetching /edgar/data/1392902/000151116413000584/ttnc-20130930_lab.xml
+>super8ktectondjh2009.gif<
+fetching /edgar/data/1392902/000151116413000584/super8ktectondjh2009.gif
+>exhibit21.htm<
+fetching /edgar/data/1392902/000151116413000584/exhibit21.htm
+>exhibit35.htm<
+fetching /edgar/data/1392902/000151116413000584/exhibit35.htm
+>exhibit1013.htm<
+fetching /edgar/data/1392902/000151116413000584/exhibit1013.htm
+>exhibit21002.gif<
+fetching /edgar/data/1392902/000151116413000584/exhibit21002.gif
+>super8ktectondjh2001.jpg<
+fetching /edgar/data/1392902/000151116413000584/super8ktectondjh2001.jpg
+>super8ktectondjh2002.jpg<
+fetching /edgar/data/1392902/000151116413000584/super8ktectondjh2002.jpg
+>super8ktectondjh2003.jpg<
+fetching /edgar/data/1392902/000151116413000584/super8ktectondjh2003.jpg
+>super8ktectondjh2004.jpg<
+fetching /edgar/data/1392902/000151116413000584/super8ktectondjh2004.jpg
+>super8ktectondjh2005.jpg<
+fetching /edgar/data/1392902/000151116413000584/super8ktectondjh2005.jpg
+>super8ktectondjh2007.gif<
+fetching /edgar/data/1392902/000151116413000584/super8ktectondjh2007.gif
+>R17.htm<
+fetching /edgar/data/1392902/000151116413000584/R17.htm
+>Financial_Report.xlsx<
+fetching /edgar/data/1392902/000151116413000584/Financial_Report.xlsx
+>R4.htm<
+fetching /edgar/data/1392902/000151116413000584/R4.htm
+>R10.htm<
+fetching /edgar/data/1392902/000151116413000584/R10.htm
+>Show.js<
+fetching /edgar/data/1392902/000151116413000584/Show.js
+>R24.htm<
+fetching /edgar/data/1392902/000151116413000584/R24.htm
+>R18.htm<
+fetching /edgar/data/1392902/000151116413000584/R18.htm
+>R27.htm<
+fetching /edgar/data/1392902/000151116413000584/R27.htm
+>R26.htm<
+fetching /edgar/data/1392902/000151116413000584/R26.htm
+>R25.htm<
+fetching /edgar/data/1392902/000151116413000584/R25.htm
+>R6.htm<
+fetching /edgar/data/1392902/000151116413000584/R6.htm
+>R8.htm<
+fetching /edgar/data/1392902/000151116413000584/R8.htm
+>R11.htm<
+fetching /edgar/data/1392902/000151116413000584/R11.htm
+>R9.htm<
+fetching /edgar/data/1392902/000151116413000584/R9.htm
+>R28.htm<
+fetching /edgar/data/1392902/000151116413000584/R28.htm
+>Financial_Report.xls<
+fetching /edgar/data/1392902/000151116413000584/Financial_Report.xls
+>FilingSummary.xml<
+fetching /edgar/data/1392902/000151116413000584/FilingSummary.xml
+>R3.htm<
+fetching /edgar/data/1392902/000151116413000584/R3.htm
+>R14.htm<
+fetching /edgar/data/1392902/000151116413000584/R14.htm
+>R5.htm<
+fetching /edgar/data/1392902/000151116413000584/R5.htm
+>R2.htm<
+fetching /edgar/data/1392902/000151116413000584/R2.htm
+>R29.htm<
+fetching /edgar/data/1392902/000151116413000584/R29.htm
+>R23.htm<
+fetching /edgar/data/1392902/000151116413000584/R23.htm
+>R13.htm<
+fetching /edgar/data/1392902/000151116413000584/R13.htm
+>R16.htm<
+fetching /edgar/data/1392902/000151116413000584/R16.htm
+>R12.htm<
+fetching /edgar/data/1392902/000151116413000584/R12.htm
+>R7.htm<
+fetching /edgar/data/1392902/000151116413000584/R7.htm
+>report.css<
+fetching /edgar/data/1392902/000151116413000584/report.css
+>R19.htm<
+fetching /edgar/data/1392902/000151116413000584/R19.htm
+>R15.htm<
+fetching /edgar/data/1392902/000151116413000584/R15.htm
+>R22.htm<
+fetching /edgar/data/1392902/000151116413000584/R22.htm
+>R20.htm<
+fetching /edgar/data/1392902/000151116413000584/R20.htm
+>0001511164-13-000584-xbrl.zip<
+fetching /edgar/data/1392902/000151116413000584/0001511164-13-000584-xbrl.zip
+>R1.htm<
+fetching /edgar/data/1392902/000151116413000584/R1.htm
+>R21.htm<
+fetching /edgar/data/1392902/000151116413000584/R21.htm
+>0001511164-13-000584.txt<
+fetching /edgar/data/1392902/000151116413000584/0001511164-13-000584.txt
+>0001511164-13-000584-index.htm<
+fetching /edgar/data/1392902/000151116413000584/0001511164-13-000584-index.htm
+>0001511164-13-000584.hdr.sgml<
+fetching /edgar/data/1392902/000151116413000584/0001511164-13-000584.hdr.sgml
+.....****sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 ........................*......**{"foo"=>123, "bar"=>345, "cur_pos"=>123}
 .
@@ -99,7 +211,7 @@ Failures:
   1) ParseXBRLKeys main fetch_all should return true
      Failure/Error: expect(f.fetch_all).to eq(true)
      NoMethodError:
-       undefined method `fetch_all' for #<ParseXBRLKeys:0x9eeb778>
+       undefined method `fetch_all' for #<ParseXBRLKeys:0xa46e920>
      # ./spec/features/main/parse_xbrl_keys_spec.rb:11:in `block (4 levels) in <top (required)>'
 
   2) FileWrapperUtil mv basic
@@ -109,20 +221,10 @@ Failures:
      # ./src/util/file_wrapper_util.rb:13:in `mv'
      # ./spec/features/util/file_wrapper_util_spec.rb:25:in `block (3 levels) in <top (required)>'
 
-  3) FTPHelper download_file basic
-     Failure/Error: expect(f.ftp.last_response_code).to eq("200")
-       
-       expected: "200"
-            got: "226"
-       
-       (compared using ==)
-     # ./spec/features/util/ftp_helper_spec.rb:28:in `block (3 levels) in <top (required)>'
-
-Finished in 23.48 seconds
-73 examples, 3 failures, 25 pending
+Finished in 1 minute 6.67 seconds
+74 examples, 2 failures, 25 pending
 
 Failed examples:
 
 rspec ./spec/features/main/parse_xbrl_keys_spec.rb:8 # ParseXBRLKeys main fetch_all should return true
 rspec ./spec/features/util/file_wrapper_util_spec.rb:21 # FileWrapperUtil mv basic
-rspec ./spec/features/util/ftp_helper_spec.rb:19 # FTPHelper download_file basic

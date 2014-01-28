@@ -1,6 +1,8 @@
 require 'net/ftp'
 require 'pathname'
 
+require_relative 'file_wrapper_util'
+
 # provides a few convience methods...
 # the big thing being a method to queue up a ton of files
 # to download.
@@ -44,7 +46,27 @@ class FTPHelper
   
   # downloads all files in a single directory.
   def download_dir(src_dir, dest_dir)
+    # normalize dir path.
+    pn = Pathname.new(src_dir)
+    final_src_dir = pn.split[0].to_s + "/" + pn.split[1].to_s
+    pn = Pathname.new(dest_dir)
+    final_dest_dir = pn.split[0].to_s + "/" + pn.split[1].to_s
     
+    # create the dest directory if it doest not exist.
+    FileWrapperUtil.mkdir_p(final_dest_dir)
+    
+    # change dir...
+    @ftp.chdir(src_dir)
+    
+    # grab a list of files.
+    # and download each file.
+    @ftp.nlst.each do |f|
+      puts ">" + f + "<"
+      ftp_file = final_src_dir + "/" + f
+      
+      puts "fetching " + ftp_file
+      self.download_file(ftp_file, final_dest_dir)
+    end
   end
   
   # assumes binary file download...
@@ -70,6 +92,10 @@ class FTPHelper
     #puts final_dest_path
     #puts ">>>> final_dest_path"
     
+    # create the dest directory if it doest not exist.
+    FileWrapperUtil.mkdir_p(final_dest_dir)
+    
+    # grab the file.
     @ftp.getbinaryfile(src_path, final_dest_path)
   end
   
