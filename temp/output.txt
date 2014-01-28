@@ -10,8 +10,9 @@ saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/amex.csv
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 .sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
-.*F*************...*saved... csv/stock_quotes/GS.csv
-.......****sequel_helper init params
+.*/home/user/zzz/vmsync/data/.stock_scraper/edgar/monthly/
+F*************...*saved... csv/stock_quotes/GS.csv
+...F.F...****sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
 ........................*......**{"foo"=>123, "bar"=>345, "cur_pos"=>123}
 .
@@ -96,18 +97,32 @@ Pending:
 Failures:
 
   1) ParseXBRLKeys main fetch_all should return true
-     Failure/Error: f = ParseXBRLKeys.new
-     TypeError:
-       no implicit conversion of nil into String
-     # ./src/util/yaml_util.rb:6:in `read'
-     # ./src/main/parse_xbrl_keys.rb:21:in `init_yaml'
-     # ./src/main/parse_xbrl_keys.rb:9:in `initialize'
-     # ./spec/features/main/parse_xbrl_keys_spec.rb:9:in `new'
-     # ./spec/features/main/parse_xbrl_keys_spec.rb:9:in `block (4 levels) in <top (required)>'
+     Failure/Error: expect(f.fetch_all).to eq(true)
+     NoMethodError:
+       undefined method `fetch_all' for #<ParseXBRLKeys:0x9eeb778>
+     # ./spec/features/main/parse_xbrl_keys_spec.rb:11:in `block (4 levels) in <top (required)>'
 
-Finished in 39.43 seconds
-71 examples, 1 failure, 25 pending
+  2) FileWrapperUtil mv basic
+     Failure/Error: FileWrapperUtil.mv(src, dest)
+     Errno::EACCES:
+       Permission denied @ dir_s_mkdir - /test_data
+     # ./src/util/file_wrapper_util.rb:13:in `mv'
+     # ./spec/features/util/file_wrapper_util_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+  3) FTPHelper download_file basic
+     Failure/Error: expect(f.ftp.last_response_code).to eq("200")
+       
+       expected: "200"
+            got: "226"
+       
+       (compared using ==)
+     # ./spec/features/util/ftp_helper_spec.rb:28:in `block (3 levels) in <top (required)>'
+
+Finished in 23.48 seconds
+73 examples, 3 failures, 25 pending
 
 Failed examples:
 
 rspec ./spec/features/main/parse_xbrl_keys_spec.rb:8 # ParseXBRLKeys main fetch_all should return true
+rspec ./spec/features/util/file_wrapper_util_spec.rb:21 # FileWrapperUtil mv basic
+rspec ./spec/features/util/ftp_helper_spec.rb:19 # FTPHelper download_file basic

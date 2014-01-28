@@ -1,4 +1,5 @@
 require 'net/ftp'
+require 'pathname'
 
 # provides a few convience methods...
 # the big thing being a method to queue up a ton of files
@@ -49,10 +50,27 @@ class FTPHelper
   # assumes binary file download...
   # should work on test files.
   # also...
-  # src_file is the full download path on the ftp site
+  # src_path is the full download path on the ftp site
   # dest_dir is the destination on the hard drive where you want to save.
-  def download_file(src_file, dest_dir)
-    @ftp.getbinaryfile(src_file, dest_dir)
+  # - note that ftp lib needs the file name
+  # - so this little helper will grab that file name from the src_path.
+  # - and appending it the download file.
+  def download_file(src_path, dest_dir)
+    pn = Pathname.new(src_path)
+    filename = pn.split[1].to_s
+    
+    #puts ">>>> final_dest_path"
+    
+    # normalize dest path name.
+    # so you don't have to worry as much.
+    pn = Pathname.new(dest_dir)
+    final_dest_dir = pn.split[0].to_s + "/" + pn.split[1].to_s
+    #puts ">>>> " + final_dest_dir.to_s
+    final_dest_path = final_dest_dir + "/" + filename
+    #puts final_dest_path
+    #puts ">>>> final_dest_path"
+    
+    @ftp.getbinaryfile(src_path, final_dest_path)
   end
   
   def disconnect

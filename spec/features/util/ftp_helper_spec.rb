@@ -19,13 +19,13 @@ describe FTPHelper do
     it "basic" do
       url = "ftp.sec.gov"
       source_file = "/edgar/data/1392902/000151116413000584/0001511164-13-000584-xbrl.zip"
-      dest_dir = "test_data/util/ftp_helper/fo.zip"
+      dest_dir = "test_data/util/ftp_helper/"
       
       f = FTPHelper.new(:url => url)
       f.connect
       f.download_file(source_file, dest_dir)
       
-      expect(f.ftp.status).to eq("200")
+      expect(f.ftp.last_response_code).to eq("226")
     end
   end
   
