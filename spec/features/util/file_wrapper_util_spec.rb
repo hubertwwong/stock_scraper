@@ -19,7 +19,7 @@ describe FileWrapperUtil do
     end
     
     it 'basic' do
-      base_dir = "test_data/util/file_wrapper_util/"
+      base_dir = "/test_data/util/file_wrapper_util/"
       src = base_dir + "foo.txt"
       dest = base_dir + "bar/bar.txt"
       FileWrapperUtil.mv(src, dest)
