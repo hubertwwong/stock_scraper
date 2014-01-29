@@ -6,7 +6,7 @@ require_relative '../../../src/util/ftp_helper'
 describe FTPHelper do
   
   describe "connect" do
-    it "basic" do
+    xit "basic" do
       url = "ftp.sec.gov"
       f = FTPHelper.new(:url => url)
       f.connect
@@ -16,7 +16,7 @@ describe FTPHelper do
   end
   
   describe "download_all" do
-    it "basic" do
+    xit "basic" do
       url = "ftp.sec.gov"
       files_and_dir = ["/edgar/data/1392902/000151116413000584/", 
                        "/edgar/data/1564618/000119312514012157/0001193125-14-012157-xbrl.zip"]
@@ -44,7 +44,7 @@ describe FTPHelper do
       expect(f.ftp.last_response_code).to eq("227")
     end
     
-    it "bad dir" do
+    xit "bad dir" do
       url = "ftp.sec.gov"
       source_dir = "/edgar/data/1392902/0001511164130005841111111/"
       dest_dir = "test_data/util/ftp_helper/download_dir/"

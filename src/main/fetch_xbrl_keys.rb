@@ -2,6 +2,8 @@ require 'net/ftp'
 
 require_relative '../util/yaml_util'
 require_relative '../util/file_wrapper_util'
+require_relative '../util/ftp_helper'
+
 
 # fetching xml files containing the all xbrl locations.
 # probably will have another file to parse it and fetch it.
@@ -25,7 +27,7 @@ class FetchXBRLKeys
   end
 
   def init_dir
-    @dir_name = @dir_prefs['xbrl_keys']
+    @dir_name = @dir_prefs['sec_edgar_ftp']
     puts @dir_name
   end  
   
@@ -40,38 +42,17 @@ class FetchXBRLKeys
   ############################################################################
   
   def fetch_all
-    puts "fetching xbrl key files"
-    puts @dir_name
+    #puts ">>SEC>>>"
+    #puts @sec_xbrl_keys_dir
+    #puts @dir_name
+    #puts ">>SEC>>>"
     
-    ftp = Net::FTP.new(@sec_base_url)
-    ftp.passive = true
-    #puts "1." + ftp.last_response.to_s
-    ftp.login
-    #puts "2." + ftp.last_response.to_s
-    #files = ftp.list
-    ftp.chdir(@sec_xbrl_keys_dir)
-    #puts "3." + ftp.last_response.to_s
-    #files = ftp.ls
-    #ftp.getbinaryfile('nif.rb-0.91.gz', 'nif.gz', 1024)
-    
-    # create a directory if needed.
-    # so things... this is broken....
-    FileWrapperUtil.mkdir_p(@dir_name)
-    
-    # grab the files...
-    ftp.nlst.each do |f|
-      puts ">" + f + "<"
-      ftp_file = "/" + @sec_xbrl_keys_dir + f
-      local_file = @dir_name + f
-      ftp.gettextfile(f, local_file)
-    end
-    
-    #puts files
-    
-    # close ftp conneciton.
-    ftp.close
-    
-    return false
+    f = FTPHelper.new(:url => @sec_base_url)
+    f.connect
+    f.download_all([@sec_xbrl_keys_dir], @dir_name)
+    f.disconnect
+      
+    return true
   end
   
 end

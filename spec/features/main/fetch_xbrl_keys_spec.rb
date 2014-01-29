@@ -5,7 +5,7 @@ describe FetchXBRLKeys do
   
   describe 'main' do
     describe "fetch_all" do
-      xit "should return true" do
+      it "should return true" do
         f = FetchXBRLKeys.new
         
         expect(f.fetch_all).to eq(true)
