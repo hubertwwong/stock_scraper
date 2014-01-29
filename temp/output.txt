@@ -186,10 +186,10 @@ Pending:
     # ./spec/features/util/csv_util_spec.rb:37
   FTPHelper download_dir basic
     # Temporarily disabled with xit
-    # ./spec/features/util/ftp_helper_spec.rb:34
+    # ./spec/features/util/ftp_helper_spec.rb:35
   FTPHelper download_file basic
     # Temporarily disabled with xit
-    # ./spec/features/util/ftp_helper_spec.rb:60
+    # ./spec/features/util/ftp_helper_spec.rb:61
   ScrapeUtil has_content_and? links on the bottom of page should return true
     # Temporarily disabled with xit
     # ./spec/features/util/scrape_util_spec.rb:15
@@ -217,7 +217,7 @@ Failures:
   1) ParseXBRLKeys main fetch_all should return true
      Failure/Error: expect(f.fetch_all).to eq(true)
      NoMethodError:
-       undefined method `fetch_all' for #<ParseXBRLKeys:0xa5308b8>
+       undefined method `fetch_all' for #<ParseXBRLKeys:0xae8b048>
      # ./spec/features/main/parse_xbrl_keys_spec.rb:11:in `block (4 levels) in <top (required)>'
 
   2) FileWrapperUtil mv basic
@@ -234,9 +234,9 @@ Failures:
             got: "226"
        
        (compared using ==)
-     # ./spec/features/util/ftp_helper_spec.rb:29:in `block (3 levels) in <top (required)>'
+     # ./spec/features/util/ftp_helper_spec.rb:30:in `block (3 levels) in <top (required)>'
 
-Finished in 1 minute 5.78 seconds
+Finished in 2 minutes 59.5 seconds
 76 examples, 3 failures, 27 pending
 
 Failed examples:

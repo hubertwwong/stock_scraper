@@ -35,7 +35,7 @@ class FTPHelper
   
   # the main method.
   #
-  # lists_of files_
+  # array_of_file_and_dir
   # an array of strings. the strings can either be a directory or files.
   # basically what you are dowloading...
   # 
@@ -43,7 +43,11 @@ class FTPHelper
   # local directory that files will be downloaded to.
   # will append the path of the ftp file to the end of the dest_dir so
   # you basically can have a mirror copy of ftp directory.
-  def download_all(array_of_file_and_dir, dest_dir)
+  # 
+  # delay
+  # - time between each item. add one if you want to not spam the server.
+  # - define in seconds.
+  def download_all(array_of_file_and_dir, dest_dir, delay=0)
     if array_of_file_and_dir == nil
       return nil
     else
@@ -73,6 +77,9 @@ class FTPHelper
           # since its a file, parse out the filename in the second param.
           self.download_file(file_or_dir, final_dest_dir + final_src_dir)
         end
+        
+        # delay
+        sleep delay
       end
     end
   end

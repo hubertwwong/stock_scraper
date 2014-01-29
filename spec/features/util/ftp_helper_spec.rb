@@ -21,10 +21,11 @@ describe FTPHelper do
       files_and_dir = ["/edgar/data/1392902/000151116413000584/", 
                        "/edgar/data/1564618/000119312514012157/0001193125-14-012157-xbrl.zip"]
       dest_dir = "test_data/util/ftp_helper/download_dir/"
+      delay = 10 # in seconds
       
       f = FTPHelper.new(:url => url)
       f.connect
-      f.download_all(files_and_dir, dest_dir)
+      f.download_all(files_and_dir, dest_dir, delay)
       
       expect(f.ftp.last_response_code).to eq("200")
     end
