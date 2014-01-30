@@ -48,6 +48,8 @@ class FTPHelper
   # - time between each item. add one if you want to not spam the server.
   # - define in seconds.
   def download_all(array_of_file_and_dir, dest_dir, delay=0)
+    index = 0
+    
     if array_of_file_and_dir == nil
       return nil
     else
@@ -77,6 +79,10 @@ class FTPHelper
           # since its a file, parse out the filename in the second param.
           self.download_file(file_or_dir, final_dest_dir + final_src_dir)
         end
+        
+        # some output
+        puts "finished downloading " + final_src_dir.to_s + " " + index.to_s + " of " + array_of_file_and_dir.length.to_s 
+        index+=1
         
         # delay
         sleep delay
@@ -108,10 +114,10 @@ class FTPHelper
       # grab a list of files.
       # and download each file.
       @ftp.nlst.each do |f|
-        puts ">" + f + "<"
+        #puts ">" + f + "<"
         ftp_file = final_src_dir + "/" + f
         
-        puts "fetching " + ftp_file
+        #puts "fetching " + ftp_file
         self.download_file(ftp_file, final_dest_dir)
       end
     rescue

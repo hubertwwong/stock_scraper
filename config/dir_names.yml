@@ -2,3 +2,4 @@
 stock_symbols: /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/
 stock_quotes: /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/
 sec_edgar_ftp: /home/user/zzz/vmsync/data/.stock_scraper/sec_edgar_ftp/
+sec_edgar_ftp_xbrl_keys: /home/user/zzz/vmsync/data/.stock_scraper/sec_edgar_ftp/edgar/monthly/
