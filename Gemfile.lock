@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/jnicklas/capybara.git
-  revision: 743a117241e29958abfa05c5c024cd798d62fdc6
+  revision: d53b4a4df4456715dcc095e31357f0da53657045
   specs:
     capybara (2.2.0)
       mime-types (>= 1.16)
@@ -68,6 +68,7 @@ DEPENDENCIES
   logger
   mechanize
   mysql2
+  nokogiri
   rspec
   sequel
   sequel_helper!

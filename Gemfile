@@ -5,7 +5,12 @@ gem 'capybara', :git => 'https://github.com/jnicklas/capybara.git'
 #gem 'selenium-webdriver'
 #gem 'capybara-webkit'
 #gem 'headless'
+
+# for website fetching
 gem 'mechanize'
+
+# for xml processing
+gem 'nokogiri'
 
 #gem 'launchy'
 #gem 'debugger'
