@@ -1,3 +1,5 @@
+require 'yaml'
+
 # some simple yaml functions to help out.
 class YamlUtil
   

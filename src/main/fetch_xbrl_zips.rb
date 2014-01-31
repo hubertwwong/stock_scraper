@@ -19,12 +19,10 @@ class FetchXBRLZips
   end
   
   def init_yaml
-    @db_filename = 'config/database.yml'
     @dir_filename = 'config/dir_names.yml'
     @sec_filename = 'config/sec_urls.yml'
     
     # load the yaml file.
-    @db_prefs = YamlUtil.read(@db_filename)
     @dir_prefs = YamlUtil.read(@dir_filename)
     @sec_prefs = YamlUtil.read(@sec_filename)
   end
@@ -56,7 +54,7 @@ class FetchXBRLZips
     
     f = FTPHelper.new(:url => @sec_base_url)
     f.connect
-    f.download_all(array_of_xbrl_paths, @edgar_dir_name, 10)
+    f.download_all(array_of_xbrl_paths, @edgar_dir_name, 60)
     f.disconnect
       
     return true
