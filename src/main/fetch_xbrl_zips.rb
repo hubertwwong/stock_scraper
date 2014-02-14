@@ -43,6 +43,8 @@ class FetchXBRLZips
   # main
   ############################################################################
   
+  # note to self...
+  # move the delay setting to a yaml file to be consistent.
   def fetch_all_zips
     #puts ">>SEC>>>"
     #puts @sec_xbrl_keys_dir
@@ -54,7 +56,7 @@ class FetchXBRLZips
     
     f = FTPHelper.new(:url => @sec_base_url)
     f.connect
-    f.download_all(array_of_xbrl_paths, @edgar_dir_name, 60)
+    f.download_all(array_of_xbrl_paths, @edgar_dir_name, 30)
     f.disconnect
       
     return true
