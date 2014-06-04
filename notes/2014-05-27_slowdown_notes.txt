@@ -1,0 +1,1897 @@
+figureing out why the insert csv was so slow...
+
+import. basically at the start of it.
+cloning.. just the temp table. this should be quick
+load data.. looad into the csv table....
+insert select???..... what was this? update the values of the big table... lets say there is a split or something...
+update existing... update back into table..
+think i'm doing too much....
+
+
+have some basic things
+- cloning table is bad.....
+- cloning a huge table...
+- insert select is long...
+-
+
+========================================
+
+>> IMPORT CSV PARAMS
+2014-05-25 00:33:37 -0700
+
+>> CLONING TABLE stock_quotes t stock_quotestemp
+2014-05-25 01:26:20 -0700
+
+>> LOADA BLANK.... BUG..
+
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"}
+2014-05-25 02:18:00 -0700
+
+>> UPDATE EXISTING
+2014-05-25 03:25:24 -0700
+
+========================================
+
+>> IMPORT CSV PARAMS
+2014-05-25 03:25:24 -0700
+
+>> CLONING TABLE stock_quotes t stock_quotestemp
+2014-05-25 03:25:24 -0700
+
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"}
+2014-05-25 03:27:03 -0700
+
+>> UPDATE EXISTING
+2014-05-25 03:29:04 -0700
+
+
+========================================
+
+>> IMPORT CSV PARAMS
+2014-05-25 10:25:33 -0700
+
+>> CLONING TABLE stock_quotes t stock_quotestemp
+2014-05-25 03:29:04 -0700
+
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"}
+2014-05-25 05:30:08 -0700
+
+>> UPDATE EXISTING
+2014-05-25 08:02:08 -0700
+
+
+
+
+
+
+===============================================================
+
+
+
+
+
+
+
+>> IMPORT CSV PARAMS 2014-05-25 00:33:37 -0700
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 01:26:20 -0700
+>> LOAD DATA
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 02:18:00 -0700
+
+>> IMPORT CSV PARAMS 2014-05-25
+03:25:24 -0700
+>> CLONING TABLE stock_quotes t stock_quotestemp
+2014-05-25 03:25:24 -0700
+>> LOAD DATA
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"}
+2014-05-25 03:27:03 -0700
+>> UPDATE EXISTING
+2014-05-25 03:29:04 -0700
+>> DROPPING TEMP TABLE
+2014-05-25 03:29:04 -0700
+
+
+*****
+check this one...
+*****
+
+>> IMPORT CSV PARAMS
+2014-05-25 03:29:04 -0700
+>> CLONING TABLE stock_quotes t stock_quotestemp
+2014-05-25 03:29:04 -0700
+>> LOAD DATA
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"}
+2014-05-25 05:30:08 -0700  (2 hours....)
+>> UPDATE EXISTING
+2014-05-25 08:02:08 -0700  (3 hours....)
+>> DROPPING TEMP TABLE
+2014-05-25 08:02:10 -0700
+
+========================================================================================
+
+
+>>> on sym 3
+>> save to db 49129 49129.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/49129.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='49129'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 08:02:11 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/49129.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='49129'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T08:02:11.152970 #5895] DEBUG -- : (0.024573s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T08:02:11.349925 #5895] DEBUG -- : (0.176007s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 08:02:11 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/49129.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='49129';]
+D, [2014-05-25T08:02:11.608152 #5895] DEBUG -- : (0.129424s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/49129.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='49129';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T09:05:53.141235 #5895] DEBUG -- : (3820.471973s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 09:05:53 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T10:25:33.692761 #5895] DEBUG -- : (4780.192765s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 10:25:33 -0700
+D, [2014-05-25T10:25:33.713111 #5895] DEBUG -- : (0.020151s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 10:25:33 -0700
+On 48775
+>>> on sym 4
+>> save to db 48775 48775.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48775.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48775'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 10:25:33 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48775.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48775'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T10:25:33.737370 #5895] DEBUG -- : (0.000344s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T10:25:33.796305 #5895] DEBUG -- : (0.058581s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 10:25:33 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48775.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48775';]
+D, [2014-05-25T10:25:33.943784 #5895] DEBUG -- : (0.024266s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48775.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48775';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T10:26:14.898190 #5895] DEBUG -- : (40.949555s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 10:26:14 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T10:27:05.293734 #5895] DEBUG -- : (50.066787s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 10:27:05 -0700
+D, [2014-05-25T10:27:05.304049 #5895] DEBUG -- : (0.009670s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 10:27:05 -0700
+On 47791
+>>> on sym 5
+>> save to db 47791 47791.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/47791.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='47791'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 10:27:05 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/47791.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='47791'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T10:27:05.320460 #5895] DEBUG -- : (0.000348s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T10:27:05.399943 #5895] DEBUG -- : (0.079167s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 10:27:05 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/47791.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='47791';]
+D, [2014-05-25T10:27:05.549148 #5895] DEBUG -- : (0.099937s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/47791.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='47791';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T11:04:35.172019 #5895] DEBUG -- : (2249.622502s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 11:04:35 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T11:51:29.044523 #5895] DEBUG -- : (2813.277854s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 11:51:29 -0700
+D, [2014-05-25T11:51:29.085705 #5895] DEBUG -- : (0.040779s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 11:51:29 -0700
+On 44369
+>>> on sym 6
+>> save to db 44369 44369.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/44369.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='44369'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 11:51:29 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/44369.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='44369'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T11:51:29.189699 #5895] DEBUG -- : (0.000521s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T11:51:29.244872 #5895] DEBUG -- : (0.054808s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 11:51:29 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/44369.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='44369';]
+D, [2014-05-25T11:51:29.279293 #5895] DEBUG -- : (0.033663s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/44369.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='44369';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T11:56:15.044851 #5895] DEBUG -- : (285.716451s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 11:56:15 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T12:02:11.466838 #5895] DEBUG -- : (356.326729s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 12:02:11 -0700
+D, [2014-05-25T12:02:11.494350 #5895] DEBUG -- : (0.027281s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 12:02:11 -0700
+On 42770
+>>> on sym 7
+>> save to db 42770 42770.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/42770.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='42770'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 12:02:11 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/42770.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='42770'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T12:02:11.495200 #5895] DEBUG -- : (0.000155s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T12:02:11.564432 #5895] DEBUG -- : (0.069001s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 12:02:11 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/42770.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='42770';]
+D, [2014-05-25T12:02:11.725550 #5895] DEBUG -- : (0.160362s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/42770.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='42770';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T12:06:43.705138 #5895] DEBUG -- : (271.953932s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 12:06:43 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T13:41:17.116357 #5895] DEBUG -- : (5673.249830s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 13:41:17 -0700
+D, [2014-05-25T13:41:17.138641 #5895] DEBUG -- : (0.022099s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 13:41:17 -0700
+On 48394
+>>> on sym 8
+>> save to db 48394 48394.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48394.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48394'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 13:41:17 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48394.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48394'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T13:41:17.155395 #5895] DEBUG -- : (0.000160s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T13:41:17.208056 #5895] DEBUG -- : (0.052557s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 13:41:17 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48394.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48394';]
+D, [2014-05-25T13:41:17.411962 #5895] DEBUG -- : (0.203647s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48394.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48394';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T15:08:50.089285 #5895] DEBUG -- : (5252.585939s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 15:08:50 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T16:58:16.722087 #5895] DEBUG -- : (6566.506478s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 16:58:16 -0700
+D, [2014-05-25T16:58:16.752042 #5895] DEBUG -- : (0.012343s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 16:58:16 -0700
+On 48562
+>>> on sym 9
+>> save to db 48562 48562.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48562.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48562'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 16:58:16 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48562.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48562'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T16:58:16.754211 #5895] DEBUG -- : (0.000478s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T16:58:16.816924 #5895] DEBUG -- : (0.062370s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 16:58:16 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48562.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48562';]
+D, [2014-05-25T16:58:16.978593 #5895] DEBUG -- : (0.138678s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48562.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48562';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T17:37:27.501842 #5895] DEBUG -- : (2350.522115s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 17:37:27 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T18:26:24.896261 #5895] DEBUG -- : (2937.329767s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 18:26:24 -0700
+D, [2014-05-25T18:26:24.923548 #5895] DEBUG -- : (0.027039s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 18:26:24 -0700
+On 50074
+>>> on sym 10
+>> save to db 50074 50074.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/50074.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='50074'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 18:26:24 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/50074.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='50074'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T18:26:24.937805 #5895] DEBUG -- : (0.000419s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T18:26:25.033121 #5895] DEBUG -- : (0.094880s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 18:26:25 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/50074.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='50074';]
+D, [2014-05-25T18:26:25.073628 #5895] DEBUG -- : (0.016673s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/50074.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='50074';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T18:26:52.131392 #5895] DEBUG -- : (27.056626s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 18:26:52 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T18:27:26.035758 #5895] DEBUG -- : (33.845458s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 18:27:26 -0700
+D, [2014-05-25T18:27:26.051198 #5895] DEBUG -- : (0.015155s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 18:27:26 -0700
+On 48147
+>>> on sym 11
+>> save to db 48147 48147.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48147.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48147'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 18:27:26 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48147.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48147'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T18:27:26.065890 #5895] DEBUG -- : (0.000404s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T18:27:26.175415 #5895] DEBUG -- : (0.082928s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 18:27:26 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48147.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48147';]
+D, [2014-05-25T18:27:26.359862 #5895] DEBUG -- : (0.183546s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48147.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48147';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T20:00:37.915247 #5895] DEBUG -- : (5591.554330s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 20:00:37 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T21:57:20.628619 #5895] DEBUG -- : (7002.556093s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 21:57:20 -0700
+D, [2014-05-25T21:57:20.647911 #5895] DEBUG -- : (0.018736s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 21:57:20 -0700
+On 48789
+>>> on sym 12
+>> save to db 48789 48789.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48789.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48789'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 21:57:20 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48789.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='48789'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T21:57:20.671987 #5895] DEBUG -- : (0.000462s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T21:57:20.789420 #5895] DEBUG -- : (0.117154s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 21:57:20 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48789.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48789';]
+D, [2014-05-25T21:57:20.903546 #5895] DEBUG -- : (0.091320s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/48789.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='48789';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-25T22:46:09.838183 #5895] DEBUG -- : (2928.934248s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-25 22:46:09 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-25T23:47:06.834491 #5895] DEBUG -- : (3656.963628s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-25 23:47:06 -0700
+D, [2014-05-25T23:47:06.867040 #5895] DEBUG -- : (0.031989s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-25 23:47:06 -0700
+On 46523
+>>> on sym 13
+>> save to db 46523 46523.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/46523.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='46523'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-25 23:47:06 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/46523.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='46523'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-25T23:47:06.884052 #5895] DEBUG -- : (0.000618s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-25T23:47:06.952808 #5895] DEBUG -- : (0.065710s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-25 23:47:06 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/46523.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='46523';]
+D, [2014-05-25T23:47:07.084934 #5895] DEBUG -- : (0.131253s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/46523.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='46523';
+>> LOAD DATA
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;]
+INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+D, [2014-05-26T00:01:14.533846 #5895] DEBUG -- : (847.421743s) INSERT INTO stock_quotes (price_date, open, high, low, close, volume, adj_close, stock_symbol_id) SELECT t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL;
+>> INSERT SELECT {:table_name=>"stock_quotes", :into_flag=>true, :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :select_stmt=>"t.price_date, t.open, t.high, t.low, t.close, t.volume, t.adj_close, t.stock_symbol_id FROM stock_quotestemp t LEFT JOIN stock_quotes o ON o.price_date=t.price_date AND o.stock_symbol_id=t.stock_symbol_id WHERE o.price_date IS NULL AND o.stock_symbol_id IS NULL"} 2014-05-26 00:01:14 -0700
+array length8
+1st<<<<<<<<<<<<<<<<1
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+open
+>>>>>>>>>>>>>>>>
+3+8
+2++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+high
+>>>>>>>>>>>>>>>>
+3+8
+3++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+low
+>>>>>>>>>>>>>>>>
+3+8
+4++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+close
+>>>>>>>>>>>>>>>>
+3+8
+5++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+volume
+>>>>>>>>>>>>>>>>
+3+8
+6++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+adj_close
+>>>>>>>>>>>>>>>>
+3+8
+7++2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+8
+2nd<<<<<<<<<<<<<<<<
+["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+8
+8++2
+array length2
+1st<<<<<<<<<<<<<<<<1
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+1st<<<<<<<<<<<<<<<<2
+["price_date", "stock_symbol_id"]
+price_date
+>>>>>>>>>>>>>>>>
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+first
+2+2
+2nd<<<<<<<<<<<<<<<<
+["price_date", "stock_symbol_id"]
+stock_symbol_id
+>>>>>>>>>>>>>>>>
+3+2
+2++2
+>> gen_str [UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;]
+D, [2014-05-26T00:18:58.111931 #5895] DEBUG -- : (1063.481838s) UPDATE stock_quotestemp t LEFT JOIN stock_quotes o ON t.price_date=o.price_date AND t.stock_symbol_id=o.stock_symbol_id SET o.price_date=t.price_date, o.open=t.open, o.high=t.high, o.low=t.low, o.close=t.close, o.volume=t.volume, o.adj_close=t.adj_close, o.stock_symbol_id=t.stock_symbol_id;
+>> UPDATE EXISTING 2014-05-26 00:18:58 -0700
+D, [2014-05-26T00:18:58.126318 #5895] DEBUG -- : (0.014208s) DROP TABLE IF EXISTS `stock_quotestemp`
+>> DROPPING TEMP TABLE 2014-05-26 00:18:58 -0700
+On 45737
+>>> on sym 14
+>> save to db 45737 45737.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/45737.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='45737'"], :table_name=>"stock_quotestemp"}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS 2014-05-26 00:18:58 -0700
+csvp {:filename=>"/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/45737.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='45737'"], :table_name=>"stock_quotestemp"}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-05-26T00:18:58.157959 #5895] DEBUG -- : (0.000450s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-05-26T00:18:58.221750 #5895] DEBUG -- : (0.063499s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp 2014-05-26 00:18:58 -0700
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/45737.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='45737';]
+D, [2014-05-26T00:18:58.290652 #5895] DEBUG -- : (0.067665s) LOAD DATA INFILE '/home/user/zzz/vmsync/data/.stock_scraper/csv/stock_quotes/45737.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='45737';

@@ -11,18 +11,18 @@ require 'rspec'
 
 # for screenshots if you need them.
 #Capybara.save_and_open_page_path = File.dirname(__FILE__) + '/../snapshots'
- 
+
 # RSpec configuration
 RSpec.configure do |config|
-  
+
   config.before(:all) do
     # Create fixtures
   end
-  
+
   config.after(:all) do
     # Destroy fixtures
   end
-  
+
   # this loads all of the specs..
   config.around(:each) do |example|
     begin
@@ -32,4 +32,5 @@ RSpec.configure do |config|
       raise ex
     end
   end
+
 end
