@@ -1,0 +1,163 @@
+*nyse
+saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/nyse.csv
+nasdaq
+saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/nasdaq.csv
+amex
+saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/amex.csv
+.****sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
+.sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
+.sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
+.*
+.****sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
+aaaaa
+/home/user/Dropbox/code/main/ruby/stock_scraper
+/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/
+>> save to db GS` GS_initial.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS_initial.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='GS`'"]}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS
+csvp {:filename=>"/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS_initial.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='GS`'"]}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+D, [2014-06-07T20:16:33.834429 #12174] DEBUG -- : (0.000478s) SET @@wait_timeout = 2147483
+D, [2014-06-07T20:16:33.835031 #12174] DEBUG -- : (0.000245s) SET SQL_AUTO_IS_NULL=0
+D, [2014-06-07T20:16:33.881172 #12174] DEBUG -- : (0.045616s) DROP TABLE IF EXISTS `stock_quotestemp`
+D, [2014-06-07T20:16:33.980471 #12174] DEBUG -- : (0.098599s) CREATE TABLE stock_quotestemp LIKE stock_quotes;
+>> CLONING TABLE stock_quotes t stock_quotestemp
+SKIPLINENUM 1 true
+>> gen_str [LOAD DATA INFILE '/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS_initial.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='GS`';]
+E, [2014-06-07T20:16:33.986393 #12174] ERROR -- : Mysql2::Error: Can't get stat of '/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS_initial.csv' (Errcode: 13): LOAD DATA INFILE '/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS_initial.csv' INTO TABLE stock_quotestemp FIELDS TERMINATED BY ',' LINES TERMINATED BY '
+' IGNORE 1 LINES (price_date, open, high, low, close, volume, adj_close) SET stock_symbol_id='GS`';
+F*********..*..*saved... csv/stock_quotes/GS.csv
+...F*****...****sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock4_development"}
+................................*{"foo"=>123, "bar"=>345, "cur_pos"=>123}
+.*
+
+Pending:
+  DBStockSymbols main split_symbols basic
+    # Temporarily skipped with xit
+    # ./spec/features/main/db_stock_symbols_spec.rb:8
+  FetchXBRLKeys main fetch_all should return true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_xbrl_keys_spec.rb:8
+  FetchXBRLZips main fetch_all should return true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_xbrl_zips_spec.rb:8
+  FetchXBRLZips main fetch_all should return true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_xbrl_zips_spec.rb:16
+  FetchYahooQuotes main fetch_all should return true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:8
+  FetchYahooQuotes test hello returns true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:51
+  SaveStockSymbols main save_all_to_db basic
+    # Temporarily skipped with xit
+    # ./spec/features/main/save_stock_symbols_spec.rb:8
+  SaveStockSymbols main save_to_db basic
+    # Temporarily skipped with xit
+    # ./spec/features/main/save_stock_symbols_spec.rb:17
+  SaveYahooQuotes main save_all_to_db basic
+    # Temporarily skipped with xit
+    # ./spec/features/main/save_yahoo_quotes_spec.rb:8
+  SaveYahooQuotes main save_to_db AAPL
+    # Temporarily skipped with xit
+    # ./spec/features/main/save_yahoo_quotes_spec.rb:17
+  ScrapeNasdaqSymbols scrape_to_csv returns true
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:12
+  ScrapeNasdaqSymbols test hello returns true
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_nasdaq_symbols_spec.rb:20
+  ScrapeWikiSP500 test hello returns true
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_wiki_sp500_spec.rb:12
+  ScrapeWikiSP500 main visit_and_parse should be true
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_wiki_sp500_spec.rb:24
+  ScrapeYahooPrices test hello returns true
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:12
+  ScrapeYahooPrices main visit_and_get_csv should contain GS
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:24
+  ScrapeYahooPrices main save_to_db should contain GS
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:35
+  ScrapeYahooPrices main csv_to_db should contain GS
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:48
+  ScrapeYahooPrices util create_url should contain GS
+    # Temporarily skipped with xit
+    # ./spec/features/main/scrape_yahoo_prices_spec.rb:61
+  CsvUtil test hello return true
+    # Temporarily skipped with xit
+    # ./spec/features/util/csv_util_spec.rb:9
+  CsvUtil fetch_csv_from_url basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/csv_util_spec.rb:37
+  FTPHelper connect basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:9
+  FTPHelper download_all basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:19
+  FTPHelper download_dir basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:35
+  FTPHelper download_dir bad dir
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:47
+  FTPHelper download_file basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:61
+  ScrapeUtil has_content_and? links on the bottom of page should return true
+    # Temporarily skipped with xit
+    # ./spec/features/util/scrape_util_spec.rb:15
+  ScrapeUtil has_content_and? gibberish should return false
+    # Temporarily skipped with xit
+    # ./spec/features/util/scrape_util_spec.rb:24
+  ScrapeUtil has_content_or? link on the bottom should be true
+    # Temporarily skipped with xit
+    # ./spec/features/util/scrape_util_spec.rb:35
+  ScrapeUtil has_content_or? gibberish should be false
+    # Temporarily skipped with xit
+    # ./spec/features/util/scrape_util_spec.rb:45
+  YamlUtil main write cur_pos updates
+    # Temporarily skipped with xit
+    # ./spec/features/util/yaml_util_spec.rb:19
+  YamlUtil exp multiple yml files
+    # Temporarily skipped with xit
+    # ./spec/features/util/yaml_util_spec.rb:44
+
+Failures:
+
+  1) SaveYahooQuotes main2 save_to_db GS1
+     Failure/Error: result = s.save_to_db(sym, filename, base_dir)
+     Sequel::DatabaseError:
+       Mysql2::Error: Can't get stat of '/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS_initial.csv' (Errcode: 13)
+     # ./src/main/save_yahoo_quotes.rb:118:in `save_to_db'
+     # ./spec/features/main/save_yahoo_quotes_spec.rb:42:in `block (4 levels) in <top (required)>'
+     # ./spec/spec_helper.rb:29:in `block (2 levels) in <top (required)>'
+
+  2) FileWrapperUtil mv basic
+     Failure/Error: FileWrapperUtil.mv(src, dest)
+     Errno::EACCES:
+       Permission denied @ dir_s_mkdir - /test_data
+     # ./src/util/file_wrapper_util.rb:13:in `mv'
+     # ./spec/features/util/file_wrapper_util_spec.rb:25:in `block (3 levels) in <top (required)>'
+     # ./spec/spec_helper.rb:29:in `block (2 levels) in <top (required)>'
+
+Finished in 1 minute 2.3 seconds (files took 3.98 seconds to load)
+82 examples, 2 failures, 32 pending
+
+Failed examples:
+
+rspec ./spec/features/main/save_yahoo_quotes_spec.rb:31 # SaveYahooQuotes main2 save_to_db GS1
+rspec ./spec/features/util/file_wrapper_util_spec.rb:21 # FileWrapperUtil mv basic
