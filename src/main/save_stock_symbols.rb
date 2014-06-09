@@ -5,6 +5,7 @@ require_relative '../util/csv_util'
 require_relative '../util/valid_util'
 require_relative '../util/hash_util'
 require_relative '../util/sequel_helper_factory'
+require_relative 'yaml_config_loader'
 
 class SaveStockSymbols
   
@@ -25,10 +26,13 @@ class SaveStockSymbols
   def init_yaml
     @db_filename = 'config/database.yml'
     @dir_filename = 'config/dir_names.yml'
-    
+    @ycl = YAMLConfigLoader.new
+      
     # load the yaml file.
-    @db_prefs = YamlUtil.read(@db_filename)
-    @dir_prefs = YamlUtil.read(@dir_filename)
+    #@db_prefs = YamlUtil.read(@db_filename)
+    #@dir_prefs = YamlUtil.read(@dir_filename)
+    @db_prefs = @ycl.db_prefs
+    @dir_prefs = @ycl.dir_prefs
   end
 
   def init_db

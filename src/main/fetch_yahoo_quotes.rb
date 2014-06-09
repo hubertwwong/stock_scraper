@@ -4,6 +4,7 @@ require_relative '../util/csv_util'
 require_relative '../util/valid_util'
 require_relative '../util/hash_util'
 require_relative '../util/str_util'
+require_relative 'yaml_config_loader'
 
 # splitting the csv feting from the csv import.
 # this class will just be for the fetching.
@@ -20,16 +21,13 @@ class FetchYahooQuotes
   end
   
   def init_yaml
-    @browser_filename = 'config/browser.yml'
-    @db_filename = 'config/database.yml'
-    @dir_filename = 'config/dir_names.yml'
-    @scraper_filename = 'config/yahoo_progress.yml'
-    
+    @ycl = YAMLConfigLoader.new
+      
     # load the yaml file.
-    @browser_prefs = YamlUtil.read(@browser_filename)
-    @db_prefs = YamlUtil.read(@db_filename)
-    @dir_prefs = YamlUtil.read(@dir_filename)
-    @scraper_prefs = YamlUtil.read(@scraper_filename)
+    @browser_prefs = @ycl.browser_prefs
+    @db_prefs = @ycl.db_prefs
+    @dir_prefs = @ycl.dir_prefs
+    @scraper_prefs = @ycl.scraper_prefs  
   end
 
   def init_browser

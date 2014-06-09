@@ -4,6 +4,7 @@ require 'open-uri'
 
 require_relative '../util/yaml_util'
 require_relative '../util/file_wrapper_util'
+require_relative 'yaml_config_loader'
 
 class ParseXBRLKeys
 
@@ -15,10 +16,13 @@ def initialize(params = {})
   def init_yaml
     @db_filename = 'config/database.yml'
     @dir_filename = 'config/dir_names.yml'
-    
+    @ycl = YAMLConfigLoader.new
+      
     # load the yaml file.
-    @db_prefs = YamlUtil.read(@db_filename)
-    @dir_prefs = YamlUtil.read(@dir_filename)
+    #@db_prefs = YamlUtil.read(@db_filename)
+    #@dir_prefs = YamlUtil.read(@dir_filename)
+    @db_prefs = @ycl.db_prefs
+    @dir_prefs = @ycl.dir_prefs
   end
 
   def init_dir

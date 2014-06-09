@@ -5,6 +5,7 @@ require_relative '../util/csv_util'
 #require_relative '../util/sequel_helper'
 require_relative '../util/valid_util'
 require_relative '../util/hash_util'
+require_relative 'yaml_config_loader'
 
 class FetchStockSymbols
   
@@ -22,14 +23,12 @@ class FetchStockSymbols
   end
   
   def init_yaml
-    @browser_filename = 'config/browser.yml'
-    @db_filename = 'config/database.yml'
-    @dir_filename = 'config/dir_names.yml'
-    
+    @ycl = YAMLConfigLoader.new
+      
     # load the yaml file.
-    @browser_prefs = YamlUtil.read(@browser_filename)
-    @db_prefs = YamlUtil.read(@db_filename)
-    @dir_prefs = YamlUtil.read(@dir_filename)
+    @browser_prefs = @ycl.dir_prefs
+    @db_prefs = @ycl.db_prefs
+    @dir_prefs = @ycl.dir_prefs  
   end
 
   def init_browser

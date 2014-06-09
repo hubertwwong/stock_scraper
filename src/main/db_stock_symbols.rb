@@ -6,30 +6,32 @@ require_relative '../util/valid_util'
 require_relative '../util/hash_util'
 require_relative '../util/str_util'
 require_relative '../util/sequel_helper_factory'
+require_relative 'yaml_config_loader'
 
 # db operations involving stock symbol table....
 class DBStockSymbols
-  
-  attr_accessor :db_user, 
-                :db_password, 
-                :db_name, 
-                :db_table_name, 
-                :dir_name, 
+
+  attr_accessor :db_user,
+                :db_password,
+                :db_name,
+                :db_table_name,
+                :dir_name,
                 :csv_col_def
-  
+
   def initialize(params = {})
     self.init_yaml
     self.init_db
     self.init_dir
   end
-  
+
   def init_yaml
-    @db_filename = 'config/database.yml'
-    @dir_filename = 'config/dir_names.yml'
-    
+    @ycl = YAMLConfigLoader.new
+    #@db_filename = 'config/database.yml'
+    #@@dir_filename = 'config/dir_names.yml'
+
     # load the yaml file.
-    @db_prefs = YamlUtil.read(@db_filename)
-    @dir_prefs = YamlUtil.read(@dir_filename)
+    @db_prefs = @ycl.db_prefs
+    @dir_prefs = @ycl.dir_prefs
   end
 
   def init_db
@@ -42,10 +44,10 @@ class DBStockSymbols
   def init_dir
     @dir_name = @dir_prefs['stock_symbols']
   end
-  
+
   # main
   ############################################################################
-  
+
   # import csv will just dump into the db...
   # the issue being that there are some weird characters are present.
   # so you are going to get stuff like "brk^a"
@@ -64,7 +66,7 @@ class DBStockSymbols
       #puts row[:symbol]
       sym_array = StrUtil.str_to_array row[:symbol]
       puts sym_array
-      
+
       # if the array is nil just move on.
       # you hit an error...
       if sym_array == nil
@@ -76,14 +78,14 @@ class DBStockSymbols
         update_ds.update
       elsif sym_array.length == 2
         update_ds = @sequel_helper.client["UPDATE " + @db_table_name_stock_symbols + " SET symbol = ?, sub_symbol_1 = ? WHERE id = ?", sym_array[0], sym_array[1], row[:id]]
-        update_ds.update  
+        update_ds.update
       elsif sym_array.length == 3
         update_ds = @sequel_helper.client["UPDATE " + @db_table_name_stock_symbols + " SET symbol = ?, sub_symbol_1 = ?, sub_symbol_2 = ? WHERE id = ?", sym_array[0], sym_array[1], sym_array[2], row[:id]]
         update_ds.update
       end
     end
-    
+
     return true
   end
-  
+
 end
