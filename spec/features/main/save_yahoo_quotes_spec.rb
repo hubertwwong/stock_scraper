@@ -31,15 +31,15 @@ describe SaveYahooQuotes do
       it "GS1" do
         s = SaveYahooQuotes.new
         base_dir = Dir.pwd + "/test_data/main/stock_quotes/"
-        sym = "GS`"
-        filename = "GS_initial.csv"
+        sym = "GS"
+        fname = "GS.csv"
 
         puts "aaaaa"
         puts Dir.pwd
         puts base_dir
-
-
-        result = s.save_to_db(sym, filename, base_dir)
+        puts sym + " " + base_dir + " " + fname
+          
+        result = s.save_to_db(sym, fname, base_dir)
         expect(result).to eq(true)
       end
     end

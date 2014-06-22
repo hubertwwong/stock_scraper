@@ -23,7 +23,12 @@ gem 'sequel'
 gem 'logger'
 
 # guard. trying it again.. automated testing.
+# does not work..
 gem 'guard-rspec'
+
+# using a rake file.
+# instead of rb or bash files. probably a better idea.
+gem 'rake'
 
 # my gems.. mostly helper functions
 #gem 'mysql2_helper', :git => "git://github.com/hubertwwong/mysql2_helper.git"

@@ -1,4 +1,15 @@
-task :default => 'temp:foo'
+#require 'rspec/core/rake_task'
+
+
+
+# change this for default task when you run bundle exec rake
+task :default => ['test:main']
+
+# change this for task when you run run bundle exec rake all
+# broken
+#task :all => ['temp:foo']
+
+
 
 namespace :run do
 
@@ -55,6 +66,42 @@ namespace :run do
 
 end
 
+
+
+# runs rake something...
+#
+# put in a env variable to control what db its hits.
+namespace :test do
+
+  task :main do
+    # set the env variable.
+    # for now, its just a db switch statement.
+    # for the name of the db to access.
+    ENV['STOCK_SCRAPER_ENV'] = "test"
+    puts ENV['STOCK_SCRAPER_ENV']
+    
+    # runs rspec. need to fix this at some point to use the db.
+    system "rspec"
+    #puts "done"
+  end
+
+end
+
+# stuck onn this...
+# probably a better way
+#
+#desc "Run the specs."
+#RSpec::Core::RakeTask.new(:spec)
+#RSpec::Core::RakeTask.new do |t|
+#  t.pattern = "spec/**/*_spec.rb"
+#end
+#
+# URLS
+# http://stackoverflow.com/questions/15168086/how-to-create-an-rspec-rake-task-using-rspeccoreraketask
+# https://www.relishapp.com/rspec/rspec-core/docs/command-line/rake-task
+
+# delete or ignore this.
+# just testing to see how rake env works.
 namespace :temp do
 
   task :foo do
@@ -64,7 +111,12 @@ namespace :temp do
     require_relative 'temp/foo'
     include Foo
     Foo.hello
-
   end
+
+
+  # if you want to have multiple build env based off a variable
+  #task :build do |t, args|
+  #  puts "Current env is #{ENV['RAKE_ENV']}"
+  #end
 
 end

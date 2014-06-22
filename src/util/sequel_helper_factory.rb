@@ -2,6 +2,10 @@ require_relative 'yaml_util'
 
 # sets up a sequel helper objects
 # and returns it.
+#
+# TODO:
+# return a singualar object.
+# factory i don't think make sense.
 class SequelHelperFactory
   
   # returns a sql helper object
@@ -15,9 +19,21 @@ class SequelHelperFactory
     db_user = db_prefs['db_user']
     db_password = db_prefs['db_password']
     db_host = db_prefs['db_url']
-    database = db_prefs['db_name']
     db_adapter = db_prefs['db_adapter']
     
+    # checks the env. set the db name correctly.
+    # NOTE... USING ENV variables.
+    if ENV['STOCK_SCRAPER_ENV'] == 'test'
+      database = db_prefs['db_name_test']
+    elsif ENV['STOCK_SCRAPER_ENV'] == 'dev'
+      database = db_prefs['db_name_dev']
+    elsif ENV['STOCK_SCRAPER_ENV'] == 'prod'
+      database = db_prefs['db_name_prod']
+    else
+      # default to test db.
+      database = db_prefs['db_name_test']
+    end
+      
     # put results into a hash..
     final_params = {adapter: db_adapter,
                     host: db_host,

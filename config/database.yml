@@ -2,7 +2,9 @@
 db_user: root
 db_password: password
 db_url: localhost
-db_name: stock4_development
+db_name_prod: stock5_prod
+db_name_dev: stock5_dev
+db_name_test: stock5_test
 db_adapter: mysql2
 db_table_name_stock_symbols: stock_symbols
 db_table_name_stock_quotes: stock_quotes

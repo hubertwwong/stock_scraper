@@ -1,0 +1,119 @@
+test
+*nyse
+saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/nyse.csv
+nasdaq
+saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/nasdaq.csv
+amex
+saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/amex.csv
+.****sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock5_test"}
+.sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock5_test"}
+.sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock5_test"}
+.*
+.****sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock5_test"}
+aaaaa
+/home/user/Dropbox/code/main/ruby/stock_scraper
+/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/
+GS /home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/ GS.csv
+>> save to db GS GS.csv
+DEBUGGING{:csv_params=>{:filename=>"/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='GS'"]}, :table_name=>"stock_quotes", :table_cols=>["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"], :key_cols=>["price_date", "stock_symbol_id"]}
+>> IMPORT CSV PARAMS
+csvp {:filename=>"/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='GS'"]}
+table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
+key_cols ["price_date", "stock_symbol_id"]
+F..*..*saved... csv/stock_quotes/GS.csv
+....*****...****sequel_helper init params
+{:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock5_test"}
+................................*{"foo"=>123, "bar"=>345, "cur_pos"=>123}
+.*
+
+Pending:
+  DBStockSymbols main split_symbols basic
+    # Temporarily skipped with xit
+    # ./spec/features/main/db_stock_symbols_spec.rb:8
+  FetchXBRLKeys main fetch_all should return true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_xbrl_keys_spec.rb:8
+  FetchXBRLZips main fetch_all should return true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_xbrl_zips_spec.rb:8
+  FetchXBRLZips main fetch_all should return true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_xbrl_zips_spec.rb:16
+  FetchYahooQuotes main fetch_all should return true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:8
+  FetchYahooQuotes test hello returns true
+    # Temporarily skipped with xit
+    # ./spec/features/main/fetch_yahoo_quotes_spec.rb:51
+  SaveStockSymbols main save_all_to_db basic
+    # Temporarily skipped with xit
+    # ./spec/features/main/save_stock_symbols_spec.rb:8
+  SaveStockSymbols main save_to_db basic
+    # Temporarily skipped with xit
+    # ./spec/features/main/save_stock_symbols_spec.rb:17
+  SaveYahooQuotes main save_all_to_db basic
+    # Temporarily skipped with xit
+    # ./spec/features/main/save_yahoo_quotes_spec.rb:8
+  SaveYahooQuotes main save_to_db AAPL
+    # Temporarily skipped with xit
+    # ./spec/features/main/save_yahoo_quotes_spec.rb:17
+  CsvUtil test hello return true
+    # Temporarily skipped with xit
+    # ./spec/features/util/csv_util_spec.rb:9
+  CsvUtil fetch_csv_from_url basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/csv_util_spec.rb:37
+  FTPHelper connect basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:9
+  FTPHelper download_all basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:19
+  FTPHelper download_dir basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:35
+  FTPHelper download_dir bad dir
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:47
+  FTPHelper download_file basic
+    # Temporarily skipped with xit
+    # ./spec/features/util/ftp_helper_spec.rb:61
+  ScrapeUtil has_content_and? links on the bottom of page should return true
+    # Temporarily skipped with xit
+    # ./spec/features/util/scrape_util_spec.rb:15
+  ScrapeUtil has_content_and? gibberish should return false
+    # Temporarily skipped with xit
+    # ./spec/features/util/scrape_util_spec.rb:24
+  ScrapeUtil has_content_or? link on the bottom should be true
+    # Temporarily skipped with xit
+    # ./spec/features/util/scrape_util_spec.rb:35
+  ScrapeUtil has_content_or? gibberish should be false
+    # Temporarily skipped with xit
+    # ./spec/features/util/scrape_util_spec.rb:45
+  YamlUtil main write cur_pos updates
+    # Temporarily skipped with xit
+    # ./spec/features/util/yaml_util_spec.rb:19
+  YamlUtil exp multiple yml files
+    # Temporarily skipped with xit
+    # ./spec/features/util/yaml_util_spec.rb:44
+
+Failures:
+
+  1) SaveYahooQuotes main2 save_to_db GS1
+     Failure/Error: result = s.save_to_db(sym, fname, base_dir)
+     Sequel::DatabaseConnectionError:
+       Mysql2::Error: Unknown database 'stock5_test'
+     # ./src/main/save_yahoo_quotes.rb:122:in `save_to_db'
+     # ./spec/features/main/save_yahoo_quotes_spec.rb:42:in `block (4 levels) in <top (required)>'
+     # ./spec/spec_helper.rb:29:in `block (2 levels) in <top (required)>'
+
+Finished in 38.62 seconds (files took 5.11 seconds to load)
+73 examples, 1 failure, 23 pending
+
+Failed examples:
+
+rspec ./spec/features/main/save_yahoo_quotes_spec.rb:31 # SaveYahooQuotes main2 save_to_db GS1
