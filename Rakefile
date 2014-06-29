@@ -1,5 +1,6 @@
 #require 'rspec/core/rake_task'
-
+# used to load yml files for the project
+require_relative 'src/main/yaml_config_loader'
 
 
 # change this for default task when you run bundle exec rake
@@ -81,8 +82,53 @@ namespace :test do
     puts ENV['STOCK_SCRAPER_ENV']
     
     # runs rspec. need to fix this at some point to use the db.
-    system "rspec"
+    system "bundle exec rspec"
     #puts "done"
+  end
+
+end
+
+# db migrate...
+#
+# seems like its doind a redux..
+namespace :db do
+    
+  task :migrate do
+    # read the file.
+    ycl = YAMLConfigLoader.new  
+      
+    # fix this at some point.
+    # fix what??
+    ENV['STOCK_SCRAPER_ENV'] = "test"
+    #puts ENV['STOCK_SCRAPER_ENV']
+    
+    # env variable.
+    db_name = nil
+    if ENV['STOCK_SCRAPER_ENV'] == "prod"
+      db_name = ycl.db_prefs['db_name_prod']
+    elsif ENV['STOCK_SCRAPER_ENV'] == "dev"
+      db_name = ycl.db_prefs['db_name_dev']
+    else # assume test
+      db_name = ycl.db_prefs['db_name_test']    
+    end
+      
+    # build the command...
+    puts "> db:migrate > " + ENV['STOCK_SCRAPER_ENV'] 
+    puts ycl.db_prefs['db_user']  
+      
+    # build the command to run.
+    cmd = "sequel -m src/db/migrations/ %s://%s:%s@%s/%s" % 
+      [
+        ycl.db_prefs['db_adapter'],
+        ycl.db_prefs['db_user'], 
+        ycl.db_prefs['db_password'], 
+        ycl.db_prefs['db_url'], 
+        db_name
+      ]
+      
+    # runs migration. need to fix this at some point to use the db.
+    puts cmd
+    system cmd
   end
 
 end

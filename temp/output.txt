@@ -1,5 +1,5 @@
 test
-*nyse
+F.*nyse
 saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/nyse.csv
 nasdaq
 saved... /home/user/zzz/vmsync/data/.stock_scraper/csv/stock_symbols/nasdaq.csv
@@ -24,6 +24,10 @@ DEBUGGING{:csv_params=>{:filename=>"/home/user/Dropbox/code/main/ruby/stock_scra
 csvp {:filename=>"/home/user/Dropbox/code/main/ruby/stock_scraper/test_data/main/stock_quotes/GS.csv", :line_term_by=>"\n", :fields_term_by=>",", :skip_num_lines=>1, :local_flag=>true, :col_names=>["price_date", "open", "high", "low", "close", "volume", "adj_close"], :set_col_names=>["stock_symbol_id='GS'"]}
 table_cols ["price_date", "open", "high", "low", "close", "volume", "adj_close", "stock_symbol_id"]
 key_cols ["price_date", "stock_symbol_id"]
+D, [2014-06-29T13:25:07.062248 #7145] DEBUG -- : (0.003524s) SET @@wait_timeout = 2147483
+D, [2014-06-29T13:25:07.063617 #7145] DEBUG -- : (0.000692s) SET SQL_AUTO_IS_NULL=0
+D, [2014-06-29T13:25:07.069952 #7145] DEBUG -- : (0.006046s) DROP TABLE IF EXISTS `stock_quotestemp`
+E, [2014-06-29T13:25:07.078057 #7145] ERROR -- : Mysql2::Error: Table 'stock5_test.stock_quotes' doesn't exist: CREATE TABLE stock_quotestemp LIKE stock_quotes;
 F..*..*saved... csv/stock_quotes/GS.csv
 ....*****...****sequel_helper init params
 {:adapter=>"mysql2", :host=>"localhost", :client=>nil, :user=>"root", :password=>"password", :database=>"stock5_test"}
@@ -103,17 +107,25 @@ Pending:
 
 Failures:
 
-  1) SaveYahooQuotes main2 save_to_db GS1
+  1) DBMigration main run basic
+     Failure/Error: s = DBMigrate.new
+     NameError:
+       uninitialized constant DBMigrate
+     # ./spec/features/main/db_migration_spec.rb:9:in `block (4 levels) in <top (required)>'
+     # ./spec/spec_helper.rb:29:in `block (2 levels) in <top (required)>'
+
+  2) SaveYahooQuotes main2 save_to_db GS1
      Failure/Error: result = s.save_to_db(sym, fname, base_dir)
-     Sequel::DatabaseConnectionError:
-       Mysql2::Error: Unknown database 'stock5_test'
+     Sequel::DatabaseError:
+       Mysql2::Error: Table 'stock5_test.stock_quotes' doesn't exist
      # ./src/main/save_yahoo_quotes.rb:122:in `save_to_db'
      # ./spec/features/main/save_yahoo_quotes_spec.rb:42:in `block (4 levels) in <top (required)>'
      # ./spec/spec_helper.rb:29:in `block (2 levels) in <top (required)>'
 
-Finished in 38.62 seconds (files took 5.11 seconds to load)
-73 examples, 1 failure, 23 pending
+Finished in 8.67 seconds (files took 2.05 seconds to load)
+75 examples, 2 failures, 23 pending
 
 Failed examples:
 
+rspec ./spec/features/main/db_migration_spec.rb:8 # DBMigration main run basic
 rspec ./spec/features/main/save_yahoo_quotes_spec.rb:31 # SaveYahooQuotes main2 save_to_db GS1

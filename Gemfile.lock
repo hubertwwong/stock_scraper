@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/jnicklas/capybara.git
-  revision: 1276a78da83e14b3d13d8d1c834f517b4b4c7722
+  revision: 6e0130ed521024dcaf66c9739b9ac98b9e1222c7
   specs:
     capybara (2.3.0)
       mime-types (>= 1.16)
@@ -42,7 +42,7 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     logger (1.2.8)
-    lumberjack (1.0.7)
+    lumberjack (1.0.9)
     mechanize (2.7.3)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0)

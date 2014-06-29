@@ -1,4 +1,5 @@
 ---
+db_adapter: mysql2
 db_user: root
 db_password: password
 db_url: localhost
