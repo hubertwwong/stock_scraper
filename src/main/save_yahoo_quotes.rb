@@ -110,7 +110,8 @@ class SaveYahooQuotes
     #@csv_params[:filename] = "@base_dir + filename"
     #@csv_params[:filename] = "/home/user/.stock_scraper/csv/stock_quotes/AAPL.csv"
     #@csv_params[:set_col_names] = ["symbol='AAPL'"]
-    @csv_params[:filename] = base_dir + filename
+    #@csv_params[:filename] = base_dir + filename
+    @csv_params[:filename] = "/tmp/" + filename
     @csv_params[:set_col_names] = ["stock_symbol_id='" + symbol_id.to_s + "'"]
     
     @import_csv_params[:csv_params] = @csv_params
